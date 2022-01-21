@@ -1,8 +1,13 @@
-import React from 'react';
+import CandidateList from "./components/CandidateList";
+import Filters from "./components/Filters";
 
 function App() {
   return (
-    <p>Hola</p>
+    <>
+      <h1>Elecciones 2022</h1>
+      <Filters />
+      <CandidateList />
+    </>
   );
 }
 
