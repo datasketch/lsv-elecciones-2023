@@ -1,8 +1,8 @@
-const { writeFile } = require("fs").promises;
-const path = require("path");
-const slugify = require("slugify");
-const mapper = require("./mapper");
-const raw = require("../data/raw.json");
+const { writeFile } = require('fs').promises;
+const path = require('path');
+const slugify = require('slugify');
+const mapper = require('./mapper');
+const raw = require('../data/raw.json');
 
 function compareFunction(key) {
   return (a, b) => {
@@ -12,8 +12,8 @@ function compareFunction(key) {
   };
 }
 
-const sortByFullname = compareFunction("fullname");
-const sortByDepartment = compareFunction("name");
+const sortByFullname = compareFunction('fullname');
+const sortByDepartment = compareFunction('name');
 
 (async () => {
   try {
@@ -26,7 +26,7 @@ const sortByDepartment = compareFunction("name");
       })
       .map((record) => {
         const { name, firstLastName, secondLastName } = record;
-        const fullname = [name, firstLastName, secondLastName].join(" ").trim();
+        const fullname = [name, firstLastName, secondLastName].join(' ').trim();
         return {
           id: slugify(fullname, { lower: true }),
           fullname,
@@ -36,7 +36,7 @@ const sortByDepartment = compareFunction("name");
       .sort(sortByFullname);
     const candidatesFile = path.resolve(
       process.cwd(),
-      "src/data/candidates.json"
+      'src/data/candidates.json'
     );
     await writeFile(candidatesFile, JSON.stringify(data));
   } catch (error) {

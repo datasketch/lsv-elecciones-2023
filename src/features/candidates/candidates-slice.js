@@ -1,39 +1,45 @@
-import { createSlice } from "@reduxjs/toolkit";
-import candidates from "../../data/candidates.json";
+import { createSlice } from '@reduxjs/toolkit';
+import candidates from '../../data/candidates.json';
+
+const candidatesData = candidates.map((c) => ({ ...c, highlight: true }));
 
 const initialState = {
-  all: candidates,
-  filtered: candidates,
+  all: candidatesData,
+  filtered: candidatesData,
   filters: {
-    office: "",
-    department: "",
+    department: '',
   },
 };
 
 const candidatesSlice = createSlice({
-  name: "candidates",
+  name: 'candidates',
   initialState,
   reducers: {
     filterByOffice(state, action) {
-      filter(state, action, "office");
+      const { payload } = action;
+      state.filtered = candidatesData;
+      Object.keys(state.filters).forEach((filterKey) => {
+        const filterValue = state.filters[filterKey];
+        state.filtered = highlightCandidates(
+          state,
+          filterKey,
+          filterValue
+        ).filter((c) => c.office.includes(payload));
+      });
     },
     filterByDepartment(state, action) {
-      filter(state, action, "department");
+      const { payload } = action;
+      state.filters.department = payload;
+      state.filtered = highlightCandidates(state, 'department', payload);
     },
   },
 });
 
-function filter(state, action, key) {
-  state.filters[key] = action.payload;
-  state.filtered = state.all;
-  Object.keys(state.filters).forEach((filterKey) => {
-    const filterValue = state.filters[filterKey];
-    if (filterValue) {
-      state.filtered = state.filtered.filter(
-        (record) => record[filterKey] === filterValue
-      );
-    }
-  });
+function highlightCandidates(state, key, value) {
+  return state.filtered.map((c) => ({
+    ...c,
+    highlight: c[key].includes(value),
+  }));
 }
 
 export const { filterByOffice, filterByDepartment } = candidatesSlice.actions;

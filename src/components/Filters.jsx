@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 import {
   filterByDepartment,
   filterByOffice,
   selectDepartments,
   selectOffices,
-} from "../features/candidates/candidates-slice";
+} from '../features/candidates/candidates-slice';
 
 function Filters() {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ function Filters() {
       <select onChange={(e) => dispatch(filterByDepartment(e.target.value))}>
         <option value="">Todos</option>
         {departments.map((d, i) => (
-          <option key={"d-" + i} value={d}>
+          <option key={'d-' + i} value={d}>
             {d}
           </option>
         ))}

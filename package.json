@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "classnames": "^2.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -17,7 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "process": "node src/scripts/process.js"
+    "refresh:data": "node src/scripts/transform.js",
+    "prettify": "prettier --write \"src/**/*.{js,jsx}\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,10 +37,13 @@
     ]
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.2",
     "husky": "^7.0.4",
     "lint-staged": "^12.2.2",
+    "postcss": "^8.4.5",
     "prettier": "^2.5.1",
-    "slugify": "^1.6.5"
+    "slugify": "^1.6.5",
+    "tailwindcss": "^3.0.15"
   },
   "husky": {
     "hooks": {
@@ -46,7 +51,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json}": [
+    "src/**/*.{js,jsx}": [
       "prettier --write"
     ]
   }
