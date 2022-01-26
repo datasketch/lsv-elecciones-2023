@@ -15,7 +15,7 @@ function CandidateList() {
 
   return (
     <>
-      <h2>Candidatos</h2>
+      <h2 className="text-xl font-bold">Candidatos</h2>
       <ViewModeSwitch grid={gridView} handler={handleClick} />
       <div
         className={classNames('grid grid-cols-1 gap-2', {
