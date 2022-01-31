@@ -61,6 +61,9 @@ const mapper = {
   'Tiene experiencia en el Estado': 'hasExperienceInNation',
   'Es de una minoría': 'belongsToMinority',
   'Grupo que representa': 'groupThatRepresents',
+  'Circunscripción': 'district',
+  'Ha recibido amenazas': 'hasReceivedThreats',
+  'Tipo de circunscripción': 'districtType'
 };
 
 module.exports = mapper;
