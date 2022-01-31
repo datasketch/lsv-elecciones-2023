@@ -13,11 +13,10 @@ function compareFunction(key) {
 }
 
 const sortByFullname = compareFunction('fullname');
-const sortByDepartment = compareFunction('name');
 
 (async () => {
   try {
-    const data = raw
+    const data = raw.slice(0, 144)
       .map((record) => {
         return Object.keys(record).reduce((result, key) => {
           result[mapper[key]] = record[key];
@@ -33,6 +32,7 @@ const sortByDepartment = compareFunction('name');
           ...record,
         };
       })
+      .filter(record => record.id)
       .sort(sortByFullname);
     const candidatesFile = path.resolve(
       process.cwd(),
