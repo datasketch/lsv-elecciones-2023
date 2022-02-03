@@ -36,12 +36,12 @@ function Modal() {
 
   return (
     <div
-      className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 py-8 pr-80 flex items-center justify-center"
+      className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 py-8 pr-80 flex items-center justify-center z-10"
       onClick={handleClose}
     >
       <div className="bg-white w-96 max-h-full overflow-auto">
         <div className="flex justify-between items-start">
-          <div className='font-martin w-32 uppercase text-center text-2xl text-white py-2 px-4' style={{backgroundColor: '#00D200'}}>
+          <div className='font-martin w-32 uppercase text-center text-2xl text-white py-2 px-4' style={{backgroundColor: featuredCandidate.color}}>
             Tarjetón: {featuredCandidate.electoralNumber}
           </div>
           <button className="close px-4 self-center">

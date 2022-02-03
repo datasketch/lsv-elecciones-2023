@@ -14,6 +14,17 @@ function compareFunction(key) {
 
 const sortByElectoralNumber = compareFunction('electoralNumber');
 
+const partyColorMap = {
+  ASI: '#BFE32B',
+  'Alianza Verde': '#03A855',
+  'Cambio Radical': '#773AD8',
+  'Centro Democrático': '#5ED9FF',
+  'Colombia Renaciente': '#012BB3',
+  'La U': '#D38733',
+  'Liberal': '#DE2330',
+  'Verde Oxígeno': '#00D200'
+};
+
 (async () => {
   try {
     const data = raw
@@ -31,6 +42,7 @@ const sortByElectoralNumber = compareFunction('electoralNumber');
           ...record,
           id: slugify(fullname, { lower: true }),
           position: record.position.toLowerCase(),
+          color: partyColorMap[record.party] || '#eeeeee',
           supportedPresidentialCandidate:
             record.supportedPresidentialCandidate || 'Sin datos',
           fullname,

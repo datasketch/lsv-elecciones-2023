@@ -20,7 +20,7 @@ function CandidateCardCollapsed({ candidate }) {
         interactive
       >
         <button
-          className={classNames('w-10', {
+          className={classNames('w-10 h-10 relative', {
             'opacity-25': !candidate.highlight,
           })}
           onClick={() => dispatch(showCandidateCard(candidate))}
@@ -32,6 +32,7 @@ function CandidateCardCollapsed({ candidate }) {
             className="max-w-full"
             alt={candidate.fullname}
           />
+          <span className='absolute top-0 left-0 w-full h-full opacity-30' style={{ backgroundColor: candidate.color }}></span>
         </button>
       </Tippy>
     </div>
