@@ -10,6 +10,7 @@ const initialState = {
   filters: {
     department: '',
     party: '',
+    supportedPresidentialCandidate: '',
   },
 };
 
@@ -34,6 +35,11 @@ const candidatesSlice = createSlice({
       state.filters.party = payload;
       state.filtered = highlightCandidates(state);
     },
+    filterBySupportedCandidatePresidential(state, action) {
+      const { payload } = action;
+      state.filters.supportedPresidentialCandidate = payload;
+      state.filtered = highlightCandidates(state);
+    },
   },
 });
 
@@ -46,13 +52,20 @@ function highlightCandidates(state) {
   }));
 }
 
-export const { filterByOffice, filterByDepartment, filterByParty } =
-  candidatesSlice.actions;
+const getCategories = (data, key) =>
+  Array.from(new Set(data.map((record) => record[key]).sort()));
+
+export const {
+  filterByOffice,
+  filterByDepartment,
+  filterByParty,
+  filterBySupportedCandidatePresidential,
+} = candidatesSlice.actions;
 
 export const selectAllCandidates = (state) => {
   const groups = state.candidates.filtered.reduce((result, candidate) => {
-    result[candidate.ideology] = result[candidate.ideology] || [];
-    result[candidate.ideology].push(candidate);
+    result[candidate.position] = result[candidate.position] || [];
+    result[candidate.position].push(candidate);
     return result;
   }, {});
   return {
@@ -70,15 +83,19 @@ export const selectHighlightedCandidates = (state) =>
   state.candidates.filtered.filter(({ highlight }) => highlight);
 
 export const selectDepartments = (state) =>
-  Array.from(
-    new Set(state.candidates.all.map(({ department }) => department))
-  ).sort();
+  getCategories(state.candidates.all, 'department');
 
 export const selectOffices = (state) =>
-  Array.from(new Set(state.candidates.all.map(({ office }) => office))).sort();
+  getCategories(state.candidates.all, 'office');
 
 export const selectParties = (state) =>
-  Array.from(new Set(state.candidates.all.map(({ party }) => party))).sort();
+  getCategories(state.candidates.all, 'party');
+
+export const selectSupportedPresidentialCandidate = (state) =>
+  getCategories(state.candidates.all, 'supportedPresidentialCandidate');
+
+export const selectSectors = (state) =>
+  getCategories(state.candidates.all, 'backgroundSector');
 
 export const selectCandidateById = createSelector(
   (state) => state.candidates.all,

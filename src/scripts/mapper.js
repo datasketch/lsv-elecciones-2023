@@ -17,7 +17,7 @@ const mapper = {
   Comisión: 'commission',
   Partido: 'party',
   'Número en el tarjetón': 'electoralNumber',
-  'Posición iz/der': 'ideology',
+  'Posición iz/der': 'position',
   'Subregión provincia o localidad': 'province',
   'Profesión u oficio': 'profession',
   'Estudios más altos': 'higherDegree',

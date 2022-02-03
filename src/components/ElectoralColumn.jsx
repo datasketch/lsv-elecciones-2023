@@ -4,7 +4,7 @@ function ElectoralColumn({ label, candidates }) {
   return (
     <div className="pb-2">
       <div
-        className="grid gap-1 grid-flow-col content-start auto-cols-max"
+        className="grid gap-2 grid-flow-col content-start auto-cols-max"
         style={{ gridTemplateRows: 'repeat(10, 40px)' }}
       >
         {candidates.map((candidate) => (

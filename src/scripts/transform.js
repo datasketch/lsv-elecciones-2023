@@ -30,7 +30,9 @@ const sortByElectoralNumber = compareFunction('electoralNumber');
         return {
           ...record,
           id: slugify(fullname, { lower: true }),
-          ideology: record.ideology.toLowerCase(),
+          position: record.position.toLowerCase(),
+          supportedPresidentialCandidate:
+            record.supportedPresidentialCandidate || 'Sin datos',
           fullname,
         };
       })

@@ -8,27 +8,33 @@ import { showCandidateCard } from '../features/modal/modal-slice';
 function CandidateCardCollapsed({ candidate }) {
   const dispatch = useDispatch();
   return (
-    <Tippy
-      render={(attrs) => <CandidateCardExpanded candidate={candidate}/>}
-      placement="auto"
-      followCursor={true}
-      plugins={[followCursor]}
-    >
-      <button
-        className={classNames('w-10 flex-grow-0', {
-          'opacity-25': !candidate.highlight,
-        })}
-        onClick={() => dispatch(showCandidateCard(candidate))}
-        data-tip
-        data-for="card"
+    // See https://atomiks.github.io/tippyjs/v6/accessibility/#interactivity
+    <div>
+      <Tippy
+        render={(attrs) => (
+          <CandidateCardExpanded candidate={candidate} {...attrs} />
+        )}
+        placement="auto"
+        followCursor={true}
+        plugins={[followCursor]}
+        interactive
       >
-        <img
-          src={candidate.photo}
-          className="max-w-full"
-          alt={candidate.fullname}
-        />
-      </button>
-    </Tippy>
+        <button
+          className={classNames('w-10', {
+            'opacity-25': !candidate.highlight,
+          })}
+          onClick={() => dispatch(showCandidateCard(candidate))}
+          data-tip
+          data-for="card"
+        >
+          <img
+            src={candidate.photo}
+            className="max-w-full"
+            alt={candidate.fullname}
+          />
+        </button>
+      </Tippy>
+    </div>
   );
 }
 
