@@ -12,11 +12,12 @@ function compareFunction(key) {
   };
 }
 
-const sortByFullname = compareFunction('fullname');
+const sortByElectoralNumber = compareFunction('electoralNumber');
 
 (async () => {
   try {
-    const data = raw.slice(0, 144)
+    const data = raw
+      .slice(0, 144)
       .map((record) => {
         return Object.keys(record).reduce((result, key) => {
           result[mapper[key]] = record[key];
@@ -27,13 +28,14 @@ const sortByFullname = compareFunction('fullname');
         const { name, firstLastName, secondLastName } = record;
         const fullname = [name, firstLastName, secondLastName].join(' ').trim();
         return {
-          id: slugify(fullname, { lower: true }),
-          fullname,
           ...record,
+          id: slugify(fullname, { lower: true }),
+          ideology: record.ideology.toLowerCase(),
+          fullname,
         };
       })
-      .filter(record => record.id)
-      .sort(sortByFullname);
+      .filter((record) => record.id)
+      .sort(sortByElectoralNumber);
     const candidatesFile = path.resolve(
       process.cwd(),
       'src/data/candidates.json'

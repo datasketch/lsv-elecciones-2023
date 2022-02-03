@@ -6,6 +6,23 @@ function CandidateCard({ candidate }) {
   const dispatch = useDispatch();
   return (
     <button
+      className={classNames('w-10 flex-grow-0', {
+        'opacity-25': !candidate.highlight,
+      })}
+      onClick={() => dispatch(showCandidateCard(candidate))}
+    >
+      <img
+        src={candidate.photo}
+        className="max-w-full"
+        alt={candidate.fullname}
+      />
+    </button>
+  );
+}
+
+export default CandidateCard;
+
+/* <button
       className={classNames('flex space-x-3 shadow p-2 text-left w-full', {
         'opacity-25': !candidate.highlight,
       })}
@@ -13,7 +30,7 @@ function CandidateCard({ candidate }) {
     >
       <div className="flex-shrink-0">
         <img
-          src="https://joeschmoe.io/api/v1/random"
+          src={candidate.photo}
           width={60}
           className="rounded-full"
           alt={candidate.fullname}
@@ -29,8 +46,4 @@ function CandidateCard({ candidate }) {
         <p>{candidate.department}</p>
         <p>{candidate.office}</p>
       </div>
-    </button>
-  );
-}
-
-export default CandidateCard;
+    </button> */

@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import CandidateCard from './CandidateCard';
+import ElectoralColumn from './ElectoralColumn';
 import ViewModeSwitch from './ViewModeSwitch';
 import { selectAllCandidates } from '../features/candidates/candidates-slice';
-import classNames from 'classnames';
 
 function CandidateList() {
   const [gridView, setGridView] = useState(true);
@@ -17,16 +16,10 @@ function CandidateList() {
     <>
       <h2 className="text-xl font-bold">Candidatos</h2>
       <ViewModeSwitch grid={gridView} handler={handleClick} />
-      <div
-        className={classNames('grid grid-cols-1 gap-2', {
-          'sm:grid-cols-2': gridView,
-          'md:grid-cols-3': gridView,
-          'lg:grid-cols-4': gridView,
+      <div className="flex items-start justify-between border-b border-black">
+        {Object.entries(candidates).map(([label, c]) => {
+          return <ElectoralColumn key={label} label={label} candidates={c} />;
         })}
-      >
-        {candidates.map((candidate) => (
-          <CandidateCard candidate={candidate} key={candidate.id} />
-        ))}
       </div>
     </>
   );

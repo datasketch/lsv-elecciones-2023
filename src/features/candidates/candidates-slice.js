@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createSelector } from 'reselect'
+import { createSelector } from 'reselect';
 import candidates from '../../data/candidates.json';
 
 const candidatesData = candidates.map((c) => ({ ...c, highlight: true }));
@@ -49,7 +49,22 @@ function highlightCandidates(state) {
 export const { filterByOffice, filterByDepartment, filterByParty } =
   candidatesSlice.actions;
 
-export const selectAllCandidates = (state) => state.candidates.filtered;
+export const selectAllCandidates = (state) => {
+  const groups = state.candidates.filtered.reduce((result, candidate) => {
+    result[candidate.ideology] = result[candidate.ideology] || [];
+    result[candidate.ideology].push(candidate);
+    return result;
+  }, {});
+  return {
+    izquierda: groups.izquierda,
+    centro: [
+      ...groups.centroizquierda,
+      ...groups.centro,
+      ...groups.centroderecha,
+    ],
+    derecha: groups.derecha,
+  };
+};
 
 export const selectHighlightedCandidates = (state) =>
   state.candidates.filtered.filter(({ highlight }) => highlight);
@@ -66,9 +81,9 @@ export const selectParties = (state) =>
   Array.from(new Set(state.candidates.all.map(({ party }) => party))).sort();
 
 export const selectCandidateById = createSelector(
-  state => state.candidates.all,
+  (state) => state.candidates.all,
   (_, id) => id,
-  (candidates, id) => candidates.find(c => c.id === id)
-)
+  (candidates, id) => candidates.find((c) => c.id === id)
+);
 
 export default candidatesSlice.reducer;

@@ -21,6 +21,6 @@ const modalSlice = createSlice({
 
 export const { showCandidateCard, closeModal } = modalSlice.actions;
 export const selectModal = (state) => state.modal.show;
-export const selectFeaturedCandidate = (state) => state.modal.candidate
+export const selectFeaturedCandidate = (state) => state.modal.candidate;
 
 export default modalSlice.reducer;
