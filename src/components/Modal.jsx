@@ -70,7 +70,7 @@ function Modal() {
         }
         {
           !!redflags.length &&
-          <div className="px-4 pt-4 flex items-start space-x-2 justify-between">
+          <div className="px-4 pt-4 flex items-start space-x-2 justify-center">
             {
               redflags.map((redflag, index) => (
                 <div

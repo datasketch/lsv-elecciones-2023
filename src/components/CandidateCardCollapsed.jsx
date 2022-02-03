@@ -17,7 +17,6 @@ function CandidateCardCollapsed({ candidate }) {
         placement="auto"
         followCursor={true}
         plugins={[followCursor]}
-        interactive
       >
         <button
           className={classNames('w-10 h-10 relative', {
