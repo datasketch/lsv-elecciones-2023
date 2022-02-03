@@ -9,7 +9,9 @@ module.exports = {
         manrope: ['Manrope', 'sans-serif']
       },
       colors: {
-        jet: '#3D3B3D'
+        jet: '#3D3B3D',
+        cultured: '#EEEEEE',
+        'dodger-blue': '#338BFD'
       }
     },
   },

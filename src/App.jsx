@@ -23,7 +23,7 @@ function App() {
   return (
     <>
       {showModal && <Modal />}
-      <div className="container mx-auto">
+      <div className="container mx-auto text-jet font-manrope">
         <AppHeader />
         <Filters />
         <CandidateList />
