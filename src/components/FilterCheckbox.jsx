@@ -1,4 +1,4 @@
-import slugify from "slugify";
+import slugify from 'slugify';
 
 function FilterCheckbox({ label, options, name }) {
   return (

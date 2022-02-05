@@ -13,7 +13,8 @@ const initialState = {
     party: '',
     supportedPresidentialCandidate: '',
     gender: '',
-    backgroundSector: ''
+    backgroundSector: '',
+    fullname: '',
   },
 };
 
@@ -44,26 +45,35 @@ const candidatesSlice = createSlice({
     },
     filterGroup(state, action) {
       // Should we reset these filters here?
-      state.filters.gender = ''
-      state.filters.backgroundSector = ''
+      state.filters.gender = '';
+      state.filters.backgroundSector = '';
       Object.entries(action.payload).forEach(([key, value]) => {
-        state.filters[key] = value
-      })
+        state.filters[key] = value;
+      });
       state.filtered = highlightCandidates(state);
-    }
+    },
+    filterBySearch(state, action) {
+      state.filters.fullname = action.payload.trim();
+      state.filtered = highlightCandidates(state);
+    },
   },
 });
+
+function normalizeStr(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+}
 
 function highlightCandidates(state) {
   return state.filtered.map((c) => ({
     ...c,
     highlight: Object.entries(state.filters).every(
       ([filterKey, filterValue]) => {
-        const candidateValue = c[filterKey]
-        if (Array.isArray(filterValue)) return filterValue.includes(candidateValue)
+        const candidateValue = c[filterKey];
+        if (Array.isArray(filterValue))
+          return filterValue.includes(candidateValue);
         return typeof candidateValue === 'object'
           ? candidateValue.label.includes(filterValue)
-          : candidateValue.includes(filterValue);
+          : normalizeStr(candidateValue).includes(normalizeStr(filterValue));
       }
     ),
   }));
@@ -84,7 +94,8 @@ export const {
   filterByDepartment,
   filterByParty,
   filterBySupportedCandidatePresidential,
-  filterGroup
+  filterGroup,
+  filterBySearch,
 } = candidatesSlice.actions;
 
 export const selectAllCandidates = (state) => {

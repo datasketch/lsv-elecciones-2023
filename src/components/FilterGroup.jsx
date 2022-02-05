@@ -16,37 +16,36 @@ function FilterGroup() {
   const [isOpened, setIsOpened] = useState(false);
   const sectors = useSelector(selectSectors);
   const genders = useSelector(selectGender);
-  const dispatch = useDispatch()
-  const containerRef = useRef(null)
-
+  const dispatch = useDispatch();
+  const containerRef = useRef(null);
 
   useEffect(() => {
-    const clickHandler = e => {
-      const { target } = e
+    const clickHandler = (e) => {
+      const { target } = e;
       if (!containerRef.current.contains(target)) {
-        setIsOpened(false)
+        setIsOpened(false);
       }
-    }
+    };
     if (isOpened) {
-      document.addEventListener('click', clickHandler)
+      document.addEventListener('click', clickHandler);
     }
-    return () => document.removeEventListener('click', clickHandler)
-  }, [isOpened])
+    return () => document.removeEventListener('click', clickHandler);
+  }, [isOpened]);
 
-  const handleSubmit = e => {
-    const formData = new FormData(e.target)
-    const choices = {}
+  const handleSubmit = (e) => {
+    const formData = new FormData(e.target);
+    const choices = {};
     for (const [name, value] of formData.entries()) {
-      choices[name] = choices[name] || []
-      choices[name].push(value)
+      choices[name] = choices[name] || [];
+      choices[name].push(value);
     }
-    dispatch(filterGroup(choices))
-    setIsOpened(false)
-    e.preventDefault()
-  }
+    dispatch(filterGroup(choices));
+    setIsOpened(false);
+    e.preventDefault();
+  };
 
   return (
-    <div className='relative' ref={containerRef}>
+    <div className="relative" ref={containerRef}>
       <button
         className="border border-dodger-blue text-dodger-blue text-sm py-2 pl-3 pr-10 bg-no-repeat"
         aria-haspopup="true"
@@ -80,11 +79,7 @@ function FilterGroup() {
             />
           </div>
           <div>
-            <FilterCheckbox
-              label="Género"
-              options={genders}
-              name="gender"
-            />
+            <FilterCheckbox label="Género" options={genders} name="gender" />
             <AppButton label="Aplicar" />
           </div>
         </div>

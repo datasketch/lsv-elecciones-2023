@@ -11,6 +11,7 @@ import {
 } from '../features/candidates/candidates-slice';
 import FilterSelect from './FilterSelect';
 import FilterGroup from './FilterGroup';
+import FilterSearch from './FilterSearch';
 
 function FiltersSection() {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ function FiltersSection() {
         }
       />
       <FilterGroup />
+      <FilterSearch />
     </div>
   );
 }
