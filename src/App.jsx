@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AppHeader from './components/AppHeader';
 import CandidateList from './components/CandidateList';
-import Filters from './components/Filters';
+import FiltersSection from './components/FiltersSection';
 import Modal from './components/Modal';
 import { selectCandidateById } from './features/candidates/candidates-slice';
 import { selectModal, showCandidateCard } from './features/modal/modal-slice';
@@ -25,7 +25,7 @@ function App() {
       {showModal && <Modal />}
       <div className="container mx-auto text-jet font-manrope">
         <AppHeader />
-        <Filters />
+        <FiltersSection />
         <CandidateList />
       </div>
     </>

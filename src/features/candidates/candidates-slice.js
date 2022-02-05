@@ -8,9 +8,12 @@ const initialState = {
   all: candidatesData,
   filtered: candidatesData,
   filters: {
+    office: '',
     department: '',
     party: '',
     supportedPresidentialCandidate: '',
+    gender: '',
+    backgroundSector: ''
   },
 };
 
@@ -19,47 +22,69 @@ const candidatesSlice = createSlice({
   initialState,
   reducers: {
     filterByOffice(state, action) {
-      const { payload } = action;
-      state.filtered = candidatesData;
-      state.filtered = state.filtered.filter((c) => c.office.includes(payload));
-      // TODO: optimize
+      // const { payload } = action;
+      // state.filtered = candidatesData;
+      // state.filtered = state.filtered.filter((c) => c.office.includes(payload));
+      // // TODO: optimize
+      // state.filtered = highlightCandidates(state);
+      state.filters.office = action.payload;
       state.filtered = highlightCandidates(state);
     },
     filterByDepartment(state, action) {
-      const { payload } = action;
-      state.filters.department = payload;
+      state.filters.department = action.payload;
       state.filtered = highlightCandidates(state);
     },
     filterByParty(state, action) {
-      const { payload } = action;
-      state.filters.party = payload;
+      state.filters.party = action.payload;
       state.filtered = highlightCandidates(state);
     },
     filterBySupportedCandidatePresidential(state, action) {
-      const { payload } = action;
-      state.filters.supportedPresidentialCandidate = payload;
+      state.filters.supportedPresidentialCandidate = action.payload;
       state.filtered = highlightCandidates(state);
     },
+    filterGroup(state, action) {
+      // Should we reset these filters here?
+      state.filters.gender = ''
+      state.filters.backgroundSector = ''
+      Object.entries(action.payload).forEach(([key, value]) => {
+        state.filters[key] = value
+      })
+      state.filtered = highlightCandidates(state);
+    }
   },
 });
 
 function highlightCandidates(state) {
   return state.filtered.map((c) => ({
     ...c,
-    highlight: Object.entries(state.filters).every(([filterKey, filterValue]) =>
-      c[filterKey].includes(filterValue)
+    highlight: Object.entries(state.filters).every(
+      ([filterKey, filterValue]) => {
+        const candidateValue = c[filterKey]
+        if (Array.isArray(filterValue)) return filterValue.includes(candidateValue)
+        return typeof candidateValue === 'object'
+          ? candidateValue.label.includes(filterValue)
+          : candidateValue.includes(filterValue);
+      }
     ),
   }));
 }
 
 const getCategories = (data, key) =>
-  Array.from(new Set(data.map((record) => record[key]).sort()));
+  Array.from(
+    new Set(
+      data
+        .map((record) => record[key])
+        .filter((r) => r)
+        .sort()
+    )
+  );
 
 export const {
   filterByOffice,
   filterByDepartment,
   filterByParty,
   filterBySupportedCandidatePresidential,
+  filterGroup
 } = candidatesSlice.actions;
 
 export const selectAllCandidates = (state) => {
@@ -70,11 +95,9 @@ export const selectAllCandidates = (state) => {
   }, {});
   return {
     izquierda: groups.izquierda,
-    centro: [
-      ...groups.centroizquierda,
-      ...groups.centro,
-      ...groups.centroderecha,
-    ],
+    centroizquierda: groups.centroizquierda,
+    centro: groups.centro,
+    centroderecha: groups.centroderecha,
     derecha: groups.derecha,
   };
 };
@@ -89,13 +112,26 @@ export const selectOffices = (state) =>
   getCategories(state.candidates.all, 'office');
 
 export const selectParties = (state) =>
-  getCategories(state.candidates.all, 'party');
+  Array.from(
+    new Set(state.candidates.all.map(({ party }) => party.label).sort())
+  );
+
+export const selectPartiesWithColor = (state) =>
+  state.candidates.all.reduce((list, candidate) => {
+    const { label, color } = candidate.party;
+    if (list[label]) return list;
+    list[label] = color;
+    return list;
+  }, {});
 
 export const selectSupportedPresidentialCandidate = (state) =>
   getCategories(state.candidates.all, 'supportedPresidentialCandidate');
 
 export const selectSectors = (state) =>
   getCategories(state.candidates.all, 'backgroundSector');
+
+export const selectGender = (state) =>
+  getCategories(state.candidates.all, 'gender');
 
 export const selectCandidateById = createSelector(
   (state) => state.candidates.all,

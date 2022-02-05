@@ -15,14 +15,20 @@ function compareFunction(key) {
 const sortByElectoralNumber = compareFunction('electoralNumber');
 
 const partyColorMap = {
-  ASI: '#BFE32B',
-  'Alianza Verde': '#03A855',
-  'Cambio Radical': '#773AD8',
-  'Centro Democrático': '#5ED9FF',
-  'Colombia Renaciente': '#012BB3',
-  'La U': '#D38733',
-  'Liberal': '#DE2330',
-  'Verde Oxígeno': '#00D200'
+  Liberal: '#cf2a24',
+  Conservador: '#012bb3',
+  Mira: '#202c54',
+  'Colombia Justa Libres': '#202c54',
+  'Nuevo Liberalismo': '#aa1a1a',
+  'La U': '#ff9900',
+  'Cambio Radical': '#4a4297',
+  'Centro Esperanza': '#75297c',
+  'Alianza Verde': '#03a855',
+  'Centro Democrático': '#2a94ff',
+  Comunes: '#300202',
+  'Estamos listas': '#be8741',
+  'Pacto Histórico': '#fc00bb',
+  Otro: '#3d3d3d',
 };
 
 (async () => {
@@ -42,7 +48,10 @@ const partyColorMap = {
           ...record,
           id: slugify(fullname, { lower: true }),
           position: record.position.toLowerCase(),
-          color: partyColorMap[record.party] || '#eeeeee',
+          party: {
+            label: record.party,
+            color: partyColorMap[record.party] || partyColorMap.Otro,
+          },
           supportedPresidentialCandidate:
             record.supportedPresidentialCandidate || 'Sin datos',
           fullname,

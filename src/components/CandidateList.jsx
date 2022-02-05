@@ -2,13 +2,15 @@
 import { useSelector } from 'react-redux';
 import ElectoralColumn from './ElectoralColumn';
 // import ViewModeSwitch from './ViewModeSwitch';
-import { selectAllCandidates, selectParties } from '../features/candidates/candidates-slice';
-import { partyColorMap } from '../app/utils';
+import {
+  selectAllCandidates,
+  selectPartiesWithColor,
+} from '../features/candidates/candidates-slice';
 
 function CandidateList() {
   // const [gridView, setGridView] = useState(true);
   const candidates = useSelector(selectAllCandidates);
-  const parties = useSelector(selectParties)
+  const parties = useSelector(selectPartiesWithColor);
 
   // const handleClick = (value) => {
   //   setGridView(value);
@@ -17,23 +19,37 @@ function CandidateList() {
   return (
     <>
       {/* <ViewModeSwitch grid={gridView} handler={handleClick} /> */}
-      <div className="flex items-start justify-between border-b border-black">
-        {Object.entries(candidates).map(([label, c]) => {
-          return <ElectoralColumn key={label} label={label} candidates={c} />;
-        })}
+      <div className="border-b border-jet">
+        <div className="flex items-start justify-between">
+          {Object.entries(candidates).map(([label, c]) => {
+            return <ElectoralColumn key={label} label={label} candidates={c} />;
+          })}
+        </div>
+        <div className="pb-2">
+          <div className="uppercase text-center mt-4 text-jet font-martin text-2xl flex justify-between">
+            <span>Izquierda</span>
+            <span>Centro</span>
+            <span>Derecha</span>
+          </div>
+        </div>
       </div>
       <div className="grid grid-cols-5 gap-4 max-w-4xl mx-auto py-4">
-        {
-          parties.map((party, index) => (
+        {Object.keys(parties)
+          .sort()
+          .map((key, index) => (
             <div
               key={`party-${index}`}
-              className='flex items-center space-x-1 text-xs flex-shrink-0'
+              className="flex items-center space-x-1 text-xs flex-shrink-0"
             >
-              <span className='w-3 h-3 flex-shrink-0' style={{backgroundColor: partyColorMap[party]}}></span>
-              <span className='truncate' title={party}>{party}</span>
+              <span
+                className="w-3 h-3 flex-shrink-0"
+                style={{ backgroundColor: parties[key] }}
+              ></span>
+              <span className="truncate" title={key}>
+                {key}
+              </span>
             </div>
-          ))
-        }
+          ))}
       </div>
     </>
   );

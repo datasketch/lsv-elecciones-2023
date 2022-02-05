@@ -11,4 +11,7 @@
         font-family: 'Manrope';
         src: url('./fonts/Manrope-Regular.ttf');
     }
+    html {
+        @apply bg-soft-white;
+    }
 }

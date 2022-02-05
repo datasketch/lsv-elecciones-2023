@@ -19,7 +19,7 @@ function CandidateCardCollapsed({ candidate }) {
         plugins={[followCursor]}
       >
         <button
-          className={classNames('w-10 h-10 relative', {
+          className={classNames('w-9 h-9 relative', {
             'opacity-25': !candidate.highlight,
           })}
           onClick={() => dispatch(showCandidateCard(candidate))}
@@ -31,7 +31,10 @@ function CandidateCardCollapsed({ candidate }) {
             className="max-w-full"
             alt={candidate.fullname}
           />
-          <span className='absolute top-0 left-0 w-full h-full opacity-30' style={{ backgroundColor: candidate.color }}></span>
+          <span
+            className="absolute top-0 left-0 w-full h-full opacity-30"
+            style={{ backgroundColor: candidate.party.color }}
+          ></span>
         </button>
       </Tippy>
     </div>

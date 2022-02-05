@@ -11,9 +11,9 @@ function CandidateCardExpanded({ candidate }) {
       <div className="flex-grow min-w-0">
         <div
           className="flex justify-between text-xs space-x-2"
-          title={candidate.party}
+          title={candidate.party.label}
         >
-          <span className="truncate">{candidate.party}</span>
+          <span className="truncate">{candidate.party.label}</span>
           <span className="text-dodger-blue">{candidate.department}</span>
         </div>
         <p className="truncate" title={candidate.fullname}>

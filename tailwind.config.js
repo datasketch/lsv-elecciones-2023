@@ -13,7 +13,8 @@ module.exports = {
         cultured: '#EEEEEE',
         'dodger-blue': '#338BFD',
         bone: '#E4DFD1',
-        'dark-slate-blue': '#4A4595'
+        'dark-slate-blue': '#4A4595',
+        'soft-white': '#fafafa'
       },
       fontSize: {
         xxs: '0.625rem'
