@@ -1,12 +1,17 @@
 import { useDispatch } from 'react-redux';
 import CandidatePhotoOverlay from './CandidatePhotoOverlay';
-import { showCandidateCard } from '../features/modal/modal-slice'
+import { toggleMainModalWindow } from '../features/modal/modal-slice';
 
 function CandidateCardExpanded({ candidate }) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   return (
-    <div className="flex p-2 space-x-3 items-center bg-cultured shadow-sm" role="button" tabIndex={0} onClick={() => dispatch(showCandidateCard(candidate))}>
+    <div
+      className="flex p-2 space-x-3 items-center bg-cultured shadow-sm"
+      role="button"
+      tabIndex={0}
+      onClick={() => dispatch(toggleMainModalWindow(candidate))}
+    >
       <div className="flex-shrink-0 w-12 relative">
         <CandidatePhotoOverlay candidate={candidate} />
       </div>

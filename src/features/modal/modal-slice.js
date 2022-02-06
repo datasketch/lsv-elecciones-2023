@@ -1,27 +1,35 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  show: false,
+  showMainModalWindow: false,
   candidate: undefined,
+  showComparisonModalWindow: false,
 };
 
 const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    showCandidateCard(state, action) {
-      state.show = true;
-      state.candidate = action.payload;
+    toggleMainModalWindow(state, action) {
+      if (!action.payload) {
+        state.showMainModalWindow = false;
+        state.candidate = undefined;
+      } else {
+        state.showMainModalWindow = true;
+        state.candidate = action.payload;
+      }
     },
-    closeModal(state) {
-      state.show = false;
-      state.candidate = undefined;
+    toggleComparisonModalWindow(state) {
+      state.showComparisonModalWindow = !state.showComparisonModalWindow;
     },
   },
 });
 
-export const { showCandidateCard, closeModal } = modalSlice.actions;
-export const selectModal = (state) => state.modal.show;
+export const { toggleMainModalWindow, toggleComparisonModalWindow } =
+  modalSlice.actions;
+export const selectMainModalWindow = (state) => state.modal.showMainModalWindow;
 export const selectFeaturedCandidate = (state) => state.modal.candidate;
+export const selectComparisonModalWindow = (state) =>
+  state.modal.showComparisonModalWindow;
 
 export default modalSlice.reducer;

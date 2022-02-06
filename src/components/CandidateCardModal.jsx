@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { selectFeaturedCandidate } from '../features/modal/modal-slice';
-import AppButton from './AppButton';
+import CompareButton from './CompareButton';
 import ShareButton from './ShareButton';
 
 function CandidateCardModal() {
@@ -58,7 +58,7 @@ function CandidateCardModal() {
             <path d="M14 1.478 1.478 14 0 12.522 12.522 0Z" fill="#000000" />
           </svg>
         </button>
-        <div className="flex items-center px-6 py-3 pb-6 space-x-4">
+        <div className="flex items-center px-6 py-5 space-x-4">
           <div className="font-martin uppercase text-center text-xl text-black flex-shrink-0">
             {candidate.electoralNumber && (
               <p>#Tarjetón: {candidate.electoralNumber}</p>
@@ -119,7 +119,7 @@ function CandidateCardModal() {
       <div className="px-6">
         <div className="py-4 border-t border-bone grid grid-cols-2 gap-4">
           <ShareButton />
-          <AppButton label="Comparar" inverse />
+          <CompareButton />
         </div>
       </div>
     </div>

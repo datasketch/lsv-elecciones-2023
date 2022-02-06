@@ -5,11 +5,14 @@ import CandidateList from './components/CandidateList';
 import FiltersSection from './components/FiltersSection';
 import Modal from './components/Modal';
 import { selectCandidateById } from './features/candidates/candidates-slice';
-import { selectModal, showCandidateCard } from './features/modal/modal-slice';
+import {
+  selectMainModalWindow,
+  toggleMainModalWindow,
+} from './features/modal/modal-slice';
 import useResize from './hooks/use-resize';
 
 function App() {
-  const showModal = useSelector(selectModal);
+  const showMainModalWindow = useSelector(selectMainModalWindow);
   const dispatch = useDispatch();
   const featuredCandidate = useSelector((state) =>
     selectCandidateById(state, window.LSV_FEATURED_CANDIDATE_ID)
@@ -17,7 +20,7 @@ function App() {
 
   useEffect(() => {
     if (featuredCandidate) {
-      dispatch(showCandidateCard(featuredCandidate));
+      dispatch(toggleMainModalWindow(featuredCandidate));
     }
   }, [dispatch, featuredCandidate]);
 
@@ -25,7 +28,7 @@ function App() {
 
   return (
     <>
-      {showModal && <Modal />}
+      {showMainModalWindow && <Modal />}
       <div className="container px-4 mx-auto text-jet font-manrope">
         <AppHeader />
         <FiltersSection />

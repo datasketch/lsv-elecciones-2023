@@ -4,7 +4,7 @@ import Tippy from '@tippyjs/react/headless';
 import { followCursor } from 'tippy.js';
 import CandidateCardExpanded from './CandidateCardExpanded';
 import CandidatePhotoOverlay from './CandidatePhotoOverlay';
-import { showCandidateCard } from '../features/modal/modal-slice';
+import { toggleMainModalWindow } from '../features/modal/modal-slice';
 
 function CandidateCardCollapsed({ candidate }) {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ function CandidateCardCollapsed({ candidate }) {
           className={classNames('w-9 h-9 relative', {
             'opacity-25': !candidate.highlight,
           })}
-          onClick={() => dispatch(showCandidateCard(candidate))}
+          onClick={() => dispatch(toggleMainModalWindow(candidate))}
           data-tip
           data-for="card"
         >
