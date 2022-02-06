@@ -1,4 +1,4 @@
-import CandidatePhotoOverlay from "./CandidatePhotoOverlay";
+import CandidatePhotoOverlay from './CandidatePhotoOverlay';
 
 function CandidateCardExpanded({ candidate }) {
   return (
