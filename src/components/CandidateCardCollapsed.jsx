@@ -16,6 +16,7 @@ function CandidateCardCollapsed({ candidate }) {
           <CandidateCardExpanded candidate={candidate} {...attrs} />
         )}
         placement="auto"
+        touch={false}
         followCursor={true}
         plugins={[followCursor]}
       >

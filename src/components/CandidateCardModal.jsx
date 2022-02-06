@@ -1,5 +1,7 @@
 import { useSelector } from 'react-redux';
 import { selectFeaturedCandidate } from '../features/modal/modal-slice';
+import AppButton from './AppButton';
+import ShareButton from './ShareButton';
 
 function CandidateCardModal() {
   const candidate = useSelector(selectFeaturedCandidate);
@@ -47,9 +49,15 @@ function CandidateCardModal() {
         style={{ backgroundColor: candidate.party.color }}
         className="relative"
       >
-        <button className='absolute top-3 right-3'>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path d="M12.519 14-.003 1.478 1.475 0l12.522 12.522Z" fill="#000000"/><path d="M14 1.478 1.478 14 0 12.522 12.522 0Z" fill="#000000" /></svg>
-            </button>
+        <button className="absolute top-3 right-3" datadismiss="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+            <path
+              d="M12.519 14-.003 1.478 1.475 0l12.522 12.522Z"
+              fill="#000000"
+            />
+            <path d="M14 1.478 1.478 14 0 12.522 12.522 0Z" fill="#000000" />
+          </svg>
+        </button>
         <div className="flex items-center px-6 py-3 pb-6 space-x-4">
           <div className="font-martin uppercase text-center text-xl text-black flex-shrink-0">
             {candidate.electoralNumber && (
@@ -61,7 +69,7 @@ function CandidateCardModal() {
               className="max-w-full w-28"
             />
           </div>
-          <div className=''>
+          <div className="">
             <p className="text-sm">Pendiente</p>
             <p className="text-sm">{candidate.party.label}</p>
             <p className="text-lg leading-tight">{candidate.fullname}</p>
@@ -70,7 +78,7 @@ function CandidateCardModal() {
                 href={`https://twitter.com/${candidate.twitterHandle}`}
                 target="_blank"
                 rel="noreferrer"
-                className='mt-2 inline-block'
+                className="mt-2 inline-block"
               >
                 <img src="/twitter.svg" alt="" />
               </a>
@@ -88,7 +96,8 @@ function CandidateCardModal() {
               key={`redflag-${index}`}
               className="text-center text-xxs flex-shrink-1 uppercase flex items-center"
             >
-              <span>{redflag}</span> {redflags.length - 1 !== index && <span>•</span>}
+              <span>{redflag}</span>{' '}
+              {redflags.length - 1 !== index && <span>•</span>}
             </li>
           ))}
         </ul>
@@ -106,6 +115,12 @@ function CandidateCardModal() {
         <p>{getHeirHistory()}</p>
         <p className="text-dark-slate-blue mt-4">Periodos en el Congreso</p>
         <p>{candidate.termsAsMemberOfCongress}</p>
+      </div>
+      <div className="px-6">
+        <div className="py-4 border-t border-bone grid grid-cols-2 gap-4">
+          <ShareButton />
+          <AppButton label="Comparar" inverse />
+        </div>
       </div>
     </div>
   );

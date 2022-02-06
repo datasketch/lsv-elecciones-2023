@@ -15,6 +15,7 @@ const modalSlice = createSlice({
     },
     closeModal(state) {
       state.show = false;
+      state.candidate = undefined;
     },
   },
 });
