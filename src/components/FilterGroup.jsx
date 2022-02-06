@@ -45,7 +45,7 @@ function FilterGroup() {
   };
 
   return (
-    <div className="relative" ref={containerRef}>
+    <div className="hidden md:block md:relative" ref={containerRef}>
       <button
         className="border border-dodger-blue text-dodger-blue text-sm py-2 pl-3 pr-10 bg-no-repeat"
         aria-haspopup="true"
@@ -62,7 +62,7 @@ function FilterGroup() {
       </button>
       <form
         className={classNames(
-          'absolute z-10 top-full right-0 bg-soft-white text-jet mt-1 text-left px-4 py-2',
+          'absolute z-10 top-full left-0 bg-soft-white text-jet mt-1 text-left px-4 py-2 xl:right-0 xl:left-auto',
           { hidden: !isOpened }
         )}
         onSubmit={handleSubmit}

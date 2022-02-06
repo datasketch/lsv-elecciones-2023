@@ -16,7 +16,7 @@ function FilterSearch() {
     <input
       type="text"
       placeholder="Buscar"
-      className="border border-dodger-blue text-dodger-blue text-sm placeholder:text-dodger-blue bg-no-repeat pl-8 w-full"
+      className="border border-dodger-blue text-dodger-blue text-sm placeholder:text-dodger-blue bg-no-repeat pl-8 flex-grow md:max-w-fit"
       onChange={(e) => setText(e.target.value)}
       onKeyUp={handleKeyUp}
       value={text}

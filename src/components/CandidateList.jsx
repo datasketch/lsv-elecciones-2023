@@ -1,14 +1,12 @@
 // import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import ElectoralColumn from './ElectoralColumn';
-// import ViewModeSwitch from './ViewModeSwitch';
 import {
   selectAllCandidates,
   selectPartiesWithColor,
 } from '../features/candidates/candidates-slice';
 
 function CandidateList() {
-  // const [gridView, setGridView] = useState(true);
   const candidates = useSelector(selectAllCandidates);
   const parties = useSelector(selectPartiesWithColor);
 
