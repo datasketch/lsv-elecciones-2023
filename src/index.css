@@ -14,4 +14,15 @@
     html {
         @apply bg-soft-white;
     }
+    .candidates-column {
+        @apply grid gap-2 grid-flow-row content-start auto-cols-max;
+        grid-template-columns: repeat(auto-fit, 36px);
+        grid-template-rows: 36px;
+    }
+    @screen md {
+        .candidates-column {
+            @apply grid-flow-col;
+            grid-template-rows: repeat(11, 36px);
+        }
+    }
 }

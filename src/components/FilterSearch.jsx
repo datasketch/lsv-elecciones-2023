@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { filterBySearch } from '../features/candidates/candidates-slice';
 
 function FilterSearch() {
-  const [text, setText] = useState();
+  const [text, setText] = useState('');
   const dispatch = useDispatch()
 
   const handleKeyUp = (e) => {
@@ -16,7 +16,7 @@ function FilterSearch() {
     <input
       type="text"
       placeholder="Buscar"
-      className="border border-dodger-blue text-dodger-blue text-sm placeholder:text-dodger-blue bg-no-repeat pl-8 flex-grow md:max-w-fit"
+      className="border border-dodger-blue text-dodger-blue text-sm placeholder:text-dodger-blue bg-no-repeat pl-8 w-full md:w-auto"
       onChange={(e) => setText(e.target.value)}
       onKeyUp={handleKeyUp}
       value={text}

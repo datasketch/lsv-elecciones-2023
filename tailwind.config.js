@@ -14,7 +14,8 @@ module.exports = {
         'dodger-blue': '#338BFD',
         bone: '#E4DFD1',
         'dark-slate-blue': '#4A4595',
-        'soft-white': '#fafafa'
+        'soft-white': '#fafafa',
+        'sonic-silver': '#787878'
       },
       fontSize: {
         xxs: '0.625rem'

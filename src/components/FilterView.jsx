@@ -2,14 +2,16 @@ import classNames from 'classnames';
 
 function FilterView({ grid, onClick }) {  
   const baseClass =
-    'border border-dodger-blue text-dodger-blue inline-flex items-center justify-center flex-shrink-0 py-2 px-4';
+    'border border-dodger-blue inline-flex items-center justify-center flex-shrink-0 py-2 px-4';
   const listViewClass = classNames(baseClass, {
     'text-soft-white': !grid,
     'bg-dodger-blue': !grid,
+    'text-dodger-blue': grid,
   });
   const gridViewClass = classNames(baseClass, {
     'text-soft-white': grid,
     'bg-dodger-blue': grid,
+    'text-dodger-blue': !grid
   });
   return (
     <>
