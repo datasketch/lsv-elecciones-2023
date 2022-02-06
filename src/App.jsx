@@ -6,6 +6,7 @@ import FiltersSection from './components/FiltersSection';
 import Modal from './components/Modal';
 import { selectCandidateById } from './features/candidates/candidates-slice';
 import { selectModal, showCandidateCard } from './features/modal/modal-slice';
+import useResize from './hooks/use-resize';
 
 function App() {
   const showModal = useSelector(selectModal);
@@ -19,6 +20,8 @@ function App() {
       dispatch(showCandidateCard(featuredCandidate));
     }
   }, [dispatch, featuredCandidate]);
+
+  useResize();
 
   return (
     <>
