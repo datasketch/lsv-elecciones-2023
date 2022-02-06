@@ -3,6 +3,11 @@ const path = require('path');
 const slugify = require('slugify');
 const mapper = require('./mapper');
 const raw = require('../data/raw.json');
+const {
+  partyColorMap,
+  haveBeenConvictedOrInvestigated,
+  inheritVotesOfConvictedOrInvestigated,
+} = require('./utils');
 
 function compareFunction(key) {
   return (a, b) => {
@@ -13,23 +18,6 @@ function compareFunction(key) {
 }
 
 const sortByElectoralNumber = compareFunction('electoralNumber');
-
-const partyColorMap = {
-  Liberal: '#cf2a24',
-  Conservador: '#012bb3',
-  Mira: '#202c54',
-  'Colombia Justa Libres': '#202c54',
-  'Nuevo Liberalismo': '#aa1a1a',
-  'La U': '#ff9900',
-  'Cambio Radical': '#4a4297',
-  'Centro Esperanza': '#75297c',
-  'Alianza Verde': '#03a855',
-  'Centro Democrático': '#2a94ff',
-  Comunes: '#300202',
-  'Estamos listas': '#be8741',
-  'Pacto Histórico': '#fc00bb',
-  Otro: '#3d3d3d',
-};
 
 (async () => {
   try {
@@ -46,15 +34,25 @@ const partyColorMap = {
         const fullname = [name, firstLastName, secondLastName].join(' ').trim();
         return {
           ...record,
+          fullname,
           id: slugify(fullname, { lower: true }),
           position: record.position.toLowerCase(),
+          supportedPresidentialCandidate:
+            record.supportedPresidentialCandidate || 'Sin datos',
+          // Custom fields
           party: {
             label: record.party,
             color: partyColorMap[record.party] || partyColorMap.Otro,
           },
-          supportedPresidentialCandidate:
-            record.supportedPresidentialCandidate || 'Sin datos',
-          fullname,
+          haveBeenConvictedOrInvestigated:
+            haveBeenConvictedOrInvestigated(record),
+          inheritVotesOfConvictedOrInvestigated:
+            inheritVotesOfConvictedOrInvestigated(record),
+          redflags: [
+            record.firstRedflag,
+            record.secondRedflag,
+            record.thirdRedflag,
+          ].filter((redflag) => redflag),
         };
       })
       .filter((record) => record.id)

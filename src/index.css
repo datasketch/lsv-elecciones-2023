@@ -15,7 +15,7 @@
         @apply bg-soft-white;
     }
     .candidates-column {
-        @apply grid gap-2 grid-flow-row content-start auto-cols-max;
+        @apply grid gap-2 grid-flow-row content-start auto-cols-max justify-center;
         grid-template-columns: repeat(auto-fit, 36px);
         grid-template-rows: 36px;
     }

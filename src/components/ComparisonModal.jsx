@@ -23,9 +23,18 @@ function ComparisonModal() {
       dispatch(setSecondaryCandidate());
     }
   };
+  
+  const blocks = [
+    ['A Presidencia apoya a', 'supportedPresidentialCandidate'],
+    ['¿Ha sido condenado o investigado?', 'haveBeenConvictedOrInvestigated'],
+    ['¿Hereda votos de condenado o investigado?', 'inheritVotesOfConvictedOrInvestigated'],
+    ['Períodos en el Congreso', 'termsAsMemberOfCongress'],
+    ['Ha ocupado un cargo público', 'hasHeldPublicOffice'],
+    ['Sector del que viene', 'backgroundSector']
+  ]
 
   return (
-    <div className="bg-white w-full h-full px-6 py-4">
+    <div className="bg-white w-full h-full px-6 py-4 overflow-auto">
       <button
         className="text-dodger-blue"
         onClick={() => dispatch(toggleComparisonModalWindow())}
@@ -70,20 +79,21 @@ function ComparisonModal() {
         </select>
       </div>
       <div className="mt-6 space-y-8">
-        <ComparisonBlock
-          label="A Presidencia apoya a"
-          mainCandidate={mainCandidate}
-          secondaryCandidate={secondaryCandidate}
-          field="supportedPresidentialCandidate"
-        />
-        <ComparisonBlock
-          label="Períodos en el Congreso"
-          mainCandidate={mainCandidate}
-          secondaryCandidate={secondaryCandidate}
-          field="termsAsMemberOfCongress"
-        />
+        {
+          blocks.map(([label, field], index) => (
+            <ComparisonBlock
+              key={`block-${index}`}
+              mainCandidate={mainCandidate}
+              secondaryCandidate={secondaryCandidate}
+              label={label}
+              field={field}
+            />
+          ))
+        }
       </div>
-      <PoweredBy />
+      <div className="mt-6">
+        <PoweredBy />
+      </div>
     </div>
   );
 }

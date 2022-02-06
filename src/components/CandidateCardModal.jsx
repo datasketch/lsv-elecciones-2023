@@ -6,43 +6,6 @@ import ShareButton from './ShareButton';
 function CandidateCardModal() {
   const candidate = useSelector(selectMainCandidate);
 
-  const getConvictedOrInvestigated = () => {
-    if (
-      candidate.hasBeenConvicted === 'No' &&
-      candidate.hasBeenInvestigated === 'No'
-    )
-      return 'No';
-    else if (
-      candidate.hasBeenInvestigated === 'Sí' &&
-      candidate.hasBeenConvicted === 'Sí'
-    )
-      return 'Ambas';
-    else if (candidate.hasBeenInvestigated === 'Sí') return 'Investigado';
-    else if (candidate.hasBeenConvicted === 'Sí') return 'Condenado';
-  };
-
-  const getHeirHistory = () => {
-    if (
-      candidate.heirToDoomedVows === 'No' &&
-      candidate.heirToVotesUnderInvestigation === 'No'
-    )
-      return 'No';
-    else if (
-      candidate.heirToDoomedVows === 'Sí' &&
-      candidate.heirToDoomedVows === 'Sí'
-    )
-      return 'Ambas';
-    else if (candidate.heirToDoomedVows === 'Sí') return 'De condenado';
-    else if (candidate.heirToVotesUnderInvestigation === 'Sí')
-      return 'De investigado';
-  };
-
-  const redflags = [
-    candidate.firstRedflag,
-    candidate.secondRedflag,
-    candidate.thirdRedflag,
-  ].filter((redflag) => redflag);
-
   return (
     <div className="bg-soft-white w-96 max-w-full max-h-full overflow-auto">
       <div
@@ -89,15 +52,14 @@ function CandidateCardModal() {
       {candidate.profile && (
         <p className="bg-cultured py-4 px-6 text-sm">{candidate.profile}</p>
       )}
-      {!!redflags.length && (
+      {!!candidate.redflags.length && (
         <ul className="px-6 pt-4 grid grid-cols-3 gap-2">
-          {redflags.map((redflag, index) => (
+          {candidate.redflags.map((redflag, index) => (
             <li
               key={`redflag-${index}`}
-              className="text-center text-xxs flex-shrink-1 uppercase flex items-center"
+              className="text-center text-xxs uppercase"
             >
               <span>{redflag}</span>{' '}
-              {redflags.length - 1 !== index && <span>•</span>}
             </li>
           ))}
         </ul>
@@ -108,11 +70,11 @@ function CandidateCardModal() {
         <p className="text-dark-slate-blue mt-4">
           ¿Ha sido condenado o investigado?
         </p>
-        <p>{getConvictedOrInvestigated()}</p>
+        <p>{candidate.haveBeenConvictedOrInvestigated}</p>
         <p className="text-dark-slate-blue mt-4">
           ¿Hereda votos de condenado o investigado?
         </p>
-        <p>{getHeirHistory()}</p>
+        <p>{candidate.inheritVotesOfConvictedOrInvestigated}</p>
         <p className="text-dark-slate-blue mt-4">Periodos en el Congreso</p>
         <p>{candidate.termsAsMemberOfCongress}</p>
       </div>
