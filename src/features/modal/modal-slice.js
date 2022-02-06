@@ -17,6 +17,8 @@ const modalSlice = createSlice({
       if (!action.payload) {
         state.showMainModalWindow = false;
         state.candidates.main = undefined;
+        state.candidates.secondary = undefined;
+        state.showComparisonModalWindow = false;
       } else {
         state.showMainModalWindow = true;
         state.candidates.main = action.payload;
@@ -27,6 +29,9 @@ const modalSlice = createSlice({
       state.candidates.secondary = undefined;
     },
     setSecondaryCandidate(state, action) {
+      if (!state.showComparisonModalWindow) {
+        state.showComparisonModalWindow = true
+      }
       state.candidates.secondary = action.payload;
     },
   },
