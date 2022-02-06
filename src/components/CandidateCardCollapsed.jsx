@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import Tippy from '@tippyjs/react/headless';
 import { followCursor } from 'tippy.js';
 import CandidateCardExpanded from './CandidateCardExpanded';
+import CandidatePhotoOverlay from './CandidatePhotoOverlay';
 import { showCandidateCard } from '../features/modal/modal-slice';
 
 function CandidateCardCollapsed({ candidate }) {
@@ -26,15 +27,7 @@ function CandidateCardCollapsed({ candidate }) {
           data-tip
           data-for="card"
         >
-          <img
-            src={candidate.photo}
-            className="max-w-full"
-            alt={candidate.fullname}
-          />
-          <span
-            className="absolute top-0 left-0 w-full h-full opacity-30"
-            style={{ backgroundColor: candidate.party.color }}
-          ></span>
+          <CandidatePhotoOverlay candidate={candidate} />
         </button>
       </Tippy>
     </div>

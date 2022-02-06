@@ -4,11 +4,11 @@ import { filterBySearch } from '../features/candidates/candidates-slice';
 
 function FilterSearch() {
   const [text, setText] = useState('');
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleKeyUp = (e) => {
     if (e.key === 'Enter' || e.keyCode === 13) {
-        dispatch(filterBySearch(text))
+      dispatch(filterBySearch(text));
     }
   };
 

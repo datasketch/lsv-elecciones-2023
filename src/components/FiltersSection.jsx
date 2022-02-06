@@ -14,6 +14,7 @@ import FilterSelect from './FilterSelect';
 import FilterGroup from './FilterGroup';
 import FilterSearch from './FilterSearch';
 import FilterView from './FilterView';
+import { selectGridView } from '../features/view/view-slice';
 
 function FiltersSection() {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function FiltersSection() {
     selectSupportedPresidentialCandidate
   );
 
-  const [grid, setGrid] = useState(true)
+  const grid = useSelector(selectGridView);
 
   return (
     <div className="flex flex-col py-6 space-y-4 xl:flex-row xl:space-y-0 xl:space-x-4">
@@ -61,8 +62,8 @@ function FiltersSection() {
       <div className="flex md:items-end md:space-x-4">
         <FilterGroup />
         <FilterSearch />
-        <div className='flex space-x-2 ml-2 md:hidden'>
-          <FilterView grid={grid} onClick={v => setGrid(v)} />
+        <div className="flex space-x-2 ml-2 md:hidden">
+          <FilterView grid={grid} />
         </div>
       </div>
     </div>

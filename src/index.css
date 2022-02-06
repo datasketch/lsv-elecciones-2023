@@ -19,6 +19,10 @@
         grid-template-columns: repeat(auto-fit, 36px);
         grid-template-rows: 36px;
     }
+    .candidates-column.single {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
     @screen md {
         .candidates-column {
             @apply grid-flow-col;
