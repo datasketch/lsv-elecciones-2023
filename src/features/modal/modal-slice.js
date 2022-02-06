@@ -2,8 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   showMainModalWindow: false,
-  candidate: undefined,
   showComparisonModalWindow: false,
+  candidates: {
+    main: '',
+    secondary: '',
+  },
 };
 
 const modalSlice = createSlice({
@@ -13,22 +16,31 @@ const modalSlice = createSlice({
     toggleMainModalWindow(state, action) {
       if (!action.payload) {
         state.showMainModalWindow = false;
-        state.candidate = undefined;
+        state.candidates.main = undefined;
       } else {
         state.showMainModalWindow = true;
-        state.candidate = action.payload;
+        state.candidates.main = action.payload;
       }
     },
     toggleComparisonModalWindow(state) {
       state.showComparisonModalWindow = !state.showComparisonModalWindow;
+      state.candidates.secondary = undefined;
+    },
+    setSecondaryCandidate(state, action) {
+      state.candidates.secondary = action.payload;
     },
   },
 });
 
-export const { toggleMainModalWindow, toggleComparisonModalWindow } =
-  modalSlice.actions;
+export const {
+  toggleMainModalWindow,
+  toggleComparisonModalWindow,
+  setSecondaryCandidate,
+} = modalSlice.actions;
 export const selectMainModalWindow = (state) => state.modal.showMainModalWindow;
-export const selectFeaturedCandidate = (state) => state.modal.candidate;
+export const selectMainCandidate = (state) => state.modal.candidates.main;
+export const selectSecondaryCandidate = (state) =>
+  state.modal.candidates.secondary;
 export const selectComparisonModalWindow = (state) =>
   state.modal.showComparisonModalWindow;
 

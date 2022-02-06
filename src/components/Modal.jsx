@@ -38,9 +38,12 @@ function Modal() {
 
   return (
     <div
-      className={classNames("fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-20", {
-        'py-8 px-6': !showComparisonModalWindow
-      })}
+      className={classNames(
+        'fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-20',
+        {
+          'py-8 px-6': !showComparisonModalWindow,
+        }
+      )}
       onClick={handleClick}
     >
       {showComparisonModalWindow ? <ComparisonModal /> : <CandidateCardModal />}

@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
-import { selectFeaturedCandidate } from '../features/modal/modal-slice';
+import { selectMainCandidate } from '../features/modal/modal-slice';
 import CompareButton from './CompareButton';
 import ShareButton from './ShareButton';
 
 function CandidateCardModal() {
-  const candidate = useSelector(selectFeaturedCandidate);
+  const candidate = useSelector(selectMainCandidate);
 
   const getConvictedOrInvestigated = () => {
     if (
