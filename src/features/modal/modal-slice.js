@@ -3,6 +3,17 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   showMainModalWindow: false,
   showComparisonModalWindow: false,
+  blocks: [
+    ['A Presidencia apoya a', 'supportedPresidentialCandidate'],
+    ['¿Ha sido condenado o investigado?', 'haveBeenConvictedOrInvestigated'],
+    [
+      '¿Hereda votos de condenado o investigado?',
+      'inheritVotesOfConvictedOrInvestigated',
+    ],
+    ['Períodos en el Congreso', 'termsAsMemberOfCongress'],
+    ['Ha ocupado un cargo público', 'hasHeldPublicOffice'],
+    ['Sector del que viene', 'backgroundSector'],
+  ],
   candidates: {
     main: '',
     secondary: '',
@@ -30,7 +41,7 @@ const modalSlice = createSlice({
     },
     setSecondaryCandidate(state, action) {
       if (!state.showComparisonModalWindow) {
-        state.showComparisonModalWindow = true
+        state.showComparisonModalWindow = true;
       }
       state.candidates.secondary = action.payload;
     },
@@ -48,5 +59,6 @@ export const selectSecondaryCandidate = (state) =>
   state.modal.candidates.secondary;
 export const selectComparisonModalWindow = (state) =>
   state.modal.showComparisonModalWindow;
+export const selectBlocks = (state) => state.modal.blocks;
 
 export default modalSlice.reducer;

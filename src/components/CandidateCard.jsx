@@ -7,8 +7,8 @@ import { toggleMainModalWindow } from '../features/modal/modal-slice';
 
 function CandidateCard({ candidate }) {
   const grid = useSelector(selectGridView);
-  const dispatch = useDispatch()
-  
+  const dispatch = useDispatch();
+
   return grid ? (
     <CandidateCardCollapsed candidate={candidate} />
   ) : (
