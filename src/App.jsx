@@ -9,11 +9,13 @@ import {
   selectMainModalWindow,
   toggleMainModalWindow,
 } from './features/modal/modal-slice';
+import { hideNav, selectActiveTab, selectTab } from './features/nav/nav-slice';
 import useResize from './hooks/use-resize';
 
 function App() {
-  const showMainModalWindow = useSelector(selectMainModalWindow);
   const dispatch = useDispatch();
+  const showMainModalWindow = useSelector(selectMainModalWindow);
+  const activeTab = useSelector(selectActiveTab)
   const featuredCandidate = useSelector((state) =>
     selectCandidateById(state, window.LSV_FEATURED_CANDIDATE_ID)
   );
@@ -24,6 +26,20 @@ function App() {
     }
   }, [dispatch, featuredCandidate]);
 
+  useEffect(() => {
+    const search = window.location.search.substring(1);
+    const tabMatch = search.match(/tab=([\w-]+)&?/);
+    if (search.includes('headless')) {
+      dispatch(hideNav(true))
+    }
+    if (tabMatch) {
+      const [, tab] = tabMatch;
+      if (['congreso', 'consultas'].includes(tab.toLowerCase())) {
+        dispatch(selectTab(tab))
+      }
+    }
+  }, [dispatch])
+
   useResize();
 
   return (
@@ -31,8 +47,11 @@ function App() {
       {showMainModalWindow && <Modal />}
       <div className="container px-4 mx-auto text-jet font-manrope">
         <AppHeader />
-        <FiltersSection />
-        <CandidateList />
+        {activeTab === 'congreso' ? (
+          <>
+          <FiltersSection />
+          <CandidateList /></>
+        ) : (<p>Hola</p>)}
       </div>
     </>
   );
