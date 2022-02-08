@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
-import { toggleView } from '../features/view/view-slice';
+import { toggleView } from '../../features/view/view-slice';
 
 function FilterView({ grid, onClick }) {
   const dispatch = useDispatch();

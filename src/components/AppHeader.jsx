@@ -10,7 +10,7 @@ function AppHeader() {
         Elecciones 2022
       </h1>
       {!hideNav && (
-        <div className="mx-auto max-w-lg mt-6">
+        <div className="mx-auto max-w-xs mt-6 md:max-w-lg">
           <AppNav />
         </div>
       )}

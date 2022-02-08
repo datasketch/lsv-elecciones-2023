@@ -23,6 +23,11 @@
         grid-template-columns: 1fr;
         grid-template-rows: auto;
     }
+    .presidential-column {
+        @apply grid grid-cols-1 gap-6 justify-center;
+        grid-template-columns: repeat(auto-fit, 112px);
+        grid-template-rows: 1fr;
+    }
     @screen md {
         .candidates-column {
             @apply grid-flow-col;

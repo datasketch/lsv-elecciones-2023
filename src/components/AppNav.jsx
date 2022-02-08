@@ -7,7 +7,7 @@ function AppNav() {
   const dispatch = useDispatch();
   const activeTab = useSelector(selectActiveTab);
   return (
-    <nav className="flex justify-center space-x-4">
+    <nav className="flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0 md:justify-center">
       <AppButton
         label="Elecciones Congreso"
         inverse={activeTab !== 'congreso'}

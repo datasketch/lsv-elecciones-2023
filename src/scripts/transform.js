@@ -2,7 +2,8 @@ const { writeFile } = require('fs').promises;
 const path = require('path');
 const slugify = require('slugify');
 const mapper = require('./mapper');
-const raw = require('../data/raw.json');
+const rawCongress = require('../data/raw-congress.json');
+const rawPresidential = require('../data/raw-presidential.json');
 const {
   partyColorMap,
   haveBeenConvictedOrInvestigated,
@@ -19,16 +20,18 @@ function compareFunction(key) {
 
 const sortByElectoralNumber = compareFunction('electoralNumber');
 
+function mapValues(data) {
+  return data.map((record) => {
+    return Object.keys(record).reduce((result, key) => {
+      result[mapper[key]] = record[key];
+      return result;
+    }, {});
+  });
+}
+
 (async () => {
   try {
-    const data = raw
-      .slice(0, 144)
-      .map((record) => {
-        return Object.keys(record).reduce((result, key) => {
-          result[mapper[key]] = record[key];
-          return result;
-        }, {});
-      })
+    const congress = mapValues(rawCongress)
       .map((record) => {
         const { name, firstLastName, secondLastName } = record;
         const fullname = [name, firstLastName, secondLastName].join(' ').trim();
@@ -57,11 +60,27 @@ const sortByElectoralNumber = compareFunction('electoralNumber');
       })
       .filter((record) => record.id)
       .sort(sortByElectoralNumber);
+
+    const presidential = mapValues(rawPresidential).map((record) => {
+      const { name, firstLastName, secondLastName } = record;
+      const fullname = [name, firstLastName, secondLastName].join(' ').trim();
+      return {
+        ...record,
+        fullname,
+        id: slugify(fullname, { lower: true }),
+      };
+    });
+
     const candidatesFile = path.resolve(
       process.cwd(),
       'src/data/candidates.json'
     );
-    await writeFile(candidatesFile, JSON.stringify(data));
+    const presidentialFile = path.resolve(
+      process.cwd(),
+      'src/data/presidential.json'
+    );
+    await writeFile(candidatesFile, JSON.stringify(congress));
+    await writeFile(presidentialFile, JSON.stringify(presidential));
   } catch (error) {
     console.error(error);
     process.exit(1);

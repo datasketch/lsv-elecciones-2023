@@ -5,9 +5,9 @@ import {
   filterGroup,
   selectGender,
   selectSectors,
-} from '../features/candidates/candidates-slice';
+} from '../../features/candidates/candidates-slice';
 import FilterCheckbox from './FilterCheckbox';
-import AppButton from './AppButton';
+import AppButton from '../AppButton';
 import { useEffect } from 'react';
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';

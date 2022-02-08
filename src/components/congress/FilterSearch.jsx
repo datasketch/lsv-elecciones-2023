@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { filterBySearch } from '../features/candidates/candidates-slice';
+import { filterBySearch } from '../../features/candidates/candidates-slice';
 
 function FilterSearch() {
   const [text, setText] = useState('');

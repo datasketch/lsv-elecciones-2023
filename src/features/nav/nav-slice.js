@@ -11,8 +11,8 @@ const navSlice = createSlice({
       if (state.active !== action.payload) state.active = action.payload;
     },
     hideNav(state, action) {
-      state.hidden = action.payload
-    }
+      state.hidden = action.payload;
+    },
   },
 });
 

@@ -3,6 +3,7 @@ import candidatesReducer from '../features/candidates/candidates-slice';
 import modalReducer from '../features/modal/modal-slice';
 import viewReducer from '../features/view/view-slice';
 import navReducer from '../features/nav/nav-slice';
+import presidentialReducer from '../features/presidential/presidential-slice';
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     modal: modalReducer,
     view: viewReducer,
     nav: navReducer,
+    presidential: presidentialReducer,
   },
 });

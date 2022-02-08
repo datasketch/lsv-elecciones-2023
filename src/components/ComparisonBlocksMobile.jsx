@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { selectBlocks } from '../features/modal/modal-slice';
-import CandidatePhotoOverlay from './CandidatePhotoOverlay';
+import CandidatePhotoOverlay from './congress/CandidatePhotoOverlay';
 
 function ComparisonBlocksMobile({ mainCandidate, secondaryCandidate }) {
   const blocks = useSelector(selectBlocks);

@@ -64,6 +64,27 @@ const mapper = {
   Circunscripción: 'district',
   'Ha recibido amenazas': 'hasReceivedThreats',
   'Tipo de circunscripción': 'districtType',
+  // Presidential specific
+  'Mentiras y verdades chequeadas': 'liesAndVerifiedTruths',
+  Consulta: 'coalition',
+  Aval: 'guarantee',
+  'Lugar de nacimiento': 'placeOfBirth',
+  'Ha sido gobernador o alcalde': 'hasBeenGovernorOrMayor',
+  'Se había lanzado antes a la Presidencia': 'hadPreviouslyRunForThePresidency',
+  'Voto en el plebiscito': 'voteInThePlebiscite',
+  'Despenalizar el aborto': 'decriminalizingAbortion',
+  'Máximo de personas a su cargo': 'maximumNumberOfDependents',
+  'Responsabilidad de decisiones determinantes para el país':
+    'responsibilityForDecisiveDecisionsForTheCountry',
+  'Oposición o apoyo Gobierno Duque': 'oppositionOrSupportToGovernment',
+  'Subir el impuesto al patrimonio': 'raisingTheWealthTax',
+  'Máximo cargo en el Ejecutivo': 'highestPositionInTheExecutive',
+  'Máximo cargo en el sector privado': 'highestPositionInThePrivateSector',
+  'Apoyó el Paro': 'supportedTheStrike',
+  'Obligar a funcionarios públicos a vacunarse':
+    'forcingPublicOfficialsToGetVaccinated',
+  'Favorabilidad con la que terminó el más alto y reciente cargo ejecutivo':
+    'mostRecentFavorability',
 };
 
 module.exports = mapper;

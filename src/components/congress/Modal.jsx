@@ -7,10 +7,10 @@ import {
   selectMainModalWindow,
   setSecondaryCandidate,
   toggleMainModalWindow,
-} from '../features/modal/modal-slice';
+} from '../../features/modal/modal-slice';
 import CandidateCardExpanded from './CandidateCardExpanded';
-import CandidateCardModal from './CandidateCardModal';
-import ComparisonModal from './ComparisonModal';
+import CandidateCardModal from '../CandidateCardModal';
+import ComparisonModal from '../ComparisonModal';
 
 function Modal() {
   const candidates = useSelector((state) => state.candidates.filtered);

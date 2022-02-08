@@ -4,7 +4,7 @@ import Tippy from '@tippyjs/react/headless';
 import { followCursor } from 'tippy.js';
 import CandidateCardExpanded from './CandidateCardExpanded';
 import CandidatePhotoOverlay from './CandidatePhotoOverlay';
-import { toggleMainModalWindow } from '../features/modal/modal-slice';
+import { toggleMainModalWindow } from '../../features/modal/modal-slice';
 
 function CandidateCardCollapsed({ candidate }) {
   const dispatch = useDispatch();

@@ -8,12 +8,12 @@ import {
   filterBySupportedCandidatePresidential,
   selectOffices,
   filterByOffice,
-} from '../features/candidates/candidates-slice';
+} from '../../features/candidates/candidates-slice';
 import FilterSelect from './FilterSelect';
 import FilterGroup from './FilterGroup';
 import FilterSearch from './FilterSearch';
 import FilterView from './FilterView';
-import { selectGridView } from '../features/view/view-slice';
+import { selectGridView } from '../../features/view/view-slice';
 
 function FiltersSection() {
   const dispatch = useDispatch();

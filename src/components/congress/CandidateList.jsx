@@ -3,7 +3,7 @@ import ElectoralColumn from './ElectoralColumn';
 import {
   selectAllCandidates,
   selectPartiesWithColor,
-} from '../features/candidates/candidates-slice';
+} from '../../features/candidates/candidates-slice';
 
 function CandidateList() {
   const candidates = useSelector(selectAllCandidates);
