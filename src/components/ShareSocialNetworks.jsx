@@ -9,42 +9,46 @@ function ShareSocialNetworks() {
   const text = `Visita el perfil de ${candidate.fullname}`;
 
   return (
-    <div className="border border-dodger-blue bg-dodger-blue py-2 px-4 grid grid-cols-5 gap-1">
-      <a
-        href={`https://facebook.com/sharer/sharer.php?u=${link}`}
-        className="w-5 h-5 inline-block"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img className="mx-auto max-w-full" src="/icono-facebook.svg" alt="" />
-      </a>
-      <a
-        href={`https://api.whatsapp.com/send?text=${text}%20${link}`}
-        className="w-5 h-5 inline-block"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img className="mx-auto max-w-full" src="/icono-whatsapp.svg" alt="" />
-      </a>
+    <div className="grid grid-cols-5">
       <a
         href={`https://twitter.com/intent/tweet/?text=${text}&url=${link}`}
-        className="w-5 h-5 inline-block"
+        className="w-7 h-7 inline-block p-1"
         target="_blank"
         rel="noopener noreferrer"
+        style={{ backgroundColor: '#00ACEE' }}
       >
         <img className="mx-auto max-w-full" src="/icono-twitter.svg" alt="" />
       </a>
       <a
-        href={`https://telegram.me/share/url?text=${text}&url=${link}`}
-        className="w-5 h-5 inline-block"
+        href={`https://facebook.com/sharer/sharer.php?u=${link}`}
+        className="w-7 h-7 inline-block p-1"
         target="_blank"
         rel="noopener noreferrer"
+        style={{ backgroundColor: '#3B5998' }}
+      >
+        <img className="mx-auto max-w-full" src="/icono-facebook.svg" alt="" />
+      </a>
+      <a
+        href={`https://telegram.me/share/url?text=${text}&url=${link}`}
+        className="w-7 h-7 inline-block p-1"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ backgroundColor: '#0088CC' }}
       >
         <img className="mx-auto max-w-full" src="/icono-telegram.svg" alt="" />
       </a>
       <a
+        href={`https://api.whatsapp.com/send?text=${text}%20${link}`}
+        className="w-7 h-7 inline-block p-1"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ backgroundColor: '#25D366' }}
+      >
+        <img className="mx-auto max-w-full" src="/icono-whatsapp.svg" alt="" />
+      </a>      
+      <a
         href="https://www.example.com"
-        className="w-5 h-5 inline-block"
+        className="w-7 h-7 bg-dodger-blue p-1"
         target="_blank"
         rel="noopener noreferrer"
       >

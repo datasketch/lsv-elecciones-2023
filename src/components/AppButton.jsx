@@ -1,18 +1,19 @@
 import classNames from 'classnames';
 import { forwardRef } from 'react';
 
-const AppButton = forwardRef((props, ref) => {
+const AppButton = forwardRef(({ inverse, onClick, label, full = false}, ref) => {
   return (
     <button
       ref={ref}
       className={classNames('uppercase px-3 py-1 text-sm', {
-        'bg-dodger-blue text-soft-white': !props.inverse,
+        'w-full': full,
+        'bg-dodger-blue text-soft-white': !inverse,
         'bg-transparent text-dodger-blue border border-dodger-blue':
-          props.inverse,
+          inverse,
       })}
-      onClick={props.onClick}
+      onClick={onClick}
     >
-      {props.label}
+      {label}
     </button>
   );
 });

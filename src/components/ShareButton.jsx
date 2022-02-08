@@ -11,7 +11,7 @@ function ShareButton() {
         interactive
         placement="top"
       >
-        <AppButton label="Compartir" inverse />
+        <AppButton label="Compartir" inverse full />
       </Tippy>
     </div>
   );
