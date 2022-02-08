@@ -4,6 +4,7 @@ import {
   selectAllCandidates,
   selectPartiesWithColor,
 } from '../../features/candidates/candidates-slice';
+import PoweredBy from '../PoweredBy';
 
 function CandidateList() {
   const candidates = useSelector(selectAllCandidates);
@@ -40,6 +41,9 @@ function CandidateList() {
               </span>
             </div>
           ))}
+      </div>
+      <div className="py-4">
+        <PoweredBy />
       </div>
     </>
   );
