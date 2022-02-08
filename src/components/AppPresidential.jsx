@@ -15,7 +15,7 @@ function AppPresidential() {
           }
         </div>
       </div> */}
-      <div className="grid grid-cols-1 py-8 md:grid-cols-3 md:gap-8">
+      <div className="border-b-2 border-jet grid grid-cols-1 py-8 md:grid-cols-3 md:gap-6">
         {Object.entries(candidates).map(([label, c]) => (
           <div key={label}>
             <CoalitionHeader label={label} />

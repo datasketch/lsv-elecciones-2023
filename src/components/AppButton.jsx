@@ -1,6 +1,23 @@
 import classNames from 'classnames';
+import { forwardRef } from 'react';
 
-function AppButton({ label, inverse, onClick = () => {} }) {
+const AppButton = forwardRef((props, ref) => {
+  return (
+    <button
+      ref={ref}
+      className={classNames('uppercase px-3 py-1 text-sm', {
+        'bg-dodger-blue text-soft-white': !props.inverse,
+        'bg-transparent text-dodger-blue border border-dodger-blue':
+          props.inverse,
+      })}
+      onClick={props.onClick}
+    >
+      {props.label}
+    </button>
+  );
+});
+
+/* function AppButton({ label, inverse, onClick = () => {} }) {
   return (
     <button
       className={classNames('uppercase px-3 py-1 text-sm', {
@@ -12,6 +29,6 @@ function AppButton({ label, inverse, onClick = () => {} }) {
       {label}
     </button>
   );
-}
+} */
 
 export default AppButton;
