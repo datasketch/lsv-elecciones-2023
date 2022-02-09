@@ -1,7 +1,6 @@
 import classNames from 'classnames';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   selectComparisonModalWindow,
   selectMainModalWindow,
@@ -11,12 +10,22 @@ import {
 import CandidateCardExpanded from './CandidateCardExpanded';
 import CandidateCardModal from '../CandidateCardModal';
 import ComparisonModal from '../ComparisonModal';
+import { selectActiveTab } from '../../features/nav/nav-slice';
 
 function Modal() {
-  const candidates = useSelector((state) => state.candidates.filtered);
+  const congressCandidates = useSelector((state) => state.candidates.filtered);
+  const presidentialCandidates = useSelector((state) => state.presidential.all);
   const showMainModalWindow = useSelector(selectMainModalWindow);
   const showComparisonModalWindow = useSelector(selectComparisonModalWindow);
+  const activeTab = useSelector(selectActiveTab);
+  const [candidates, setCandidates] = useState([]);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const selected =
+      activeTab === 'congreso' ? congressCandidates : presidentialCandidates;
+    setCandidates(selected);
+  }, [activeTab, congressCandidates, presidentialCandidates, setCandidates]);
 
   useEffect(() => {
     const evtHandler = (e) => {

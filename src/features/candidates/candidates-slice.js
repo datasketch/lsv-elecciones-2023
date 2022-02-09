@@ -147,7 +147,7 @@ export const selectSectors = (state) =>
 export const selectGender = (state) =>
   getCategories(state.candidates.all, 'gender');
 
-export const selectSortedCandidates = (state) =>
+export const selectSortedCongressCandidates = (state) =>
   state.candidates.filtered.slice().sort((a, b) => {
     if (a.fullname.toLowerCase() > b.fullname.toLowerCase()) return 1;
     if (a.fullname.toLowerCase() < b.fullname.toLowerCase()) return -1;

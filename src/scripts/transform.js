@@ -68,6 +68,10 @@ function mapValues(data) {
         ...record,
         fullname,
         id: slugify(fullname, { lower: true }),
+        party: {
+          label: record.coalition,
+          color: partyColorMap[record.coalition] || partyColorMap.Otro,
+        },
       };
     });
 

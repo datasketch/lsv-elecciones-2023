@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectSortedCandidates } from '../features/candidates/candidates-slice';
 import {
   selectSecondaryCandidate,
   selectMainCandidate,
@@ -12,7 +11,6 @@ import ComparisonModalMobile from './ComparisonModalMobile';
 function ComparisonModal() {
   const mainCandidate = useSelector(selectMainCandidate);
   const secondaryCandidate = useSelector(selectSecondaryCandidate);
-  const candidates = useSelector(selectSortedCandidates);
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -28,7 +26,6 @@ function ComparisonModal() {
   return (
     <>
       <ComparisonModalMobile
-        candidates={candidates}
         mainCandidate={mainCandidate}
         secondaryCandidate={secondaryCandidate}
         onChange={handleChange}

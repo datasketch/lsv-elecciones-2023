@@ -30,4 +30,11 @@ export const selectPresidentialCandidatesWithCoalition = (state) => {
 export const selectPresidentialCandidatesWithoutCoalition = (state) =>
   state.presidential.all.filter((c) => c.coalition === 'No consulta');
 
+export const selectSortedPresidentialCandidates = (state) =>
+  state.presidential.all.slice().sort((a, b) => {
+    if (a.fullname.toLowerCase() > b.fullname.toLowerCase()) return 1;
+    if (a.fullname.toLowerCase() < b.fullname.toLowerCase()) return -1;
+    return 0;
+  });
+
 export default presidentialSlice.reducer;

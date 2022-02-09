@@ -45,7 +45,7 @@ function ShareSocialNetworks() {
         style={{ backgroundColor: '#25D366' }}
       >
         <img className="mx-auto max-w-full" src="/icono-whatsapp.svg" alt="" />
-      </a>      
+      </a>
       <a
         href="https://www.example.com"
         className="w-7 h-7 bg-dodger-blue p-1"

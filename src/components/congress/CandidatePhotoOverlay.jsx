@@ -1,5 +1,9 @@
+import { useSelector } from 'react-redux';
+import { selectActiveTab } from '../../features/nav/nav-slice';
+
 // Parent must have a relative position
 function CandidatePhotoOverlay({ candidate }) {
+  const activeTab = useSelector(selectActiveTab);
   return (
     <>
       <img
@@ -7,10 +11,12 @@ function CandidatePhotoOverlay({ candidate }) {
         className="max-w-full"
         alt={candidate.fullname}
       />
-      <span
-        className="absolute top-0 left-0 w-full h-full opacity-30"
-        style={{ backgroundColor: candidate.party.color }}
-      ></span>
+      {activeTab === 'congreso' && (
+        <span
+          className="absolute top-0 left-0 w-full h-full opacity-30"
+          style={{ backgroundColor: candidate.party.color }}
+        ></span>
+      )}
     </>
   );
 }

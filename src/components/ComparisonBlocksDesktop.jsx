@@ -1,26 +1,13 @@
-import { useSelector } from 'react-redux';
-import { selectBlocks } from '../features/modal/modal-slice';
+import CandidateCardModalDataDesktop from './CandidateCardModalDataDesktop';
 
 function ComparisonBlocksDesktop({ mainCandidate, secondaryCandidate }) {
-  const blocks = useSelector(selectBlocks);
-
   return (
     <div className="grid grid-cols-2">
-      <div className="space-y-4 border-r border-sonic-silver">
-        {blocks.map(([label, field], index) => (
-          <div key={`block-main-${index}`}>
-            <p className="text-dark-slate-blue">{label}</p>
-            <p className="text-sm">{mainCandidate[field]}</p>
-          </div>
-        ))}
+      <div className="border-r border-sonic-silver">
+        <CandidateCardModalDataDesktop candidate={mainCandidate} />
       </div>
-      <div className="space-y-4 pl-6">
-        {blocks.map(([label, field], index) => (
-          <div key={`block-secondary-${index}`}>
-            <p className="text-dark-slate-blue">{label}</p>
-            <p className="text-sm">{secondaryCandidate[field]}</p>
-          </div>
-        ))}
+      <div className="pl-6">
+        <CandidateCardModalDataDesktop candidate={secondaryCandidate} />
       </div>
     </div>
   );

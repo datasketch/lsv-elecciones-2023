@@ -1,9 +1,24 @@
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { selectBlocks } from '../features/modal/modal-slice';
+import {
+  selectCongressCandidatesBlocks,
+  selectPresidentialCandidatesBlocks,
+} from '../features/modal/modal-slice';
+import { selectActiveTab } from '../features/nav/nav-slice';
 import CandidatePhotoOverlay from './congress/CandidatePhotoOverlay';
 
 function ComparisonBlocksMobile({ mainCandidate, secondaryCandidate }) {
-  const blocks = useSelector(selectBlocks);
+  const activeTab = useSelector(selectActiveTab);
+  const congressBlocks = useSelector(selectCongressCandidatesBlocks);
+  const presidentialBlocks = useSelector(selectPresidentialCandidatesBlocks);
+  const [blocks, setBlocks] = useState([]);
+
+  useEffect(() => {
+    const selectedBlocks =
+      activeTab === 'congreso' ? congressBlocks : presidentialBlocks;
+    setBlocks(selectedBlocks);
+  }, [activeTab, congressBlocks, presidentialBlocks]);
+
   return (
     <>
       {blocks.map(([label, field], index) => (

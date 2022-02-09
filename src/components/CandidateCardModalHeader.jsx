@@ -1,4 +1,12 @@
-function CandidateCardModalHeader({ candidate, showClose = true }) {
+import { useSelector } from 'react-redux';
+import { selectActiveTab } from '../features/nav/nav-slice';
+
+function CandidateCardModalHeader({
+  candidate,
+  isPresidentialCandidate,
+  showClose = true,
+}) {
+  const activeTab = useSelector(selectActiveTab);
   return (
     <div
       style={{ backgroundColor: candidate.party.color }}
@@ -17,8 +25,12 @@ function CandidateCardModalHeader({ candidate, showClose = true }) {
       )}
       <div className="flex items-center px-6 py-5 space-x-4">
         <div className="font-martin uppercase text-center text-xl text-black flex-shrink-0">
-          {candidate.electoralNumber && (
-            <p>#Tarjetón: {candidate.electoralNumber}</p>
+          {activeTab === 'consultas' ? (
+            <p>{candidate.coalition}</p>
+          ) : (
+            candidate.electoralNumber && (
+              <p>#Tarjetón: {candidate.electoralNumber}</p>
+            )
           )}
           <img
             src={candidate.photo}

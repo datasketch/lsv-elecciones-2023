@@ -1,15 +1,29 @@
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectSortedCongressCandidates } from '../features/candidates/candidates-slice';
 import { toggleComparisonModalWindow } from '../features/modal/modal-slice';
+import { selectActiveTab } from '../features/nav/nav-slice';
+import { selectSortedPresidentialCandidates } from '../features/presidential/presidential-slice';
 import ComparisonBlocksMobile from './ComparisonBlocksMobile';
-import PoweredBy from './PoweredBy';
 
 function ComparisonModalMobile({
-  candidates,
   mainCandidate,
   secondaryCandidate,
   onChange,
 }) {
   const dispatch = useDispatch();
+  const congressCandidates = useSelector(selectSortedCongressCandidates);
+  const presidentialCandidates = useSelector(
+    selectSortedPresidentialCandidates
+  );
+  const activeTab = useSelector(selectActiveTab);
+  const [candidates, setCandidates] = useState([]);
+
+  useEffect(() => {
+    const selected =
+      activeTab === 'congreso' ? congressCandidates : presidentialCandidates;
+    setCandidates(selected);
+  }, [activeTab, congressCandidates, presidentialCandidates, setCandidates]);
 
   return (
     <div className="bg-white w-full h-full px-6 py-4 overflow-auto lg:hidden">
@@ -61,9 +75,6 @@ function ComparisonModalMobile({
           mainCandidate={mainCandidate}
           secondaryCandidate={secondaryCandidate}
         />
-      </div>
-      <div className="mt-6">
-        <PoweredBy />
       </div>
     </div>
   );

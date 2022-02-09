@@ -3,17 +3,25 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   showMainModalWindow: false,
   showComparisonModalWindow: false,
-  blocks: [
-    ['A Presidencia apoya a', 'supportedPresidentialCandidate'],
-    ['¿Ha sido condenado o investigado?', 'haveBeenConvictedOrInvestigated'],
-    [
-      '¿Hereda votos de condenado o investigado?',
-      'inheritVotesOfConvictedOrInvestigated',
+  blocks: {
+    congress: [
+      ['A Presidencia apoya a', 'supportedPresidentialCandidate'],
+      ['¿Ha sido condenado o investigado?', 'haveBeenConvictedOrInvestigated'],
+      [
+        '¿Hereda votos de condenado o investigado?',
+        'inheritVotesOfConvictedOrInvestigated',
+      ],
+      ['Períodos en el Congreso', 'termsAsMemberOfCongress'],
+      ['Ha ocupado un cargo público', 'hasHeldPublicOffice'],
+      ['Sector del que viene', 'backgroundSector'],
     ],
-    ['Períodos en el Congreso', 'termsAsMemberOfCongress'],
-    ['Ha ocupado un cargo público', 'hasHeldPublicOffice'],
-    ['Sector del que viene', 'backgroundSector'],
-  ],
+    presidential: [
+      ['Máximo de personas que ha tenido a cargo', 'maximumNumberOfDependents'],
+      ['Apoyo u oposición a Gobierno Duque', 'oppositionOrSupportToGovernment'],
+      ['Máximo cargo en el ejecutivo', 'highestPositionInTheExecutive'],
+      ['Despenalización total del aborto', 'decriminalizingAbortion'],
+    ],
+  },
   candidates: {
     main: '',
     secondary: '',
@@ -59,6 +67,9 @@ export const selectSecondaryCandidate = (state) =>
   state.modal.candidates.secondary;
 export const selectComparisonModalWindow = (state) =>
   state.modal.showComparisonModalWindow;
-export const selectBlocks = (state) => state.modal.blocks;
+export const selectCongressCandidatesBlocks = (state) =>
+  state.modal.blocks.congress;
+export const selectPresidentialCandidatesBlocks = (state) =>
+  state.modal.blocks.presidential;
 
 export default modalSlice.reducer;
