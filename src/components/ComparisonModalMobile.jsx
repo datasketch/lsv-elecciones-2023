@@ -70,7 +70,7 @@ function ComparisonModalMobile({
           ))}
         </select>
       </div>
-      <div className="mt-6 space-y-8">
+      <div className="pb-6 space-y-8">
         <ComparisonBlocksMobile
           mainCandidate={mainCandidate}
           secondaryCandidate={secondaryCandidate}

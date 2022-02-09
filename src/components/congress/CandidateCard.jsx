@@ -15,6 +15,7 @@ function CandidateCard({ candidate }) {
     <CandidateCardExpanded
       candidate={candidate}
       onClick={() => dispatch(toggleMainModalWindow(candidate))}
+      highlight
     />
   );
 }
