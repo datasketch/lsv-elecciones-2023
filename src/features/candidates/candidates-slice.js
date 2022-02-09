@@ -7,7 +7,14 @@ const candidatesData = candidates.map((c) => ({ ...c, highlight: true }));
 const initialState = {
   all: candidatesData,
   filtered: candidatesData,
-  ageRanges: Array.from(new Set(candidatesData.reduce((result, candidate) => [...result, candidate.age], []))).sort(),
+  ageRanges: Array.from(
+    new Set(
+      candidatesData.reduce(
+        (result, candidate) => [...result, candidate.age],
+        []
+      )
+    )
+  ).sort(),
   filters: {
     office: '',
     department: '',
@@ -49,7 +56,7 @@ const candidatesSlice = createSlice({
       // Should we reset these filters here?
       state.filters.gender = '';
       state.filters.backgroundSector = '';
-      state.filters.age = ''
+      state.filters.age = '';
       Object.entries(action.payload).forEach(([key, value]) => {
         state.filters[key] = value;
       });
@@ -157,7 +164,7 @@ export const selectSortedCongressCandidates = (state) =>
     return 0;
   });
 
-export const selectAgeRanges = (state) => state.candidates.ageRanges
+export const selectAgeRanges = (state) => state.candidates.ageRanges;
 
 export const selectCandidateById = createSelector(
   (state) => state.candidates.all,

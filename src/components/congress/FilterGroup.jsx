@@ -17,7 +17,7 @@ function FilterGroup() {
   const [isOpened, setIsOpened] = useState(false);
   const sectors = useSelector(selectSectors);
   const genders = useSelector(selectGender);
-  const ages = useSelector(selectAgeRanges)
+  const ages = useSelector(selectAgeRanges);
   const dispatch = useDispatch();
   const containerRef = useRef(null);
 
@@ -80,11 +80,15 @@ function FilterGroup() {
               name="backgroundSector"
             />
           </div>
-          <div className='flex flex-col justify-between'>
+          <div className="flex flex-col justify-between">
             <div>
               <FilterCheckbox label="Género" options={genders} name="gender" />
               <div className="mt-3">
-                <FilterCheckbox label="Rango de edad" options={ages} name="age" />
+                <FilterCheckbox
+                  label="Rango de edad"
+                  options={ages}
+                  name="age"
+                />
               </div>
             </div>
             <AppButton label="Aplicar" />

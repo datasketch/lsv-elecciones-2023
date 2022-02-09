@@ -4,6 +4,7 @@ import CompareButton from './CompareButton';
 import ShareButton from './ShareButton';
 import CandidateCardModalHeader from './CandidateCardModalHeader';
 import CandidateCardModalDataDesktop from './CandidateCardModalDataDesktop';
+import ReadMore from './ReadMore';
 
 function CandidateCardModal() {
   const candidate = useSelector(selectMainCandidate);
@@ -12,7 +13,9 @@ function CandidateCardModal() {
     <div className="bg-soft-white w-96 max-w-full max-h-full overflow-auto">
       <CandidateCardModalHeader candidate={candidate} />
       {candidate.profile && (
-        <p className="bg-cultured py-4 px-6 text-sm">{candidate.profile}</p>
+        <div className="bg-cultured py-4 px-6 text-sm">
+          <ReadMore text={candidate.profile} />
+        </div>
       )}
       {candidate.redflags && !!candidate.redflags.length && (
         <ul className="px-6 pt-4 grid grid-cols-3 gap-2">

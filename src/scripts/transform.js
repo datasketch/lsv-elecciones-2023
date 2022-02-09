@@ -36,10 +36,10 @@ function mapValues(data) {
         const { name, firstLastName, secondLastName } = record;
         const fullname = [name, firstLastName, secondLastName].join(' ').trim();
         const getGroupAge = (str) => {
-          const match = str.slice(0).replace(/\D/g, '')
-          if (match.length === 2) return str
-          return `${match.substring(0, 2)} - ${match.substring(2)}`
-        }
+          const match = str.slice(0).replace(/\D/g, '');
+          if (match.length === 2) return str;
+          return `${match.substring(0, 2)} - ${match.substring(2)}`;
+        };
         return {
           ...record,
           fullname,
@@ -61,7 +61,10 @@ function mapValues(data) {
             record.secondRedflag,
             record.thirdRedflag,
           ].filter((redflag) => redflag),
-          age: record.age.toLowerCase() === 'sin datos' ? record.age : getGroupAge(record.age)
+          age:
+            record.age.toLowerCase() === 'sin datos'
+              ? record.age
+              : getGroupAge(record.age),
         };
       })
       .filter((record) => record.id)

@@ -1,12 +1,19 @@
 import classNames from 'classnames';
 import CandidatePhotoOverlay from './CandidatePhotoOverlay';
 
-function CandidateCardExpanded({ candidate, highlight = false, onClick = () => {} }) {
+function CandidateCardExpanded({
+  candidate,
+  highlight = false,
+  onClick = () => {},
+}) {
   return (
     <div
-      className={classNames("flex p-2 space-x-3 items-center bg-cultured shadow-sm", {
-        'opacity-25': highlight && !candidate.highlight
-      })}
+      className={classNames(
+        'flex p-2 space-x-3 items-center bg-cultured shadow-sm',
+        {
+          'opacity-25': highlight && !candidate.highlight,
+        }
+      )}
       role="button"
       tabIndex={0}
       onClick={onClick}
