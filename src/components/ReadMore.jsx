@@ -4,11 +4,16 @@ import { useState } from 'react';
 function ReadMore({ text, limit = 300 }) {
   const [canReadMore, setCanReadMore] = useState(false);
   const [textWithinLimit, setTextWithinLimit] = useState(false);
+  const [textTrimmed, setTextTrimmed] = useState('')
 
   useEffect(() => {
     setTextWithinLimit(text.length <= limit);
     setCanReadMore(text.length > limit);
-  }, [text, limit]);
+    if (!textWithinLimit) {
+      const trimmed = text.slice(0, limit)
+      setTextTrimmed(trimmed.slice(0, Math.min(trimmed.length, trimmed.lastIndexOf(' '))))
+    }
+  }, [text, limit, textWithinLimit]);
 
   return (
     <>
@@ -16,7 +21,7 @@ function ReadMore({ text, limit = 300 }) {
         {textWithinLimit
           ? text
           : canReadMore
-          ? `${text.slice(0, limit)}...`
+          ? `${textTrimmed}...`
           : text}
       </p>
       {!textWithinLimit && (
