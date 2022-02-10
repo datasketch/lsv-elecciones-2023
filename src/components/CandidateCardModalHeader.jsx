@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { selectActiveTab } from '../features/nav/nav-slice';
-import hexRgb from 'hex-rgb'
+import hexRgb from 'hex-rgb';
 
 function CandidateCardModalHeader({
   candidate,
@@ -8,7 +8,9 @@ function CandidateCardModalHeader({
   showClose = true,
 }) {
   const activeTab = useSelector(selectActiveTab);
-  const { red, green, blue, alpha } = hexRgb(candidate.party.color, { alpha: 0.6 })
+  const { red, green, blue, alpha } = hexRgb(candidate.party.color, {
+    alpha: 0.6,
+  });
   return (
     <div
       style={{ backgroundColor: `rgba(${red}, ${green}, ${blue}, ${alpha})` }}

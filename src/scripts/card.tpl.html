@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Silla Vacía</title>
+    <style>
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            box-sizing: border-box;
+            color: #3b3d3b;
+            height: 960px;
+            font-family: Arial, sans-serif;
+            width: 540px;
+        }
+
+        .candidate-card-wrapper {
+            background-color: #fafafa;
+            height: 100%;
+        }
+
+        .candidate-card-header {
+            align-items: center;
+            display: flex;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .candidate-card-header>*~* {
+            margin-left: 1rem;
+        }
+
+        .candidate-card-header-image {
+            color: #000000;
+            flex-shrink: 0;
+            font-size: 12px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .candidate-card-header-image img {
+            max-width: 100%;
+            height: auto;
+            width: 112px;
+        }
+
+        .candidate-card-header-info {
+            font-size: 14px;
+        }
+
+        .candidate-card-fullname {
+            font-size: 16px;
+        }
+
+        .candidate-card-profile {
+            background-color: #eeeeee;
+            font-size: 14px;
+            padding: 1rem 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="candidate-card-wrapper">
+        <div class="candidate-card-header">
+            <div class="candidate-card-header-image">
+                <p>#Tarjeton:</p>
+                <img src="{{photo}}" alt="">
+            </div>
+            <div class="candidate-card-header-info">
+                <p>{{party.label}}</p>
+                <p class="candidate-card-fullname">{{fullname}}</p>
+            </div>
+        </div>
+        <div class="candidate-card-profile">
+            {{profile}}
+        </div>
+    </div>
+</body>
+
+</html>

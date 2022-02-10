@@ -47,10 +47,9 @@ function ShareSocialNetworks() {
         <img className="mx-auto max-w-full" src="/icono-whatsapp.svg" alt="" />
       </a>
       <a
-        href="https://www.example.com"
+        href={`/candidatos/${candidate.id}.png`}
         className="w-7 h-7 bg-dodger-blue p-1"
-        target="_blank"
-        rel="noopener noreferrer"
+        download={`${candidate.id}.png`}
       >
         <img className="mx-auto max-w-full" src="/icono-descarga.svg" alt="" />
       </a>
