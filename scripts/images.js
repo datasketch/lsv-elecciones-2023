@@ -39,8 +39,8 @@ const renderTemplate = (baseTemplate, candidate) => {
         clip: {
           x: 0,
           y: 0,
-          width: 1080,
-          height: 1920
+          width: 608,
+          height: 1080
         }
       });
       console.log(`${i + 1}/${candidates.length} images`);
