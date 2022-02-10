@@ -66,6 +66,19 @@
             font-size: 14px;
             padding: 1rem 1.5rem;
         }
+
+        .candidate-card-data {
+            padding: 1rem 1.5rem;
+            font-size: 14px;
+        }
+
+        .candidate-card-data > * ~ * {
+            margin-top: 1rem;
+        }
+
+        .text-dark-slate-blue {
+            color: #4A4595;
+        }
     </style>
 </head>
 
@@ -87,6 +100,32 @@
         </div>
         <div class="candidate-card-profile">
             {{profile}}
+        </div>
+        <div class="candidate-card-data">
+            <div>
+                <p class='text-dark-slate-blue'>A Presidencia apoya a</p>
+                <p>{{supportedPresidentialCandidate}}</p>
+            </div>
+            <div>
+                <p class='text-dark-slate-blue'>¿Ha sido condenado o investigado?</p>
+                <p>{{haveBeenConvictedOrInvestigated}}</p>
+            </div>
+            <div>
+                <p class='text-dark-slate-blue'>¿Hereda votos de condenado o investigado?</p>
+                <p>{{inheritVotesOfConvictedOrInvestigated}}</p>
+            </div>
+            <div>
+                <p class='text-dark-slate-blue'>Períodos en el Congreso</p>
+                <p>{{termsAsMemberOfCongress}}</p>
+            </div>
+            <div>
+                <p class='text-dark-slate-blue'>Ha ocupado un cargo público</p>
+                <p>{{hasHeldPublicOffice}}</p>
+            </div>
+            <div>
+                <p class='text-dark-slate-blue'>Sector del que viene</p>
+                <p>{{backgroundSector}}</p>
+            </div>
         </div>
     </div>
 </body>
