@@ -87,4 +87,4 @@ const mapper = {
     'mostRecentFavorability',
 };
 
-module.exports = mapper;
+export default mapper

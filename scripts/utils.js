@@ -1,4 +1,4 @@
-const partyColorMap = {
+export const partyColorMap = {
   Liberal: '#cf2a24',
   Conservador: '#012bb3',
   Mira: '#202c54',
@@ -15,7 +15,7 @@ const partyColorMap = {
   Otro: '#3d3d3d',
 };
 
-const haveBeenConvictedOrInvestigated = (candidate) => {
+export const haveBeenConvictedOrInvestigated = (candidate) => {
   if (
     candidate.hasBeenConvicted === 'No' &&
     candidate.hasBeenInvestigated === 'No'
@@ -30,7 +30,7 @@ const haveBeenConvictedOrInvestigated = (candidate) => {
   else if (candidate.hasBeenConvicted === 'Sí') return 'Condenado';
 };
 
-const inheritVotesOfConvictedOrInvestigated = (candidate) => {
+export const inheritVotesOfConvictedOrInvestigated = (candidate) => {
   if (
     candidate.heirToDoomedVows === 'No' &&
     candidate.heirToVotesUnderInvestigation === 'No'
@@ -44,10 +44,4 @@ const inheritVotesOfConvictedOrInvestigated = (candidate) => {
   else if (candidate.heirToDoomedVows === 'Sí') return 'De condenado';
   else if (candidate.heirToVotesUnderInvestigation === 'Sí')
     return 'De investigado';
-};
-
-module.exports = {
-  partyColorMap,
-  haveBeenConvictedOrInvestigated,
-  inheritVotesOfConvictedOrInvestigated,
 };

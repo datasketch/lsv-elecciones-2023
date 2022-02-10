@@ -1,14 +1,8 @@
-const { writeFile } = require('fs').promises;
-const path = require('path');
-const slugify = require('slugify');
-const mapper = require('./mapper');
-const rawCongress = require('../data/raw-congress.json');
-const rawPresidential = require('../data/raw-presidential.json');
-const {
-  partyColorMap,
-  haveBeenConvictedOrInvestigated,
-  inheritVotesOfConvictedOrInvestigated,
-} = require('./utils');
+import { writeFile, readFile } from 'fs/promises';
+import path from 'path';
+import slugify from 'slugify';
+import mapper from './mapper.js';
+import { partyColorMap, haveBeenConvictedOrInvestigated, inheritVotesOfConvictedOrInvestigated } from './utils.js'
 
 function compareFunction(key) {
   return (a, b) => {
@@ -31,7 +25,9 @@ function mapValues(data) {
 
 (async () => {
   try {
-    const congress = mapValues(rawCongress)
+    const rawCongress = await readFile(path.join(process.cwd(), '..', 'src', 'data', 'raw-congress.json'), 'utf8')
+    const rawPresidential = await readFile(path.join(process.cwd(), '..', 'src', 'data', 'raw-presidential.json'), 'utf8')
+    const congress = mapValues(JSON.parse(rawCongress))
       .map((record) => {
         const { name, firstLastName, secondLastName } = record;
         const fullname = [name, firstLastName, secondLastName].join(' ').trim();
@@ -70,7 +66,7 @@ function mapValues(data) {
       .filter((record) => record.id)
       .sort(sortByElectoralNumber);
 
-    const presidential = mapValues(rawPresidential).map((record) => {
+    const presidential = mapValues(JSON.parse(rawPresidential)).map((record) => {
       const { name, firstLastName, secondLastName } = record;
       const fullname = [name, firstLastName, secondLastName].join(' ').trim();
       return {
@@ -84,14 +80,8 @@ function mapValues(data) {
       };
     });
 
-    const candidatesFile = path.resolve(
-      process.cwd(),
-      'src/data/candidates.json'
-    );
-    const presidentialFile = path.resolve(
-      process.cwd(),
-      'src/data/presidential.json'
-    );
+    const candidatesFile = path.resolve(process.cwd(), '..', 'src', 'data', 'candidates.json');
+    const presidentialFile = path.resolve(process.cwd(), '..', 'src', 'data', 'presidential.json');
     await writeFile(candidatesFile, JSON.stringify(congress));
     await writeFile(presidentialFile, JSON.stringify(presidential));
   } catch (error) {

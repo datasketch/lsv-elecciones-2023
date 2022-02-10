@@ -19,9 +19,9 @@
         body {
             box-sizing: border-box;
             color: #3b3d3b;
-            height: 960px;
+            height: 1920px;
             font-family: Arial, sans-serif;
-            width: 540px;
+            width: 1080px;
         }
 
         .candidate-card-wrapper {
@@ -31,16 +31,16 @@
 
         .candidate-card-header {
             align-items: center;
+            color: #000000;
             display: flex;
             padding: 1.25rem 1.5rem;
         }
 
-        .candidate-card-header>*~* {
+        .candidate-card-header > * ~ * {
             margin-left: 1rem;
         }
 
         .candidate-card-header-image {
-            color: #000000;
             flex-shrink: 0;
             font-size: 12px;
             text-align: center;
@@ -71,9 +71,13 @@
 
 <body>
     <div class="candidate-card-wrapper">
-        <div class="candidate-card-header">
+        <div class="candidate-card-header" style="background-color: {{bgColor}};">
             <div class="candidate-card-header-image">
-                <p>#Tarjeton:</p>
+                {{#if coalition}}
+                    <p>{{coalition}}</p>
+                {{else}}
+                    <p>#Tarjeton: {{electoralNumber}}</p>
+                {{/if}}
                 <img src="{{photo}}" alt="">
             </div>
             <div class="candidate-card-header-info">
