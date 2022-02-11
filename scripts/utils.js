@@ -18,7 +18,7 @@ export const partyColorMap = {
   'Estamos listas': '#BC8541',
   Comunes: '#300202',
   'Polo Democrático': '#F0DC00',
-  'Pacto Histórico': '#fc00bb',
+  // 'Pacto Histórico': '#fc00bb',
   Otro: '#3d3d3d',
 };
 
