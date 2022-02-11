@@ -4,7 +4,6 @@ import hexRgb from 'hex-rgb';
 
 function CandidateCardModalHeader({
   candidate,
-  isPresidentialCandidate,
   showClose = true,
 }) {
   const activeTab = useSelector(selectActiveTab);
@@ -27,7 +26,7 @@ function CandidateCardModalHeader({
           </svg>
         </button>
       )}
-      <div className="flex px-6 py-5 space-x-4">
+      <div className="flex px-6 py-5 space-x-4 items-start">
         <div className="font-martin uppercase text-center text-2xl text-black flex-shrink-0">
           {activeTab === 'consultas' ? (
             <p>{candidate.coalition}</p>
@@ -44,10 +43,15 @@ function CandidateCardModalHeader({
             className="max-w-full w-28"
           />
         </div>
-        <div className="self-end">
+        <div>
+          <div className='opacity-0 text-2xl'>_</div>
           <p className="text-sm">{candidate.pending}</p>
           <p className="text-xl leading-tight">{candidate.fullname}</p>
-          <p className="text-sm">{candidate.party.label}</p>
+          {activeTab === 'consultas' ? (
+            <p className='text-sm'>Aval: {candidate.guarantee}</p>
+          ) : (
+            <p className='text-sm'>{candidate.party.label}</p>
+          )}
           {candidate.twitterHandle && (
             <a
               href={`https://twitter.com/${candidate.twitterHandle}`}
