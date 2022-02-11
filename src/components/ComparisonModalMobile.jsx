@@ -46,7 +46,7 @@ function ComparisonModalMobile({
         <span className="underline">Volver</span>
       </button>
       <p className="font-martin text-center text-5xl uppercase text-jet mt-6">
-        Compara candidatos
+        Compare candidatos
       </p>
       <div className="grid grid-cols-2 gap-4 py-6">
         <div className="border border-dodger-blue text-dodger-blue text-sm py-2 px-3">

@@ -31,10 +31,12 @@ function CandidateCardModalHeader({
         <div className="font-martin uppercase text-center text-xl text-black flex-shrink-0">
           {activeTab === 'consultas' ? (
             <p>{candidate.coalition}</p>
+          ) : !candidate.electoralNumber ? (
+            <p>Sin datos</p>
+          ) : parseInt(candidate.electoralNumber, 10) ? (
+            <p>#Tarjetón: {candidate.electoralNumber}</p>
           ) : (
-            candidate.electoralNumber && (
-              <p>#Tarjetón: {candidate.electoralNumber}</p>
-            )
+            <p>{candidate.electoralNumber}</p>
           )}
           <img
             src={candidate.photo}

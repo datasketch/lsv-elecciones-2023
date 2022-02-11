@@ -50,7 +50,7 @@ function FiltersSection() {
         />
         <FilterSelect
           id="candidato-que-apoya"
-          label="Candidato presidencial al que apoya"
+          label="Su candidato presidencial"
           options={supportedPresidentialCandidates}
           onChange={(e) =>
             dispatch(filterBySupportedCandidatePresidential(e.target.value))

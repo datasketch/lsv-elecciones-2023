@@ -10,7 +10,7 @@ function CandidateCardCollapsed({ candidate }) {
   const dispatch = useDispatch();
   return (
     // See https://atomiks.github.io/tippyjs/v6/accessibility/#interactivity
-    <div>
+    <div className="w-7 h-7 relative">
       <Tippy
         render={(attrs) => (
           <CandidateCardExpanded candidate={candidate} {...attrs} />
@@ -21,7 +21,7 @@ function CandidateCardCollapsed({ candidate }) {
         plugins={[followCursor]}
       >
         <button
-          className={classNames('w-9 h-9 relative', {
+          className={classNames('w-full h-full', {
             'opacity-25': !candidate.highlight,
           })}
           onClick={() => dispatch(toggleMainModalWindow(candidate))}

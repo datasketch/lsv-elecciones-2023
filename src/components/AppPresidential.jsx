@@ -19,7 +19,7 @@ function AppPresidential() {
       <div className="py-8 flex flex-col lg:flex-row lg:items-start lg:space-x-6">
         <div className="lg:w-1/2">
           <h2 className="font-martin uppercase text-5xl lg:text-6xl">
-            ¿No encontró a su candidato?
+            Candidatos fuera de consultas
           </h2>
           <p className="mt-4">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam

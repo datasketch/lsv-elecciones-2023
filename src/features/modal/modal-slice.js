@@ -18,7 +18,7 @@ const initialState = {
     presidential: [
       ['Máximo de personas que ha tenido a cargo', 'maximumNumberOfDependents'],
       ['Apoyo u oposición a Gobierno Duque', 'oppositionOrSupportToGovernment'],
-      ['Máximo cargo en el ejecutivo', 'highestPositionInTheExecutive'],
+      ['Máximo cargo en el Ejecutivo', 'highestPositionInTheExecutive'],
       ['Despenalización total del aborto', 'decriminalizingAbortion'],
     ],
   },

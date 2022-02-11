@@ -45,7 +45,7 @@ function App() {
   return (
     <>
       {showMainModalWindow && <Modal />}
-      <div className="container px-4 mx-auto text-jet font-manrope">
+      <div className="px-8 mx-auto text-jet font-manrope">
         <AppHeader />
         {activeTab === 'congreso' ? <AppCongress /> : <AppPresidential />}
       </div>

@@ -10,19 +10,20 @@ function CandidateList() {
   const candidates = useSelector(selectAllCandidates);
   const parties = useSelector(selectPartiesWithColor);
 
+  // flex flex-col md:flex-row md:items-start md:justify-between
   return (
     <>
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between">
-        {Object.entries(candidates).map(([label, c]) => {
-          return <ElectoralColumn key={label} label={label} candidates={c} />;
-        })}
+      <div className="grid md:grid-cols-5">
+        {Object.entries(candidates).map(([label, c]) => (
+          <ElectoralColumn key={label} label={label} candidates={c} />
+        ))}
       </div>
-      <div className="hidden md:block pb-2 border-b border-sonic-silver">
-        <div className="uppercase text-center mt-4 text-jet font-martin text-2xl flex justify-between">
-          <span>Izquierda</span>
-          <span>Centro</span>
-          <span>Derecha</span>
-        </div>
+      <div className="hidden md:grid md:grid-cols-5 border-b border-sonic-silver mt-8">
+        {Object.entries(candidates).map(([label, ], i) => (
+          <p key={`${label}-i`} className="uppercase text-center text-jet font-martin text-2xl border-r border-r-sonic-silver last:border-none">
+            {label}
+          </p>
+        ))}
       </div>
       <div className="grid grid-cols-3 gap-4 max-w-4xl mx-auto py-4 lg:grid-cols-5">
         {Object.keys(parties)

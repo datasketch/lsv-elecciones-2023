@@ -6,8 +6,8 @@ import CandidateCard from './CandidateCard';
 function ElectoralColumn({ label, candidates }) {
   const grid = useSelector(selectGridView);
   return (
-    <div className="pb-4 border-b border-bone md:border-none">
-      <p className="uppercase text-center mt-4 text-jet font-martin text-2xl flex justify-between md:hidden">
+    <div className="border-b border-bone pb-4 md:pb-0 md:border-none">
+      <p className="uppercase mt-4 text-jet font-martin text-2xl md:hidden">
         {label}
       </p>
       <div

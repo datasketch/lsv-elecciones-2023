@@ -6,11 +6,7 @@ function CandidatePhotoOverlay({ candidate }) {
   const activeTab = useSelector(selectActiveTab);
   return (
     <>
-      <img
-        src={candidate.photo}
-        className="max-w-full"
-        alt={candidate.fullname}
-      />
+      <img src={candidate.photo} className="max-w-full" alt="" />
       {activeTab === 'congreso' && (
         <span
           className="absolute top-0 left-0 w-full h-full opacity-30"
