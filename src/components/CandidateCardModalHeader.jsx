@@ -27,8 +27,8 @@ function CandidateCardModalHeader({
           </svg>
         </button>
       )}
-      <div className="flex items-center px-6 py-5 space-x-4">
-        <div className="font-martin uppercase text-center text-xl text-black flex-shrink-0">
+      <div className="flex px-6 py-5 space-x-4">
+        <div className="font-martin uppercase text-center text-2xl text-black flex-shrink-0">
           {activeTab === 'consultas' ? (
             <p>{candidate.coalition}</p>
           ) : !candidate.electoralNumber ? (
@@ -44,10 +44,10 @@ function CandidateCardModalHeader({
             className="max-w-full w-28"
           />
         </div>
-        <div className="">
-          <p className="text-sm">Pendiente</p>
+        <div className="self-end">
+          <p className="text-sm">{candidate.pending}</p>
+          <p className="text-xl leading-tight">{candidate.fullname}</p>
           <p className="text-sm">{candidate.party.label}</p>
-          <p className="text-lg leading-tight">{candidate.fullname}</p>
           {candidate.twitterHandle && (
             <a
               href={`https://twitter.com/${candidate.twitterHandle}`}
@@ -55,7 +55,7 @@ function CandidateCardModalHeader({
               rel="noreferrer"
               className="mt-2 inline-block"
             >
-              <img src="/twitter.svg" alt="" />
+              <img className='w-4' src="/twitter.svg" alt="" />
             </a>
           )}
         </div>

@@ -23,7 +23,7 @@ function ComparisonBlocksMobile({ mainCandidate, secondaryCandidate }) {
     <>
       {blocks.map(([label, field], index) => (
         <div key={`block-${index}`} className="space-y-3">
-          <p className="text-dark-slate-blue text-center">{label}</p>
+          <p className="text-dim-gray text-center">{label}</p>
           <div className="grid grid-cols-2">
             <div className="flex items-center space-x-2 border-r border-jet pr-4">
               <div className="relative w-10">

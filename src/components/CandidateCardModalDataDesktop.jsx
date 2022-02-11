@@ -26,7 +26,7 @@ function CandidateCardModalDataDesktop({ candidate }) {
       {blocks.map(([label, field], index) => (
         <React.Fragment key={index}>
           <p
-            className={classNames('text-dark-slate-blue', {
+            className={classNames('text-dim-gray', {
               'mt-4': index > 0,
             })}
           >

@@ -64,6 +64,7 @@ const mapper = {
   Circunscripción: 'district',
   'Ha recibido amenazas': 'hasReceivedThreats',
   'Tipo de circunscripción': 'districtType',
+  'Pendiente': 'pending',
   // Presidential specific
   'Mentiras y verdades chequeadas': 'liesAndVerifiedTruths',
   Consulta: 'coalition',

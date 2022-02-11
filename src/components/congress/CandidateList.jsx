@@ -25,7 +25,7 @@ function CandidateList() {
           </p>
         ))}
       </div>
-      <div className="grid grid-cols-3 gap-4 max-w-4xl mx-auto py-4 lg:grid-cols-5">
+      <div className="grid grid-cols-3 gap-4 max-w-5xl mx-auto py-4 lg:grid-cols-5">
         {Object.keys(parties)
           .sort()
           .map((key, index) => (

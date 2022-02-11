@@ -15,7 +15,8 @@ module.exports = {
         bone: '#E4DFD1',
         'dark-slate-blue': '#4A4595',
         'soft-white': '#fafafa',
-        'sonic-silver': '#787878'
+        'sonic-silver': '#787878',
+        'dim-gray': '#6B6B6B'
       },
       fontSize: {
         xxs: '0.625rem'
