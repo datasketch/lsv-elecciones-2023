@@ -48,7 +48,7 @@ function CandidateCardModalHeader({
           <img
             src={candidate.photo}
             alt={candidate.fullname}
-            className="max-w-full w-28"
+            className="max-w-full mx-auto w-28"
           />
         </div>
         <div>

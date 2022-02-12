@@ -17,19 +17,22 @@ function CandidateCardModal() {
           <ReadMore text={candidate.profile} />
         </div>
       )}
-      {candidate.redflags && !!candidate.redflags.length && (
-        <ul className="px-6 pt-4 grid grid-cols-3 gap-2">
-          {candidate.redflags.map((redflag, index) => (
-            <li
-              key={`redflag-${index}`}
-              className="text-center text-xxs uppercase"
-            >
-              <span>{redflag}</span>{' '}
-            </li>
-          ))}
-        </ul>
-      )}
       <div className="py-4 px-6 text-sm">
+        {candidate.flags && !!candidate.flags.length && (
+          <>
+            <p className='text-dim-gray'>Banderas</p>
+            <ul className={`mt-1 mb-4 flex text-xxs uppercase leading-tight items-center space-x-2 flex-shrink-1 max-w-full`}>
+              {candidate.flags.map((flag, index) => (
+                <>
+                  <li key={`flag-${index}`}>
+                    <span>{flag}</span>{' '}
+                  </li>
+                  {candidate.flags.length !== index + 1 && <li>•</li>}
+                </>
+              ))}
+            </ul>
+          </>
+        )}
         <CandidateCardModalDataDesktop candidate={candidate} />
       </div>
       <div className="px-6">

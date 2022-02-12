@@ -52,11 +52,11 @@ function mapValues(data) {
             haveBeenConvictedOrInvestigated(record),
           inheritVotesOfConvictedOrInvestigated:
             inheritVotesOfConvictedOrInvestigated(record),
-          redflags: [
-            record.firstRedflag,
-            record.secondRedflag,
-            record.thirdRedflag,
-          ].filter((redflag) => redflag),
+          flags: [
+            record.firstFlag,
+            record.secondFlag,
+            record.thirdFlag,
+          ].filter((flag) => flag),
           age:
             record.age.toLowerCase() === 'sin datos'
               ? record.age
