@@ -58,7 +58,7 @@ function ComparisonModalMobile({
           className="border border-dodger-blue text-dodger-blue text-sm w-full"
           onChange={onChange}
         >
-          <option value="">Selecciona un candidato</option>
+          <option value="">Compare con</option>
           {candidates.map((candidate) => (
             <option
               value={candidate.fullname}

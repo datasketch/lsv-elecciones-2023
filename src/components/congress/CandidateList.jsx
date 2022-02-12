@@ -19,8 +19,11 @@ function CandidateList() {
         ))}
       </div>
       <div className="hidden md:grid md:grid-cols-5 border-b border-sonic-silver mt-8">
-        {Object.entries(candidates).map(([label, ], i) => (
-          <p key={`${label}-i`} className="uppercase text-center text-jet font-martin text-2xl border-r border-r-sonic-silver last:border-none">
+        {Object.entries(candidates).map(([label], i) => (
+          <p
+            key={`${label}-i`}
+            className="uppercase text-center text-jet font-martin text-2xl border-r border-r-sonic-silver last:border-none"
+          >
             {label}
           </p>
         ))}

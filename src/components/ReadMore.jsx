@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-function ReadMore({ text, limit = 300 }) {
+function ReadMore({ text, limit = 500 }) {
   const [canReadMore, setCanReadMore] = useState(false);
   const [textWithinLimit, setTextWithinLimit] = useState(false);
   const [textTrimmed, setTextTrimmed] = useState('');

@@ -3,21 +3,29 @@ import AppButton from './AppButton';
 import { useDispatch } from 'react-redux';
 import { toggleComparisonModalWindow } from '../features/modal/modal-slice';
 import ComparisonBlocksDesktop from './ComparisonBlocksDesktop';
+import { useState } from 'react';
 
 function ComparisonModalDesktop({ mainCandidate, secondaryCandidate }) {
   const dispatch = useDispatch();
+  const [showProfile, setShowProfile] = useState(false);
 
   return (
-    <div className="hidden bg-white overflow-auto w-full max-w-4xl lg:block">
+    <div className="hidden bg-white overflow-auto w-full max-w-4xl max-h-full lg:block">
       <div className="grid grid-cols-2">
         <div>
           <CandidateCardModalHeader
             candidate={mainCandidate}
             showClose={false}
+            setShowProfile={setShowProfile}
+            showProfile={showProfile}
           />
         </div>
         {secondaryCandidate ? (
-          <CandidateCardModalHeader candidate={secondaryCandidate} />
+          <CandidateCardModalHeader
+            candidate={secondaryCandidate}
+            setShowProfile={setShowProfile}
+            showProfile={showProfile}
+          />
         ) : (
           <div className="bg-cultured text-dodger-blue text-center self-center p-4 mx-auto w-full xl:max-w-sm">
             <p className="mb-2">Seleccione un candidato para comparar</p>
@@ -29,6 +37,20 @@ function ComparisonModalDesktop({ mainCandidate, secondaryCandidate }) {
           </div>
         )}
       </div>
+      {showProfile && (
+        <div className="grid grid-cols-2">
+          {mainCandidate.profile && (
+            <div className="bg-cultured py-4 px-6 text-sm">
+              <p>{mainCandidate.profile}</p>
+            </div>
+          )}
+          {secondaryCandidate.profile && (
+            <div className="bg-cultured py-4 px-6 text-sm">
+              <p>{secondaryCandidate.profile}</p>
+            </div>
+          )}
+        </div>
+      )}
       {secondaryCandidate && (
         <div className="px-6 py-4 space-y-8">
           <ComparisonBlocksDesktop

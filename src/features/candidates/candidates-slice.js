@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import candidates from '../../data/candidates.json';
 
 const candidatesData = candidates.map((c) => ({ ...c, highlight: true }));
-const EXCLUDE_COLOR = "#3d3d3d"
+const EXCLUDE_COLOR = '#3d3d3d';
 
 const initialState = {
   all: candidatesData,
@@ -146,8 +146,8 @@ export const selectPartiesWithColor = (state) =>
     const { label, color } = candidate.party;
     if (list[label]) return list;
     if (color === EXCLUDE_COLOR) {
-      list['Otro'] = EXCLUDE_COLOR
-      return list
+      list['Otro'] = EXCLUDE_COLOR;
+      return list;
     }
     list[label] = color;
     return list;

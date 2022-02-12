@@ -1,12 +1,20 @@
 import { useSelector } from 'react-redux';
 import { selectActiveTab } from '../features/nav/nav-slice';
 import hexRgb from 'hex-rgb';
+import {
+  selectComparisonModalWindow,
+  selectSecondaryCandidate,
+} from '../features/modal/modal-slice';
 
 function CandidateCardModalHeader({
   candidate,
   showClose = true,
+  setShowProfile = () => {},
+  showProfile
 }) {
   const activeTab = useSelector(selectActiveTab);
+  const secondaryCandidate = useSelector(selectSecondaryCandidate);
+  const showComparisonModalWindow = useSelector(selectComparisonModalWindow);
   const { red, green, blue, alpha } = hexRgb(candidate.party.color, {
     alpha: 0.6,
   });
@@ -44,24 +52,36 @@ function CandidateCardModalHeader({
           />
         </div>
         <div>
-          <div className='opacity-0 text-2xl'>_</div>
+          <div className="opacity-0 text-2xl">_</div>
           <p className="text-sm">{candidate.pending}</p>
           <p className="text-xl leading-tight">{candidate.fullname}</p>
           {activeTab === 'consultas' ? (
-            <p className='text-sm'>Aval: {candidate.guarantee}</p>
+            <p className="text-sm">Aval: {candidate.guarantee}</p>
           ) : (
-            <p className='text-sm'>{candidate.party.label}</p>
+            <p className="text-sm">{candidate.party.label}</p>
           )}
-          {candidate.twitterHandle && (
-            <a
-              href={`https://twitter.com/${candidate.twitterHandle}`}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-2 inline-block"
-            >
-              <img className='w-4' src="/twitter.svg" alt="" />
-            </a>
-          )}
+          <div className="mt-1 flex items-center">
+            {candidate.twitterHandle && (
+              <a
+                href={`https://twitter.com/${candidate.twitterHandle}`}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-block mr-2"
+              >
+                <img className="w-4" src="/twitter.svg" alt="" />
+              </a>
+            )}
+            {secondaryCandidate &&
+              showComparisonModalWindow &&
+              candidate.profile && (
+                <button
+                  className="underline text-sm"
+                  onClick={() => setShowProfile(!showProfile)}
+                >
+                  {showProfile ? 'Ver menos' : 'Ver más'}
+                </button>
+              )}
+          </div>
         </div>
       </div>
     </div>
