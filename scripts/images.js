@@ -2,22 +2,14 @@ import { readFile } from 'fs/promises';
 import path from 'path'
 import Handlebars from 'handlebars'
 import puppeteer from 'puppeteer'
-import hexRgb from 'hex-rgb'
-
-const renderTemplate = (baseTemplate, candidate) => {
-  const { red, green, blue, alpha } = hexRgb(candidate.party.color, {
-    alpha: 0.6,
-  });
-  candidate.bgColor = `rgba(${red}, ${green}, ${blue}, ${alpha})`
-  return baseTemplate(candidate)
-};
+import { renderTemplate, setupHbs } from './utils.js';
 
 (async () => {
   try {
     const congressCandidates = await readFile(path.join(process.cwd(), '..', 'src', 'data', 'candidates.json'), 'utf8')
     const presidentialCandidates = await readFile(path.join(process.cwd(), '..', 'src', 'data', 'presidential.json'), 'utf8')
     const candidates = [...JSON.parse(congressCandidates), ...JSON.parse(presidentialCandidates)]
-
+    setupHbs()
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     const html = await readFile(

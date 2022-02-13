@@ -6,80 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Silla Vacía</title>
-    <style>
-        *,
-        *:before,
-        *:after {
-            box-sizing: inherit;
-            margin: 0;
-            padding: 0;
-        }
-
-        html,
-        body {
-            box-sizing: border-box;
-            color: #3b3d3b;
-            height: 1080px;
-            font-family: Arial, sans-serif;
-            width: 608px;
-        }
-
-        .candidate-card-wrapper {
-            background-color: #fafafa;
-            height: 100%;
-        }
-
-        .candidate-card-header {
-            align-items: center;
-            color: #000000;
-            display: flex;
-            padding: 1.25rem 1.5rem;
-        }
-
-        .candidate-card-header > * ~ * {
-            margin-left: 1rem;
-        }
-
-        .candidate-card-header-image {
-            flex-shrink: 0;
-            font-size: 12px;
-            text-align: center;
-            text-transform: uppercase;
-        }
-
-        .candidate-card-header-image img {
-            max-width: 100%;
-            height: auto;
-            width: 112px;
-        }
-
-        .candidate-card-header-info {
-            font-size: 14px;
-        }
-
-        .candidate-card-fullname {
-            font-size: 16px;
-        }
-
-        .candidate-card-profile {
-            background-color: #eeeeee;
-            font-size: 14px;
-            padding: 1rem 1.5rem;
-        }
-
-        .candidate-card-data {
-            padding: 1rem 1.5rem;
-            font-size: 14px;
-        }
-
-        .candidate-card-data > * ~ * {
-            margin-top: 1rem;
-        }
-
-        .text-dark-slate-blue {
-            color: #4A4595;
-        }
-    </style>
+    <link rel="stylesheet" href="http://localhost:3000/image.css">
 </head>
 
 <body>
@@ -89,43 +16,65 @@
                 {{#if coalition}}
                     <p>{{coalition}}</p>
                 {{else}}
-                    <p>#Tarjeton: {{electoralNumber}}</p>
+                    <p>{{electoral_card electoralNumber}}</p>
                 {{/if}}
                 <img src="{{photo}}" alt="">
             </div>
             <div class="candidate-card-header-info">
-                <p>{{party.label}}</p>
+                <div class="ghost">_</div>
+                {{#unless coalition}}
+                    <p class="lead-text">{{pending}}</p>
+                {{/unless}}
                 <p class="candidate-card-fullname">{{fullname}}</p>
+                {{#if coalition}}
+                    <p class="lead-text">Aval: {{guarantee}}</p>
+                {{else}}
+                    <p class="lead-text">{{party.label}}</p>
+                {{/if}}
             </div>
         </div>
         <div class="candidate-card-profile">
             {{profile}}
         </div>
         <div class="candidate-card-data">
-            <div>
-                <p class='text-dark-slate-blue'>A Presidencia apoya a</p>
-                <p>{{supportedPresidentialCandidate}}</p>
-            </div>
-            <div>
-                <p class='text-dark-slate-blue'>¿Ha sido condenado o investigado?</p>
-                <p>{{haveBeenConvictedOrInvestigated}}</p>
-            </div>
-            <div>
-                <p class='text-dark-slate-blue'>¿Hereda votos de condenado o investigado?</p>
-                <p>{{inheritVotesOfConvictedOrInvestigated}}</p>
-            </div>
-            <div>
-                <p class='text-dark-slate-blue'>Períodos en el Congreso</p>
-                <p>{{termsAsMemberOfCongress}}</p>
-            </div>
-            <div>
-                <p class='text-dark-slate-blue'>Ha ocupado un cargo público</p>
-                <p>{{hasHeldPublicOffice}}</p>
-            </div>
-            <div>
-                <p class='text-dark-slate-blue'>Sector del que viene</p>
-                <p>{{backgroundSector}}</p>
-            </div>
+            {{#if coalition}}
+            {{else}}
+                <div>
+                    <p style="color: #6b6b6b;">Banderas</p>
+                    <ul class="candidate-card-flags">
+                        {{#each flags}}
+                            <li>{{this}}</li>
+                            {{#unless @last}}
+                                <li>•</li>
+                            {{/unless}}
+                        {{/each}}
+                    </ul>
+                </div>
+                <div>
+                    <p style="color: #6b6b6b;">A Presidencia apoya a</p>
+                    <p>{{supportedPresidentialCandidate}}</p>
+                </div>
+                <div>
+                    <p style="color: #6b6b6b;">¿Ha sido condenado o investigado?</p>
+                    <p>{{haveBeenConvictedOrInvestigated}}</p>
+                </div>
+                <div>
+                    <p style="color: #6b6b6b;">¿Hereda votos de condenado o investigado?</p>
+                    <p>{{inheritVotesOfConvictedOrInvestigated}}</p>
+                </div>
+                <div>
+                    <p style="color: #6b6b6b;">Períodos en el Congreso</p>
+                    <p>{{termsAsMemberOfCongress}}</p>
+                </div>
+                <div>
+                    <p style="color: #6b6b6b;">Ha ocupado un cargo público</p>
+                    <p>{{hasHeldPublicOffice}}</p>
+                </div>
+                <div>
+                    <p style="color: #6b6b6b;">Sector del que viene</p>
+                    <p>{{backgroundSector}}</p>
+                </div>
+            {{/if}}
         </div>
     </div>
 </body>

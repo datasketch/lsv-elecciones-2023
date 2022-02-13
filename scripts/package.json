@@ -8,13 +8,18 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "gen:data": "node transform.js",
     "gen:images": "node images.js",
-    "gen": "npm run gen:data && npm run gen:images"
+    "gen": "npm run gen:data && npm run gen:images",
+    "dev": "nodemon -e js,hbs dev.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.2",
     "handlebars": "^4.7.7",
     "puppeteer": "^13.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }

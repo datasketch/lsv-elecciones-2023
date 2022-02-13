@@ -1,0 +1,109 @@
+@font-face {
+    font-family: 'Martin';
+    src: url('/fonts/Martin-Regular.ttf');
+}
+@font-face {
+    font-family: 'Manrope';
+    src: url('/fonts/Manrope-Regular.ttf');
+}
+@font-face {
+    font-family: 'Manrope';
+    src: url('/fonts/Manrope-Bold.ttf');
+    font-weight: 700
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    box-sizing: border-box;
+    color: #3b3d3b;
+    height: 1080px;
+    font-family: Manrope, sans-serif;
+    width: 608px;
+}
+
+.lead-text {
+    font-size: 20px;
+}
+
+.candidate-card-wrapper {
+    background-color: #fafafa;
+    height: 100%;
+}
+
+.candidate-card-header {
+    align-items: flex-start;
+    color: #000000;
+    display: flex;
+    padding: 1.25rem 1.5rem;
+}
+
+.candidate-card-header > * ~ * {
+    margin-left: 1rem;
+}
+
+.candidate-card-header-image {
+    flex-shrink: 0;
+    font-size: 28px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: Martin;
+    color: #000000;
+}
+
+.ghost {
+    font-size: 28px;
+    opacity: 0;
+}
+
+.candidate-card-header-image img {
+    max-width: 100%;
+    height: auto;
+    width: 112px;
+}
+
+.candidate-card-header-info {
+    font-size: 14px;
+}
+
+.candidate-card-fullname {
+    font-size: 28px;
+}
+
+.candidate-card-profile {
+    background-color: #eeeeee;
+    font-size: 20px;
+    padding: 1rem 1.5rem;
+}
+
+.candidate-card-data {
+    padding: 1rem 1.5rem;
+    font-size: 20px;
+}
+
+.candidate-card-data > * ~ * {
+    margin-top: 1rem;
+}
+
+.candidate-card-flags {
+    align-items: center;
+    display: flex;
+    flex-shrink: 1;
+    font-size: 14px;
+    line-height: 1.25;
+    list-style-type: none;
+    margin-top: 4px;
+    max-width: 100%;
+    text-transform: uppercase;
+}
+
+.candidate-card-flags > * ~ * {
+    margin-left: 8px;
+}

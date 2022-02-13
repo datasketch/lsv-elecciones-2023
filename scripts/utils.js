@@ -1,3 +1,6 @@
+import Handlebars from "handlebars";
+import hexRgb from "hex-rgb";
+
 export const partyColorMap = {
   'Colombia Humana': '#FA00B9',
   'ADA': '#FA487D',
@@ -52,3 +55,19 @@ export const inheritVotesOfConvictedOrInvestigated = (candidate) => {
   else if (candidate.heirToVotesUnderInvestigation === 'Sí')
     return 'De investigado';
 };
+
+export const renderTemplate = (baseTemplate, candidate) => {
+  const { red, green, blue, alpha } = hexRgb(candidate.party.color, {
+    alpha: 0.6,
+  });
+  candidate.bgColor = `rgba(${red}, ${green}, ${blue}, ${alpha})`
+  return baseTemplate(candidate)
+};
+
+export const setupHbs = () => {
+  Handlebars.registerHelper('electoral_card', function (str) {
+    const num = parseInt(str, 10)
+    if (num) return `#Tarjetón: ${str}`
+    return str
+  })
+}
