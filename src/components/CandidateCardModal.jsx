@@ -20,8 +20,10 @@ function CandidateCardModal() {
       <div className="py-4 px-6 text-sm">
         {candidate.flags && !!candidate.flags.length && (
           <>
-            <p className='text-dim-gray'>Banderas</p>
-            <ul className={`mt-1 mb-4 flex text-xxs uppercase leading-tight items-center space-x-2 flex-shrink-1 max-w-full`}>
+            <p className="text-dim-gray">Banderas</p>
+            <ul
+              className={`mt-1 mb-4 flex text-xxs uppercase leading-tight items-center space-x-2 flex-shrink-1 max-w-full`}
+            >
               {candidate.flags.map((flag, index) => (
                 <>
                   <li key={`flag-${index}`}>

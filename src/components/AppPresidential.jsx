@@ -22,7 +22,12 @@ function AppPresidential() {
             Candidatos fuera de consultas
           </h2>
           <p className="mt-4">
-            En el 2022 las consultas se volvieron la primera vuelta de unas presidenciales que ahora son de tres vueltas. Pero hay candidatos que decidieron no participar o no encontraron espacio dentro de las coaliciones. Ellos aspiran a llegar a primera vuelta sin el impulso de la campaña a las elecciones de marzo. Serán figuras claves en el juego posterior, el de las posibles alianzas y adhesiones.
+            En el 2022 las consultas se volvieron la primera vuelta de unas
+            presidenciales que ahora son de tres vueltas. Pero hay candidatos
+            que decidieron no participar o no encontraron espacio dentro de las
+            coaliciones. Ellos aspiran a llegar a primera vuelta sin el impulso
+            de la campaña a las elecciones de marzo. Serán figuras claves en el
+            juego posterior, el de las posibles alianzas y adhesiones.
           </p>
         </div>
         <div className="lg:w-1/2">

@@ -10,7 +10,7 @@ function CandidateCardModalHeader({
   candidate,
   showClose = true,
   setShowProfile = () => {},
-  showProfile
+  showProfile,
 }) {
   const activeTab = useSelector(selectActiveTab);
   const secondaryCandidate = useSelector(selectSecondaryCandidate);

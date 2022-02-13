@@ -1,8 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const coalitions = {
+  'Pacto Histórico': 'Nació en julio de 2021 como una invitación de Gustavo Petro a otros movimientos. Inicialmente recogió a los partidos de izquierda, varios sindicatos y organizaciones sociales de afros e indígenas. Luego ha buscado atraer a políticos liberales y sectores cristianos. Todos se han aglutinado bajo el liderazgo de Petro, quien propone un cambio profundo del modelo económico. Lanzó una lista cerrada al Senado y varias a Cámara. Su plataforma incluye propuestas de intervención estatal fuerte en la economía para superar la desigualdad y la pobreza.',
+  'Centro Esperanza': 'Nació en julio de 2021 como una alianza de políticos independientes, disidentes del liberalismo y miembros del partido Verde. Hacia finales del año incorporó a Alejandro Gaviria e Ingrid Betancourt, que luego se salió. Propone una política alejada de la polarización y afirma ser una alternativa al uribismo y al petrismo. Lanzó una lista al Senado y varias a la Cámara. Es una plataforma de centro izquierda, que propone un reformismo gradual, con un Estado activo en la regulación de los mercados, pero respetuoso de la libre empresa.',
+  'Equipo por Colombia': 'Nació en noviembre del 2021 como una alianza de políticos con experiencia de gobierno en gobiernos regionales. Es la alianza que cuenta con el apoyo de la mayoría de los partidos tradicionales. La mayoría de sus integrantes apoyaron al Gobierno Duque e ideológicamente son los más conservadores. Sin embargo, tomaron la decisión crucial de no incorporar al Centro Democrático a la coalición. Se han perfilado como buenos ejecutores, y defensores de la democracia ante las amenazas del populismo.'
+}
+
 const initialState = {
   showMainModalWindow: false,
   showComparisonModalWindow: false,
+  showCoalitionModalWindow: false,
+  selectedCoalition: {
+    label: '',
+    description: ''
+  },
   blocks: {
     congress: [
       ['A Presidencia apoya a', 'supportedPresidentialCandidate'],
@@ -53,6 +64,15 @@ const modalSlice = createSlice({
       }
       state.candidates.secondary = action.payload;
     },
+    toggleCoalitionModalWindow(state, action) {
+      state.showCoalitionModalWindow = !state.showCoalitionModalWindow;
+      if (!action.payload) {
+        state.selectedCoalition = { label: '', description: '' }
+      } else {
+        state.selectedCoalition.label = action.payload
+        state.selectedCoalition.description = coalitions[action.payload]
+      }
+    },
   },
 });
 
@@ -60,6 +80,7 @@ export const {
   toggleMainModalWindow,
   toggleComparisonModalWindow,
   setSecondaryCandidate,
+  toggleCoalitionModalWindow
 } = modalSlice.actions;
 export const selectMainModalWindow = (state) => state.modal.showMainModalWindow;
 export const selectMainCandidate = (state) => state.modal.candidates.main;
@@ -71,5 +92,8 @@ export const selectCongressCandidatesBlocks = (state) =>
   state.modal.blocks.congress;
 export const selectPresidentialCandidatesBlocks = (state) =>
   state.modal.blocks.presidential;
+export const selectShowCoalitionModalWindow = (state) =>
+  state.modal.showCoalitionModalWindow;
+export const selectSelectedCoalition = state => state.modal.selectedCoalition
 
 export default modalSlice.reducer;
