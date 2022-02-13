@@ -34,7 +34,6 @@ function FiltersSection() {
           label="Cámara"
           options={offices}
           onChange={(e) => dispatch(filterByOffice(e.target.value))}
-          className="hidden md:block"
         />
         <FilterSelect
           id="departamento"
@@ -47,6 +46,7 @@ function FiltersSection() {
           label="Partido"
           options={parties}
           onChange={(e) => dispatch(filterByParty(e.target.value))}
+          className="col-span-2 md:col-span-1"
         />
         <FilterSelect
           id="candidato-que-apoya"
