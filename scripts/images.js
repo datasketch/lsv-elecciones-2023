@@ -19,6 +19,7 @@ import { renderTemplate, setupHbs } from './utils.js';
     const template = Handlebars.compile(html)
     for (let i = 0; i < candidates.length; i++) {
       const candidate = candidates[i];
+      candidate.profile = candidate.profile.slice(0, 550)
       await page.setContent(renderTemplate(template, candidate));
       await page.screenshot({
         path: path.join(
