@@ -7,9 +7,9 @@ function AppHeader() {
   const activeTab = useSelector(selectActiveTab)
   return (
     <>
-      <h1 className="uppercase font-martin text-7xl text-center lg:text-8xl">
-        Elecciones 2022
-      </h1>
+      <div className='max-w-md mx-auto pt-6'>
+        <img className="max-w-full mx-auto" src="/logo-elecciones-2022.svg" alt="" />
+      </div>
       {!hideNav && (
         <div className="mx-auto max-w-xs mt-6 md:max-w-lg">
           <AppNav />
