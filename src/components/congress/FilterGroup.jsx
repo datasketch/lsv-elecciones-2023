@@ -87,7 +87,7 @@ function FilterGroup() {
                 <FilterCheckbox
                   label="Rango de edad"
                   options={ages}
-                  name="age"
+                  name="ageRange"
                 />
               </div>
             </div>

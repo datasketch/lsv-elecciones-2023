@@ -17,14 +17,13 @@ const initialState = {
   blocks: {
     congress: [
       ['A Presidencia apoya a', 'supportedPresidentialCandidate'],
-      ['¿Ha sido condenado o investigado?', 'haveBeenConvictedOrInvestigated'],
+      ['Edad', 'age'],
       [
-        '¿Hereda votos de condenado o investigado?',
-        'inheritVotesOfConvictedOrInvestigated',
+        'Nivel de estudios',
+        'educationalLevel',
       ],
-      ['Períodos en el Congreso', 'termsAsMemberOfCongress'],
-      ['Ha ocupado un cargo público', 'hasHeldPublicOffice'],
-      ['Sector del que viene', 'backgroundSector'],
+      ['Líos o cuestionamientos', 'hasQuestioning'],
+      ['Experiencia más alta en el Estado', 'hasExperienceInNation'],
     ],
     presidential: [
       ['Voto en el Plebiscito', 'voteInThePlebiscite'],

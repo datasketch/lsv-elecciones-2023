@@ -11,7 +11,7 @@ const initialState = {
   ageRanges: Array.from(
     new Set(
       candidatesData.reduce(
-        (result, candidate) => [...result, candidate.age],
+        (result, candidate) => [...result, candidate.ageRange],
         []
       )
     )
@@ -24,7 +24,7 @@ const initialState = {
     gender: '',
     backgroundSector: '',
     fullname: '',
-    age: '',
+    ageRange: '',
   },
 };
 
@@ -57,7 +57,7 @@ const candidatesSlice = createSlice({
       // Should we reset these filters here?
       state.filters.gender = '';
       state.filters.backgroundSector = '';
-      state.filters.age = '';
+      state.filters.ageRange = '';
       Object.entries(action.payload).forEach(([key, value]) => {
         state.filters[key] = value;
       });

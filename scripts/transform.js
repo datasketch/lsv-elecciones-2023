@@ -57,10 +57,9 @@ function mapValues(data) {
             record.secondFlag,
             record.thirdFlag,
           ].filter((flag) => flag),
-          age:
-            record.age.toLowerCase() === 'sin datos'
-              ? record.age
-              : getGroupAge(record.age),
+          ageRange: record.age.toLowerCase() === 'sin datos'
+            ? record.age
+            : getGroupAge(record.age)
         };
       })
       .filter((record) => record.id)
