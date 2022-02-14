@@ -1,0 +1,5 @@
+[[headers]]
+    for="/fonts/*"
+    [headers.values]
+        cache-control="max-age=365000000,public,immutable"
+        Access-Control-Allow-Origin="*"
