@@ -17,7 +17,7 @@ function AppHeader() {
       )}
       { activeTab === 'consultas' && (
         <div className='max-w-xl mx-auto text-center mt-6 text-sm'>
-          <p>Las consultas presidenciales son el próximo 13 de marzo. El mismo día de las elecciones al Congreso, los votantes podrán pedir un tarjetón, de una de las tres coaliciones, para votar por el candidato que quieren que llegue a primera vuelta.</p>
+          <p>Las consultas presidenciales son el próximo 13 de marzo. El mismo día de las elecciones al Congreso, los votantes podrán pedir el tarjetón de una de las tres consultas para votar por el candidato que quieren que llegue a primera vuelta.</p>
           <p className='italic mt-4'>Haga click en los candidatos y empiece a compararlos</p>
         </div>
       )}
