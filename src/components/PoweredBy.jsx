@@ -10,7 +10,7 @@ function PoweredBy() {
       </div>
       <div className="pl-4 md:pl-6">
         <a
-          href="https://www.datasketch.co"
+          href="https://www.datasketch.co?utm_source=la-silla-vacia&utm_medium=elecciones-2022-app&utm_campaign=la-silla-vacia"
           target="_blank"
           rel="noopener noreferrer"
         >
