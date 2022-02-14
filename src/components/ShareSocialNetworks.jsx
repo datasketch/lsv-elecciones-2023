@@ -4,7 +4,7 @@ import { selectMainCandidate } from '../features/modal/modal-slice';
 function ShareSocialNetworks() {
   const candidate = useSelector(selectMainCandidate);
   const link = encodeURI(
-    `${process.env.REACT_APP_PARENT_DOMAIN}/${candidate.id}`
+    `${process.env.REACT_APP_PARENT_DOMAIN}?candidato=${candidate.id}`
   );
   const text = `Visita el perfil de ${candidate.fullname}`;
 
