@@ -1,12 +1,16 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { selectSelectedCoalition, selectShowCoalitionModalWindow, toggleCoalitionModalWindow } from "../features/modal/modal-slice";
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import {
+  selectSelectedCoalition,
+  selectShowCoalitionModalWindow,
+  toggleCoalitionModalWindow,
+} from '../features/modal/modal-slice';
 
 function ModalCoalitionWindow() {
-  const dispatch = useDispatch()
-  const showCoalitionModalWindow = useSelector(selectShowCoalitionModalWindow)
-  const selectedCoalition = useSelector(selectSelectedCoalition)
+  const dispatch = useDispatch();
+  const showCoalitionModalWindow = useSelector(selectShowCoalitionModalWindow);
+  const selectedCoalition = useSelector(selectSelectedCoalition);
 
   useEffect(() => {
     const evtHandler = (e) => {
@@ -26,20 +30,24 @@ function ModalCoalitionWindow() {
     }
   };
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-20 p-6" onClick={handleClick}>
+    <div
+      className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-20 p-6"
+      onClick={handleClick}
+    >
       <div className="bg-jet w-96 max-w-full max-h-full p-6 text-soft-white overflow-auto relative">
-        <button className="absolute top-3 right-3 stroke-current fill-current" datadismiss="true">
+        <button
+          className="absolute top-3 right-3 stroke-current fill-current"
+          datadismiss="true"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
-            <path d="M12.519 14-.003 1.478 1.475 0l12.522 12.522Z"/>
+            <path d="M12.519 14-.003 1.478 1.475 0l12.522 12.522Z" />
             <path d="M14 1.478 1.478 14 0 12.522 12.522 0Z" />
           </svg>
         </button>
         <p className="text-bone font-martin text-center uppercase text-5xl lg:text-6xl">
           {selectedCoalition.label}
         </p>
-        <p className="mt-4">
-        {selectedCoalition.description}
-        </p>
+        <p className="mt-4">{selectedCoalition.description}</p>
       </div>
     </div>
   );

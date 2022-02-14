@@ -4,7 +4,7 @@ import CoalitionHeader from './CoalitionHeader';
 import ElectoralColumn from './ElectoralColumn';
 
 function CandidateList({ candidates }) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   return (
     <div className="border-b-2 border-jet grid grid-cols-1 py-8 md:grid-cols-3 md:gap-6">
       {Object.entries(candidates).map(([label, c]) => (
