@@ -20,7 +20,7 @@ const initialState = {
   blocks: {
     congress: [
       ['A Presidencia apoya a', 'supportedPresidentialCandidate'],
-      ['Edad', 'age'],
+      ['Apoyo u oposición a Gobierno Duque', 'positionTowardsGovernment'],
       ['Nivel de estudios', 'educationalLevel'],
       ['Líos o cuestionamientos', 'hasQuestioning'],
       ['Experiencia más alta en el Estado', 'hasExperienceInNation'],

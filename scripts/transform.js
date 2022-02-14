@@ -17,7 +17,8 @@ const sortByElectoralNumber = compareFunction('electoralNumber');
 function mapValues(data) {
   return data.map((record) => {
     return Object.keys(record).reduce((result, key) => {
-      result[mapper[key]] = record[key];
+      const k = key.trim()
+      result[mapper[k]] = record[k];
       return result;
     }, {});
   });

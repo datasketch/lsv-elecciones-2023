@@ -65,6 +65,7 @@ const mapper = {
   'Ha recibido amenazas': 'hasReceivedThreats',
   'Tipo de circunscripción': 'districtType',
   'Pendiente': 'pending',
+  'Posición frente al Gobierno Duque': 'positionTowardsGovernment',
   // Presidential specific
   'Mentiras y verdades chequeadas': 'liesAndVerifiedTruths',
   Consulta: 'coalition',
