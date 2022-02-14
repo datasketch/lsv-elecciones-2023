@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Silla Vacía</title>
-    <link rel="stylesheet" href="https://lsv-elecciones-2022.datasketch.co/image.css">
+    <link rel="stylesheet" href="http://localhost:3000/image.css">
 </head>
 
 <body>
@@ -55,17 +55,19 @@
                     <p>{{decriminalizingAbortion}}</p>
                 </div>
             {{else}}
-                <div>
-                    <p style="color: #6b6b6b;">Banderas</p>
-                    <ul class="candidate-card-flags">
-                        {{#each flags}}
-                            <li>{{this}}</li>
-                            {{#unless @last}}
-                                <li>•</li>
-                            {{/unless}}
-                        {{/each}}
-                    </ul>
-                </div>
+                {{#if flags}}
+                    <div>
+                        <p style="color: #6b6b6b;">Banderas</p>
+                        <ul class="candidate-card-flags">
+                            {{#each flags}}
+                                <li>{{this}}</li>
+                                {{#unless @last}}
+                                    <li>•</li>
+                                {{/unless}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                {{/if}}
                 <div>
                     <p style="color: #6b6b6b;">A Presidencia apoya a</p>
                     <p>{{supportedPresidentialCandidate}}</p>

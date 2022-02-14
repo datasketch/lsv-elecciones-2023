@@ -1,14 +1,14 @@
 @font-face {
     font-family: 'Martin';
-    src: url('https://lsv-elecciones-2022.datasketch.co/fonts/Martin-Regular.ttf');
+    src: url('/fonts/Martin-Regular.ttf');
 }
 @font-face {
     font-family: 'Manrope';
-    src: url('https://lsv-elecciones-2022.datasketch.co/fonts/Manrope-Regular.ttf');
+    src: url('/fonts/Manrope-Regular.ttf');
 }
 @font-face {
     font-family: 'Manrope';
-    src: url('https://lsv-elecciones-2022.datasketch.co/fonts/Manrope-Bold.ttf');
+    src: url('/fonts/Manrope-Bold.ttf');
     font-weight: 700
 }
 
