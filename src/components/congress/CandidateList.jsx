@@ -13,12 +13,7 @@ function CandidateList() {
   // flex flex-col md:flex-row md:items-start md:justify-between
   return (
     <>
-      <div className="grid md:grid-cols-5">
-        {Object.entries(candidates).map(([label, c]) => (
-          <ElectoralColumn key={label} label={label} candidates={c} />
-        ))}
-      </div>
-      <div className="hidden md:grid md:grid-cols-5 border-b border-sonic-silver mt-8">
+      <div className="hidden md:grid md:grid-cols-5 border-t border-sonic-silver mb-6">
         {Object.entries(candidates).map(([label], i) => (
           <p
             key={`${label}-i`}
@@ -26,6 +21,11 @@ function CandidateList() {
           >
             {label}
           </p>
+        ))}
+      </div>
+      <div className="grid md:grid-cols-5">
+        {Object.entries(candidates).map(([label, c]) => (
+          <ElectoralColumn key={label} label={label} candidates={c} />
         ))}
       </div>
       <div className="grid grid-cols-3 gap-4 max-w-5xl mx-auto py-4 lg:grid-cols-5">
