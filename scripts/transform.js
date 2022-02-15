@@ -41,7 +41,7 @@ function mapValues(data) {
           ...record,
           fullname,
           id: slugify(fullname, { lower: true }),
-          position: record.position.toLowerCase(),
+          position: record.position ? record.position.toLowerCase() : undefined,
           supportedPresidentialCandidate:
             record.supportedPresidentialCandidate || 'Sin datos',
           // Custom fields
@@ -58,9 +58,9 @@ function mapValues(data) {
             record.secondFlag,
             record.thirdFlag,
           ].filter((flag) => flag),
-          ageRange: record.age.toLowerCase() === 'sin datos'
+          ageRange: record.age ? (record.age.toLowerCase() === 'sin datos'
             ? record.age
-            : getGroupAge(record.age)
+            : getGroupAge(record.age)) : undefined
         };
       })
       .filter((record) => record.id)
