@@ -18,6 +18,11 @@ function CandidateCardModalHeader({
   const { red, green, blue, alpha } = hexRgb(candidate.party.color, {
     alpha: 0.6,
   });
+
+  function handleImageError(e) {
+    e.target.src = 'https://www.lasillavacia.com/media/candidato-nn-h.jpg'
+  }
+
   return (
     <div
       style={{ backgroundColor: `rgba(${red}, ${green}, ${blue}, ${alpha})` }}
@@ -49,6 +54,7 @@ function CandidateCardModalHeader({
             src={candidate.photo}
             alt={candidate.fullname}
             className="max-w-full mx-auto w-28"
+            onError={handleImageError}
           />
         </div>
         <div>
