@@ -43,6 +43,11 @@ function App() {
     }
   }, [dispatch]);
 
+  useEffect(() => {
+    if (showMainModalWindow || showCoalitionModalWindow) document.body.classList.add('overflow-hidden')
+    else document.body.classList.remove('overflow-hidden')
+  }, [showMainModalWindow, showCoalitionModalWindow])
+
   useResize();
 
   return (
