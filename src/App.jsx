@@ -7,6 +7,7 @@ import Modal from './components/congress/Modal';
 import ModalCoalitionWindow from './components/ModalCoalitionWindow';
 import { selectCandidateById } from './features/candidates/candidates-slice';
 import {
+  selectComparisonModalWindow,
   selectMainModalWindow,
   selectShowCoalitionModalWindow,
   toggleMainModalWindow,
@@ -18,10 +19,13 @@ function App() {
   const dispatch = useDispatch();
   const showMainModalWindow = useSelector(selectMainModalWindow);
   const showCoalitionModalWindow = useSelector(selectShowCoalitionModalWindow);
+  const showComparisonModalWindow = useSelector(selectComparisonModalWindow)
   const activeTab = useSelector(selectActiveTab);
   const featuredCandidate = useSelector((state) =>
     selectCandidateById(state, window.LSV_FEATURED_CANDIDATE_ID)
   );
+
+  const { width } = useResize();
 
   useEffect(() => {
     if (featuredCandidate) {
@@ -44,12 +48,12 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (showMainModalWindow || showCoalitionModalWindow)
+    if ((!showMainModalWindow && !showComparisonModalWindow && !showCoalitionModalWindow) || (showComparisonModalWindow && width < 768)) {
+      document.body.classList.remove('overflow-hidden');
+    } else {
       document.body.classList.add('overflow-hidden');
-    else document.body.classList.remove('overflow-hidden');
-  }, [showMainModalWindow, showCoalitionModalWindow]);
-
-  useResize();
+    }
+  }, [showMainModalWindow, showCoalitionModalWindow, showComparisonModalWindow, width]);
 
   return (
     <>

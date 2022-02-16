@@ -26,17 +26,17 @@ function ComparisonBlocksMobile({ mainCandidate, secondaryCandidate }) {
           <p className="text-dim-gray text-center">{label}</p>
           <div className="grid grid-cols-2">
             <div className="flex items-center space-x-2 border-r border-jet pr-4">
-              <div className="relative w-10">
+              <div className="relative w-10 flex-shrink-0">
                 <CandidatePhotoOverlay candidate={mainCandidate} />
               </div>
-              <p className="text-sm">{mainCandidate[field]}</p>
+              <p className="text-xs">{mainCandidate[field]}</p>
             </div>
             {secondaryCandidate && (
               <div className="flex items-center space-x-2 pl-4">
-                <div className="relative w-10">
+                <div className="relative w-10 flex-shrink-0">
                   <CandidatePhotoOverlay candidate={secondaryCandidate} />
                 </div>
-                <p className="text-sm">{secondaryCandidate[field]}</p>
+                <p className="text-xs">{secondaryCandidate[field]}</p>
               </div>
             )}
           </div>
