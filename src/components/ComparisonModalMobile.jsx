@@ -26,7 +26,7 @@ function ComparisonModalMobile({
   }, [activeTab, congressCandidates, presidentialCandidates, setCandidates]);
 
   return (
-    <div className="bg-white w-full h-full px-6 py-4 overflow-auto lg:hidden">
+    <div className="bg-white w-full h-full max-h-full px-6 py-4 overflow-auto lg:hidden">
       <button
         className="text-dodger-blue"
         onClick={() => dispatch(toggleComparisonModalWindow())}
