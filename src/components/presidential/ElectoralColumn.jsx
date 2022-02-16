@@ -5,7 +5,7 @@ function ElectoralColumn({ candidates }) {
   const dispatch = useDispatch();
 
   function handleImageError(e) {
-    e.target.src = 'https://www.lasillavacia.com/media/candidato-nn-h.jpg'
+    e.target.src = 'https://www.lasillavacia.com/media/candidato-nn-h.jpg';
   }
 
   return (
