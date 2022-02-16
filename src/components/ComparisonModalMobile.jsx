@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSortedCongressCandidates } from '../features/candidates/candidates-slice';
@@ -18,6 +19,7 @@ function ComparisonModalMobile({
   );
   const activeTab = useSelector(selectActiveTab);
   const [candidates, setCandidates] = useState([]);
+  const container = useRef()
 
   useEffect(() => {
     const selected =
@@ -25,8 +27,12 @@ function ComparisonModalMobile({
     setCandidates(selected);
   }, [activeTab, congressCandidates, presidentialCandidates, setCandidates]);
 
+  useEffect(() => {
+    container.current.scrollTo(0, 0)
+  })
+
   return (
-    <div className="bg-white w-full h-full max-h-full px-6 py-4 overflow-auto lg:hidden">
+    <div className="bg-white w-full h-full max-h-full px-6 py-4 overflow-auto lg:hidden" ref={container}>
       <button
         className="text-dodger-blue"
         onClick={() => dispatch(toggleComparisonModalWindow())}
