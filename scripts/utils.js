@@ -1,5 +1,8 @@
+import fs from 'fs/promises'
 import Handlebars from "handlebars";
 import hexRgb from "hex-rgb";
+import path from 'path';
+import puppeteer from 'puppeteer'
 
 export const partyColorMap = {
   'Colombia Humana': '#FA00B9',
@@ -71,4 +74,51 @@ export const setupHbs = () => {
     if (num) return `#Tarjetón: ${str}`
     return str
   })
+}
+
+export const getCandidates = async (filename) => {
+  const candidatesRaw = await fs.readFile(path.join(process.cwd(), '..', 'src', 'data', `${filename}.json`), 'utf8')
+  const candidates = JSON.parse(candidatesRaw)
+  return candidates
+}
+
+export const generateImages = async () => {
+  const imageWidth = 608
+  const imageHeight = 1080
+
+  // Parse candidates
+  const congress = await getCandidates('candidates')
+  const presidential = await getCandidates('presidential')
+  const candidates = [...presidential, ...congress]
+
+  // Open new page
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+
+  // Compile template
+  setupHbs()
+  const html = await fs.readFile('card.tpl.hbs', 'utf-8');
+  const template = Handlebars.compile(html)
+
+  let images = []
+
+  for (let i = 0; i < candidates.length; i++) {
+    const candidate = candidates[i];
+    candidate.profile = candidate.profile.slice(0, 550)
+    await page.setContent(renderTemplate(template, candidate));
+    const image = await page.screenshot({
+      clip: {
+        x: 0,
+        y: 0,
+        width: imageWidth,
+        height: imageHeight
+      }
+    });
+    images.push({ id: candidate.id, body: image })
+    console.log(`Image ${i + 1}/${candidates.length}`);
+  }
+
+  await browser.close()
+
+  return images
 }

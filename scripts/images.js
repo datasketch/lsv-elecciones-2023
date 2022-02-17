@@ -1,47 +1,33 @@
-import { readFile } from 'fs/promises';
-import path from 'path'
-import Handlebars from 'handlebars'
-import puppeteer from 'puppeteer'
-import { renderTemplate, setupHbs } from './utils.js';
+import 'dotenv/config'
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3'
+import { generateImages } from "./utils.js";
 
 (async () => {
+  const client = new S3Client({
+    credentials: {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    },
+    region: 'us-east-1'
+  })
   try {
-    const congressCandidates = await readFile(path.join(process.cwd(), '..', 'src', 'data', 'candidates.json'), 'utf8')
-    const presidentialCandidates = await readFile(path.join(process.cwd(), '..', 'src', 'data', 'presidential.json'), 'utf8')
-    const candidates = [...JSON.parse(congressCandidates), ...JSON.parse(presidentialCandidates)]
-    setupHbs()
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    const html = await readFile(
-      'card.tpl.hbs',
-      'utf-8'
-    );
-    const template = Handlebars.compile(html)
-    for (let i = 0; i < candidates.length; i++) {
-      const candidate = candidates[i];
-      candidate.profile = candidate.profile.slice(0, 550)
-      await page.setContent(renderTemplate(template, candidate));
-      await page.screenshot({
-        path: path.join(
-          process.cwd(),
-          '..',
-          'public',
-          'candidatos',
-          `${candidate.id}.png`
-        ),
-        clip: {
-          x: 0,
-          y: 0,
-          width: 608,
-          height: 1080
-        }
-      });
-      console.log(`${i + 1}/${candidates.length} images`);
-      console.log('---------');
+    const images = await generateImages()
+    console.group('Uploading images to AWS S3. This may take a while')
+    for (let i = 0; i < images.length; i++) {
+      const image = images[i];
+      const command = new PutObjectCommand({
+        Bucket: 'dsktch-la-silla-vacia',
+        Key: `elecciones-2022/tarjetas/${image.id}.png`,
+        Body: image.body
+      })
+      const response = await client.send(command)
+      if (response['$metadata'].httpStatusCode === 200) {
+        console.log(`Uploaded ${i + 1} of ${images.length}`);
+      }
     }
-    await browser.close();
+    console.groupEnd()
   } catch (error) {
     console.error(error);
-    process.exit(1);
+    process.exit(1)
   }
 })();
