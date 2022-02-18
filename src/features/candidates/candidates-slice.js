@@ -25,6 +25,7 @@ const initialState = {
     backgroundSector: '',
     fullname: '',
     ageRange: '',
+    pending: '',
   },
 };
 
@@ -67,6 +68,10 @@ const candidatesSlice = createSlice({
       state.filters.fullname = action.payload.trim();
       state.filtered = highlightCandidates(state);
     },
+    filterByPending(state, action) {
+      state.filters.pending = action.payload
+      state.filtered = highlightCandidates(state)
+    }
   },
 });
 
@@ -110,6 +115,7 @@ export const {
   filterBySupportedCandidatePresidential,
   filterGroup,
   filterBySearch,
+  filterByPending
 } = candidatesSlice.actions;
 
 export const selectAllCandidates = (state) => {
@@ -170,6 +176,8 @@ export const selectSortedCongressCandidates = (state) =>
   });
 
 export const selectAgeRanges = (state) => state.candidates.ageRanges;
+
+export const selectCandidatesTo = state => getCategories(state.candidates.all, 'pending')
 
 export const selectCandidateById = createSelector(
   (state) => state.candidates.all,

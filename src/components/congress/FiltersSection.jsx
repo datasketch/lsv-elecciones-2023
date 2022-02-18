@@ -1,13 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  filterByDepartment,
   selectParties,
-  selectDepartments,
   filterByParty,
   selectSupportedPresidentialCandidate,
   filterBySupportedCandidatePresidential,
-  selectOffices,
-  filterByOffice,
+  selectCandidatesTo,
+  filterByPending,
 } from '../../features/candidates/candidates-slice';
 import FilterSelect from './FilterSelect';
 import FilterGroup from './FilterGroup';
@@ -18,8 +16,7 @@ import { selectGridView } from '../../features/view/view-slice';
 function FiltersSection() {
   const dispatch = useDispatch();
   const parties = useSelector(selectParties);
-  const departments = useSelector(selectDepartments);
-  const offices = useSelector(selectOffices);
+  const candidatesTo = useSelector(selectCandidatesTo)
   const supportedPresidentialCandidates = useSelector(
     selectSupportedPresidentialCandidate
   );
@@ -30,23 +27,16 @@ function FiltersSection() {
     <div className="flex flex-col py-6 space-y-4 xl:flex-row xl:space-y-0 xl:space-x-4">
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         <FilterSelect
-          id="camara"
-          label="Cámara"
-          options={offices}
-          onChange={(e) => dispatch(filterByOffice(e.target.value))}
-        />
-        <FilterSelect
-          id="departamento"
-          label="Departamento"
-          options={departments}
-          onChange={(e) => dispatch(filterByDepartment(e.target.value))}
+          id="candidato-a"
+          label="Candidato a"
+          options={candidatesTo}
+          onChange={(e) => dispatch(filterByPending(e.target.value))}
         />
         <FilterSelect
           id="partido"
           label="Partido"
           options={parties}
           onChange={(e) => dispatch(filterByParty(e.target.value))}
-          className="col-span-2 md:col-span-1"
         />
         <FilterSelect
           id="candidato-que-apoya"
