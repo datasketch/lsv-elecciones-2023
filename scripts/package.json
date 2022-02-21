@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "gen:data": "node transform.js",
-    "gen:images": "node images.js",
+    "gen:images": "node images.js && node image-db.js",
     "gen": "npm run gen:data && npm run gen:images",
     "dev": "nodemon -e js,hbs dev.js"
   },
@@ -19,6 +19,7 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "handlebars": "^4.7.7",
+    "papaparse": "^5.3.1",
     "puppeteer": "^13.3.1"
   },
   "devDependencies": {
