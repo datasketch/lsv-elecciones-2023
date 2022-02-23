@@ -66,6 +66,7 @@ const mapper = {
   'Tipo de circunscripción': 'districtType',
   'Pendiente': 'pending',
   'Posición frente al Gobierno Duque': 'positionTowardsGovernment',
+  'Perfil corto para BOT': 'imageProfile',
   // Presidential specific
   'Mentiras y verdades chequeadas': 'liesAndVerifiedTruths',
   Consulta: 'coalition',
