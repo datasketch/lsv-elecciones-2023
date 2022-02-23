@@ -37,6 +37,7 @@ body {
 .candidate-card-wrapper {
     background-color: #fafafa;
     height: 100%;
+    position: relative;
 }
 
 .candidate-card-header {
@@ -85,7 +86,7 @@ body {
 }
 
 .candidate-card-data {
-    padding: 1rem 1.5rem;
+    padding: 1rem 1.5rem 40px;
     font-size: 20px;
 }
 
@@ -107,4 +108,12 @@ body {
 
 .candidate-card-flags > * ~ * {
     margin-left: 8px;
+}
+
+.candidate-card-logo {
+    bottom: 0;
+    height: 40px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
 }

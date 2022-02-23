@@ -104,7 +104,7 @@ export const generateImages = async () => {
 
   for (let i = 0; i < candidates.length; i++) {
     const candidate = candidates[i];
-    candidate.profile = candidate.profile.slice(0, 550)
+    candidate.profile = candidate.profile.slice(0, 650)
     await page.setContent(renderTemplate(template, candidate));
     const image = await page.screenshot({
       clip: {

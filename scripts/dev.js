@@ -21,7 +21,7 @@ app.get('/:id', (req, res, next) => {
     const { id } = req.params
     const candidate = candidates.find(candidate => candidate.id === id)
     if (!candidate) return next()
-    candidate.profile = candidate.profile.slice(0, 550)
+    candidate.profile = candidate.profile.slice(0, 650)
     const html = renderTemplate(template, candidate)
     res.send(html)
 })
