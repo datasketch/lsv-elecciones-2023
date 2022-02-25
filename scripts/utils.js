@@ -21,11 +21,12 @@ export const partyColorMap = {
   'Colombia Justa Libres': '#AF4D13',
   Mira: '#202C54',
   'Centro Democrático': '#2A92FF',
-  'Estamos listas': '#BC8541',
+  'Estamos Listas': '#BC8541',
   Comunes: '#300202',
   'Polo Democrático': '#F0DC00',
-  // 'Pacto Histórico': '#fc00bb',
   'Pacto Histórico': '#FA00B9',
+  'Fuerza Ciudadana': '#FF5E09',
+  'Movimiento de Salvación Nacional': '#566b82',
   Otro: '#3d3d3d',
 };
 
