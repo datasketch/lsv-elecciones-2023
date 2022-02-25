@@ -105,18 +105,21 @@ export const generateImages = async () => {
 
   for (let i = 0; i < candidates.length; i++) {
     const candidate = candidates[i];
+    console.group('Image');
+    console.log(`candidate.id: ${candidate.id}`);
     candidate.imageProfile = candidate.imageProfile ? candidate.imageProfile.slice(0, 650) : ''
-    await page.setContent(renderTemplate(template, candidate));
+    await page.setContent(renderTemplate(template, candidate), { timeout: 0 });
     const image = await page.screenshot({
       clip: {
         x: 0,
         y: 0,
         width: imageWidth,
         height: imageHeight
-      }
+      },
     });
     images.push({ id: candidate.id, body: image })
-    console.log(`Image ${i + 1}/${candidates.length}`);
+    console.log(`progress: ${i + 1}/${candidates.length}`);
+    console.groupEnd()
   }
 
   await browser.close()
