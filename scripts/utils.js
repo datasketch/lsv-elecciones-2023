@@ -27,6 +27,7 @@ export const partyColorMap = {
   'Pacto Histórico': '#FA00B9',
   'Fuerza Ciudadana': '#FF5E09',
   'Movimiento de Salvación Nacional': '#566b82',
+  'Unión Patriótica': '#FF62A4',
   Otro: '#3d3d3d',
 };
 
