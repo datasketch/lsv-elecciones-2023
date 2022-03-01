@@ -18,7 +18,11 @@
                 {{else}}
                     <p>{{electoral_card electoralNumber}}</p>
                 {{/if}}
-                <img src="{{photo}}" alt="">
+                {{#if photo}}
+                    <img src="{{photo}}" alt="">
+                {{else}}
+                    <img src="https://www.lasillavacia.com/media/candidato-nn-h.jpg" alt="">
+                {{/if}}
             </div>
             <div class="candidate-card-header-info">
                 <div class="ghost">_</div>
