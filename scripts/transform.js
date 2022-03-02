@@ -37,6 +37,9 @@ function mapValues(data) {
           if (match.length === 2) return str;
           return `${match.substring(0, 2)} - ${match.substring(2)}`;
         };
+        if (!record.photo) {
+          console.log(fullname);
+        }
         return {
           ...record,
           fullname,
