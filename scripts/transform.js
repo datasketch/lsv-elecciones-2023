@@ -61,9 +61,9 @@ function mapValues(data) {
             record.secondFlag,
             record.thirdFlag,
           ].filter((flag) => flag),
-          ageRange: record.age ? (record.age.toLowerCase() === 'sin datos'
-            ? record.age
-            : getGroupAge(record.age)) : 'Sin datos'
+          ageRange: record.age ? (record.age.toString().toLowerCase() === 'sin datos'
+            ? record.age.toString()
+            : getGroupAge(record.age.toString())) : 'Sin datos'
         };
       })
       .filter((record) => record.id)
