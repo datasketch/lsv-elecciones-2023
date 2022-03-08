@@ -51,6 +51,29 @@ const initialState = {
         'forcingPublicOfficialsToGetVaccinated',
       ],
     ],
+    presidentialElections: [
+      ['Trayectoria'],
+      ['Máximo de personas que ha tenido a cargo', 'maximumNumberOfDependents'],
+      [
+        'Ha tenido la responsabilidad de tomar decisiones determinantes para el país',
+        'responsibilityForDecisiveDecisionsForTheCountry',
+      ],
+      ['Máximo cargo en el Ejecutivo', 'highestPositionInTheExecutive'],
+      [
+        'Máximo cargo en el sector privado',
+        'highestPositionInThePrivateSector',
+      ],
+      ['¿Qué piensa?'],
+      ['Voto en el Plebiscito', 'voteInThePlebiscite'],
+      ['Despenalización total del aborto', 'decriminalizingAbortion'],
+      ['Apoyo u oposición a Gobierno Duque', 'oppositionOrSupportToGovernment'],
+      ['Subir el impuesto al patrimonio', 'raisingTheWealthTax'],
+      [
+        'Obligar a funcionarios públicos a vacunarse',
+        'forcingPublicOfficialsToGetVaccinated',
+      ],
+      ['¿Cómo es?'],
+    ],
   },
   candidates: {
     main: '',
@@ -113,6 +136,9 @@ export const selectComparisonModalWindow = (state) => state.modal.showComparison
 export const selectCongressCandidatesBlocks = (state) => state.modal.blocks.congress;
 
 export const selectPresidentialCandidatesBlocks = (state) => state.modal.blocks.presidential;
+
+export const selectPresidentialElectionsCandidatesBlocks = (state) => state
+  .modal.blocks.presidentialElections;
 
 export const selectShowCoalitionModalWindow = (state) => state.modal.showCoalitionModalWindow;
 

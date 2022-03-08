@@ -78,6 +78,11 @@ function CandidateCardModalHeader({
             <p className="text-sm">{candidate.party.label}</p>
           )}
           <div className="mt-1 flex items-center">
+            {activeTab === 'elecciones-presidenciales' && (
+              <a href="https://example.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-black uppercase text-xxs py-0 px-4 mr-2">
+                Ver perfil
+              </a>
+            )}
             {candidate.twitterHandle && (
               <a
                 href={`https://twitter.com/${candidate.twitterHandle}`}
@@ -90,7 +95,7 @@ function CandidateCardModalHeader({
             )}
             {secondaryCandidate
               && showComparisonModalWindow
-              && candidate.profile && (
+              && candidate.profile && activeTab !== 'elecciones-presidenciales' && (
                 <button
                   className="underline text-sm"
                   onClick={() => setShowProfile(!showProfile)}

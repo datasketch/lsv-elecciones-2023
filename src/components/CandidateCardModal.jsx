@@ -6,9 +6,11 @@ import ShareButton from './ShareButton';
 import CandidateCardModalHeader from './CandidateCardModalHeader';
 import CandidateCardModalDataDesktop from './CandidateCardModalDataDesktop';
 import ReadMore from './ReadMore';
+import { selectActiveTab } from '../features/nav/nav-slice';
 
 function CandidateCardModal() {
   const candidate = useSelector(selectMainCandidate);
+  const activeTab = useSelector(selectActiveTab);
 
   return (
     <div className="bg-soft-white w-96 max-w-full max-h-full overflow-auto">
@@ -19,7 +21,7 @@ function CandidateCardModal() {
         </div>
       )}
       <div className="py-4 px-6 text-sm">
-        {candidate.flags && !!candidate.flags.length && (
+        {activeTab !== 'elecciones-presidenciales' && candidate.flags && !!candidate.flags.length && (
           <>
             <p className="text-dim-gray">Banderas</p>
             <ul className="mt-1 mb-4 flex text-xxs uppercase leading-tight items-center space-x-2 flex-shrink-1 max-w-full">
