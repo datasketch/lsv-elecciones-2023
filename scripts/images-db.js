@@ -1,6 +1,7 @@
 import Papa from 'papaparse';
 import fs from 'fs';
-import { getCandidates } from './utils';
+// eslint-disable-next-line import/extensions
+import { getCandidates } from './utils.js';
 
 (async () => {
   const baseURL = 'https://dsktch-la-silla-vacia.s3.amazonaws.com/elecciones-2022/tarjetas/';
