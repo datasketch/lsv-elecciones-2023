@@ -1,8 +1,11 @@
 import { writeFile, readFile } from 'fs/promises';
 import path from 'path';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import slugify from 'slugify';
+// eslint-disable-next-line import/extensions
 import mapper from './mapper.js';
-import { partyColorMap, haveBeenConvictedOrInvestigated, inheritVotesOfConvictedOrInvestigated } from './utils.js'
+// eslint-disable-next-line import/extensions
+import { partyColorMap, haveBeenConvictedOrInvestigated, inheritVotesOfConvictedOrInvestigated } from './utils.js';
 
 function compareFunction(key) {
   return (a, b) => {
@@ -15,19 +18,18 @@ function compareFunction(key) {
 const sortByElectoralNumber = compareFunction('electoralNumber');
 
 function mapValues(data) {
-  return data.map((record) => {
-    return Object.keys(record).reduce((result, key) => {
-      const k = key.trim()
-      result[mapper[k]] = record[k];
-      return result;
-    }, {});
-  });
+  return data.map((record) => Object.keys(record).reduce((result, key) => {
+    const k = key.trim();
+    // eslint-disable-next-line no-param-reassign
+    result[mapper[k]] = record[k];
+    return result;
+  }, {}));
 }
 
 (async () => {
   try {
-    const rawCongress = await readFile(path.join(process.cwd(), '..', 'src', 'data', 'raw-congress.json'), 'utf8')
-    const rawPresidential = await readFile(path.join(process.cwd(), '..', 'src', 'data', 'raw-presidential.json'), 'utf8')
+    const rawCongress = await readFile(path.join(process.cwd(), '..', 'src', 'data', 'raw-congress.json'), 'utf8');
+    const rawPresidential = await readFile(path.join(process.cwd(), '..', 'src', 'data', 'raw-presidential.json'), 'utf8');
     const congress = mapValues(JSON.parse(rawCongress))
       .map((record) => {
         const { name, firstLastName, secondLastName } = record;
@@ -61,9 +63,10 @@ function mapValues(data) {
             record.secondFlag,
             record.thirdFlag,
           ].filter((flag) => flag),
+          // eslint-disable-next-line no-nested-ternary
           ageRange: record.age ? (record.age.toString().toLowerCase() === 'sin datos'
             ? record.age.toString()
-            : getGroupAge(record.age.toString())) : 'Sin datos'
+            : getGroupAge(record.age.toString())) : 'Sin datos',
         };
       })
       .filter((record) => record.id)

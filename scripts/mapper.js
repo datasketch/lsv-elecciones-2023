@@ -64,7 +64,7 @@ const mapper = {
   Circunscripción: 'district',
   'Ha recibido amenazas': 'hasReceivedThreats',
   'Tipo de circunscripción': 'districtType',
-  'Pendiente': 'pending',
+  Pendiente: 'pending',
   'Posición frente al Gobierno Duque': 'positionTowardsGovernment',
   'Perfil corto para BOT': 'imageProfile',
   // Presidential specific
@@ -90,4 +90,4 @@ const mapper = {
     'mostRecentFavorability',
 };
 
-export default mapper
+export default mapper;
