@@ -1,6 +1,7 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   selectSelectedCoalition,
   selectShowCoalitionModalWindow,
@@ -33,11 +34,13 @@ function ModalCoalitionWindow() {
     <div
       className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-20 p-6"
       onClick={handleClick}
+      role="dialog"
     >
       <div className="bg-jet w-96 max-w-full max-h-full p-6 text-soft-white overflow-auto relative">
         <button
           className="absolute top-3 right-3 stroke-current fill-current"
           datadismiss="true"
+          type="button"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
             <path d="M12.519 14-.003 1.478 1.475 0l12.522 12.522Z" />

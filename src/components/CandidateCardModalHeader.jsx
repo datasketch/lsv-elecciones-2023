@@ -1,6 +1,7 @@
+/* eslint-disable no-nested-ternary */
 import { useSelector } from 'react-redux';
-import { selectActiveTab } from '../features/nav/nav-slice';
 import hexRgb from 'hex-rgb';
+import { selectActiveTab } from '../features/nav/nav-slice';
 import {
   selectComparisonModalWindow,
   selectSecondaryCandidate,
@@ -15,7 +16,9 @@ function CandidateCardModalHeader({
   const activeTab = useSelector(selectActiveTab);
   const secondaryCandidate = useSelector(selectSecondaryCandidate);
   const showComparisonModalWindow = useSelector(selectComparisonModalWindow);
-  const { red, green, blue, alpha } = hexRgb(candidate.party.color, {
+  const {
+    red, green, blue, alpha,
+  } = hexRgb(candidate.party.color, {
     alpha: 0.6,
   });
 
@@ -29,7 +32,7 @@ function CandidateCardModalHeader({
       className="relative"
     >
       {showClose && (
-        <button className="absolute top-3 right-3" datadismiss="true">
+        <button className="absolute top-3 right-3" datadismiss="true" type="button">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
             <path
               d="M12.519 14-.003 1.478 1.475 0l12.522 12.522Z"
@@ -46,7 +49,11 @@ function CandidateCardModalHeader({
           ) : !candidate.electoralNumber ? (
             <p>Sin datos</p>
           ) : parseInt(candidate.electoralNumber, 10) ? (
-            <p>#Tarjetón: {candidate.electoralNumber}</p>
+            <p>
+              #Tarjetón:
+              {' '}
+              {candidate.electoralNumber}
+            </p>
           ) : (
             <p>{candidate.electoralNumber}</p>
           )}
@@ -62,7 +69,11 @@ function CandidateCardModalHeader({
           <p className="text-sm">{candidate.pending}</p>
           <p className="text-xl leading-tight">{candidate.fullname}</p>
           {activeTab === 'consultas' ? (
-            <p className="text-sm">Aval: {candidate.guarantee}</p>
+            <p className="text-sm">
+              Aval:
+              {' '}
+              {candidate.guarantee}
+            </p>
           ) : (
             <p className="text-sm">{candidate.party.label}</p>
           )}
@@ -77,16 +88,17 @@ function CandidateCardModalHeader({
                 <img className="w-4" src="/twitter.svg" alt="" />
               </a>
             )}
-            {secondaryCandidate &&
-              showComparisonModalWindow &&
-              candidate.profile && (
+            {secondaryCandidate
+              && showComparisonModalWindow
+              && candidate.profile && (
                 <button
                   className="underline text-sm"
                   onClick={() => setShowProfile(!showProfile)}
+                  type="button"
                 >
                   {showProfile ? 'Ver menos' : 'Ver más'}
                 </button>
-              )}
+            )}
           </div>
         </div>
       </div>

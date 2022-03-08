@@ -1,7 +1,5 @@
 import classNames from 'classnames';
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {
   selectCongressCandidatesBlocks,
@@ -16,14 +14,14 @@ function CandidateCardModalDataDesktop({ candidate }) {
   const [blocks, setBlocks] = useState([]);
 
   useEffect(() => {
-    const selectedBlocks =
-      activeTab === 'congreso' ? congressBlocks : presidentialBlocks;
+    const selectedBlocks = activeTab === 'congreso' ? congressBlocks : presidentialBlocks;
     setBlocks(selectedBlocks);
   }, [activeTab, congressBlocks, presidentialBlocks]);
 
   return (
     <>
       {blocks.map(([label, field], index) => (
+        // eslint-disable-next-line react/no-array-index-key
         <React.Fragment key={index}>
           <p
             className={classNames('text-dim-gray', {

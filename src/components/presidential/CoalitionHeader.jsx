@@ -3,6 +3,7 @@ function CoalitionHeader({ label, onClick = () => {} }) {
     <button
       className="flex items-center space-x-1 justify-center mx-auto"
       onClick={onClick}
+      type="button"
     >
       <span className="uppercase text-jet font-martin text-2xl">{label}</span>
       <span className="w-4 h-4 text-white rounded-full bg-dodger-blue">

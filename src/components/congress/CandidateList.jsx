@@ -16,7 +16,8 @@ function CandidateList() {
       <div className="hidden md:grid md:grid-cols-5 border-t border-sonic-silver mb-6">
         {Object.entries(candidates).map(([label], i) => (
           <p
-            key={`${label}-i`}
+            // eslint-disable-next-line react/no-array-index-key
+            key={`${label}-${i}`}
             className="uppercase text-center text-jet font-martin text-2xl border-r border-r-sonic-silver last:border-none"
           >
             {label}
@@ -33,13 +34,14 @@ function CandidateList() {
           .sort()
           .map((key, index) => (
             <div
+              // eslint-disable-next-line react/no-array-index-key
               key={`party-${index}`}
               className="flex items-center space-x-1 text-xs flex-shrink-0"
             >
               <span
                 className="w-3 h-3 flex-shrink-0"
                 style={{ backgroundColor: parties[key] }}
-              ></span>
+              />
               <span className="truncate" title={key}>
                 {key}
               </span>

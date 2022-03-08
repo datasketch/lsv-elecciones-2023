@@ -15,6 +15,7 @@ function ElectoralColumn({ candidates }) {
           className="inline-flex flex-col w-28"
           key={candidate.id}
           onClick={() => dispatch(toggleMainModalWindow(candidate))}
+          type="button"
         >
           <img
             src={candidate.photo}

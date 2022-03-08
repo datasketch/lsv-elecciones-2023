@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import AppCongress from './components/AppCongress';
+import AppCongress from './components/congress/AppCongress';
 import AppHeader from './components/AppHeader';
-import AppPresidential from './components/AppPresidential';
+import AppPresidential from './components/presidential/AppPresidential';
 import Modal from './components/congress/Modal';
 import ModalCoalitionWindow from './components/ModalCoalitionWindow';
 import { selectCandidateById } from './features/candidates/candidates-slice';
@@ -13,14 +13,15 @@ import {
 } from './features/modal/modal-slice';
 import { hideNav, selectActiveTab, selectTab } from './features/nav/nav-slice';
 import useResize from './hooks/use-resize';
+import AppPresidentialElection from './components/presidential/AppPresidentialElections';
 
 function App() {
   const dispatch = useDispatch();
   const showMainModalWindow = useSelector(selectMainModalWindow);
   const showCoalitionModalWindow = useSelector(selectShowCoalitionModalWindow);
   const activeTab = useSelector(selectActiveTab);
-  const featuredCandidate = useSelector((state) =>
-    selectCandidateById(state, window.LSV_FEATURED_CANDIDATE_ID)
+  const featuredCandidate = useSelector(
+    (state) => selectCandidateById(state, window.LSV_FEATURED_CANDIDATE_ID),
   );
 
   useEffect(() => {
@@ -37,16 +38,14 @@ function App() {
     }
     if (tabMatch) {
       const [, tab] = tabMatch;
-      if (['congreso', 'consultas'].includes(tab.toLowerCase())) {
+      if (['congreso', 'consultas', 'elecciones-presidenciales'].includes(tab.toLowerCase())) {
         dispatch(selectTab(tab));
       }
     }
   }, [dispatch]);
 
   useEffect(() => {
-    if (showMainModalWindow || showCoalitionModalWindow)
-      document.body.classList.add('overflow-hidden');
-    else document.body.classList.remove('overflow-hidden');
+    if (showMainModalWindow || showCoalitionModalWindow) { document.body.classList.add('overflow-hidden'); } else document.body.classList.remove('overflow-hidden');
   }, [showMainModalWindow, showCoalitionModalWindow]);
 
   useResize();
@@ -57,7 +56,9 @@ function App() {
       {showMainModalWindow && <Modal />}
       <div className="px-8 mx-auto text-jet font-manrope">
         <AppHeader />
-        {activeTab === 'congreso' ? <AppCongress /> : <AppPresidential />}
+        {activeTab === 'congreso' && <AppCongress />}
+        {activeTab === 'consultas' && <AppPresidential />}
+        {activeTab === 'elecciones-presidenciales' && <AppPresidentialElection />}
       </div>
     </>
   );

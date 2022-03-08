@@ -1,12 +1,11 @@
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { toggleMainModalWindow } from '../features/modal/modal-slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleMainModalWindow } from '../../features/modal/modal-slice';
 import {
   selectPresidentialCandidatesWithCoalition,
   selectPresidentialCandidatesWithoutCoalition,
-} from '../features/presidential/presidential-slice';
-import PoweredBy from './PoweredBy';
-import CandidateList from './presidential/CandidateList';
+} from '../../features/presidential/presidential-slice';
+import PoweredBy from '../PoweredBy';
+import CandidateList from './CandidateList';
 
 function AppPresidential() {
   const dispatch = useDispatch();
@@ -37,6 +36,7 @@ function AppPresidential() {
                 className="inline-flex flex-col w-28"
                 key={candidate.id}
                 onClick={() => dispatch(toggleMainModalWindow(candidate))}
+                type="button"
               >
                 <img
                   src={candidate.photo}

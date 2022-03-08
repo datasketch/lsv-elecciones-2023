@@ -14,14 +14,14 @@ function ComparisonBlocksMobile({ mainCandidate, secondaryCandidate }) {
   const [blocks, setBlocks] = useState([]);
 
   useEffect(() => {
-    const selectedBlocks =
-      activeTab === 'congreso' ? congressBlocks : presidentialBlocks;
+    const selectedBlocks = activeTab === 'congreso' ? congressBlocks : presidentialBlocks;
     setBlocks(selectedBlocks);
   }, [activeTab, congressBlocks, presidentialBlocks]);
 
   return (
     <>
       {blocks.map(([label, field], index) => (
+        // eslint-disable-next-line react/no-array-index-key
         <div key={`block-${index}`} className="space-y-3">
           <p className="text-dim-gray text-center">{label}</p>
           <div className="grid grid-cols-2">

@@ -7,12 +7,13 @@ function CandidateCardExpanded({
   onClick = () => {},
 }) {
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
       className={classNames(
         'flex p-2 space-x-3 items-center bg-cultured shadow-sm',
         {
           'opacity-25': highlight && !candidate.highlight,
-        }
+        },
       )}
       role="button"
       tabIndex={0}

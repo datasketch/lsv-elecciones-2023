@@ -21,7 +21,7 @@ function CandidatePhotoOverlay({ candidate }) {
         <span
           className="absolute top-0 left-0 w-full h-full opacity-30"
           style={{ backgroundColor: candidate.party.color }}
-        ></span>
+        />
       )}
     </>
   );

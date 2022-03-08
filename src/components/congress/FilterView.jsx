@@ -2,10 +2,9 @@ import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
 import { toggleView } from '../../features/view/view-slice';
 
-function FilterView({ grid, onClick }) {
+function FilterView({ grid }) {
   const dispatch = useDispatch();
-  const baseClass =
-    'border border-dodger-blue inline-flex items-center justify-center flex-shrink-0 py-2 px-4';
+  const baseClass = 'border border-dodger-blue inline-flex items-center justify-center flex-shrink-0 py-2 px-4';
   const listViewClass = classNames(baseClass, {
     'text-soft-white': !grid,
     'bg-dodger-blue': !grid,
@@ -23,6 +22,7 @@ function FilterView({ grid, onClick }) {
         aria-label="Ver lista"
         title="Ver lista"
         onClick={() => dispatch(toggleView(false))}
+        type="button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -45,6 +45,7 @@ function FilterView({ grid, onClick }) {
         aria-label="Ver mosaico"
         title="Ver mosaico"
         onClick={() => dispatch(toggleView(true))}
+        type="button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

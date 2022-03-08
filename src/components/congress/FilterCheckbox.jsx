@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import slugify from 'slugify';
 
 function FilterCheckbox({ label, options, name }) {

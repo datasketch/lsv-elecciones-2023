@@ -1,4 +1,6 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { createSelector } from 'reselect';
 import candidates from '../../data/candidates.json';
 
@@ -12,9 +14,9 @@ const initialState = {
     new Set(
       candidatesData.reduce(
         (result, candidate) => [...result, candidate.ageRange],
-        []
-      )
-    )
+        [],
+      ),
+    ),
   ).sort(),
   filters: {
     office: '',
@@ -28,6 +30,28 @@ const initialState = {
     pending: '',
   },
 };
+
+function normalizeStr(str) {
+  return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+}
+
+function highlightCandidates(state) {
+  return state.filtered.map((c) => ({
+    ...c,
+    highlight: Object.entries(state.filters).every(
+      ([filterKey, filterValue]) => {
+        const candidateValue = c[filterKey];
+        if (Array.isArray(filterValue)) { return filterValue.includes(candidateValue); }
+        return typeof candidateValue === 'object'
+          ? candidateValue.label.includes(filterValue)
+          : normalizeStr(candidateValue).includes(normalizeStr(filterValue));
+      },
+    ),
+  }));
+}
 
 const candidatesSlice = createSlice({
   name: 'candidates',
@@ -69,44 +93,20 @@ const candidatesSlice = createSlice({
       state.filtered = highlightCandidates(state);
     },
     filterByPending(state, action) {
-      state.filters.pending = action.payload
-      state.filtered = highlightCandidates(state)
-    }
+      state.filters.pending = action.payload;
+      state.filtered = highlightCandidates(state);
+    },
   },
 });
 
-function normalizeStr(str) {
-  return str
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase();
-}
-
-function highlightCandidates(state) {
-  return state.filtered.map((c) => ({
-    ...c,
-    highlight: Object.entries(state.filters).every(
-      ([filterKey, filterValue]) => {
-        const candidateValue = c[filterKey];
-        if (Array.isArray(filterValue))
-          return filterValue.includes(candidateValue);
-        return typeof candidateValue === 'object'
-          ? candidateValue.label.includes(filterValue)
-          : normalizeStr(candidateValue).includes(normalizeStr(filterValue));
-      }
-    ),
-  }));
-}
-
-const getCategories = (data, key) =>
-  Array.from(
-    new Set(
-      data
-        .map((record) => record[key])
-        .filter((r) => r)
-        .sort()
-    )
-  );
+const getCategories = (data, key) => Array.from(
+  new Set(
+    data
+      .map((record) => record[key])
+      .filter((r) => r)
+      .sort(),
+  ),
+);
 
 export const {
   filterByOffice,
@@ -115,7 +115,7 @@ export const {
   filterBySupportedCandidatePresidential,
   filterGroup,
   filterBySearch,
-  filterByPending
+  filterByPending,
 } = candidatesSlice.actions;
 
 export const selectAllCandidates = (state) => {
@@ -133,43 +133,37 @@ export const selectAllCandidates = (state) => {
   };
 };
 
-export const selectHighlightedCandidates = (state) =>
-  state.candidates.filtered.filter(({ highlight }) => highlight);
+export const selectHighlightedCandidates = (state) => state.candidates.filtered
+  .filter(({ highlight }) => highlight);
 
-export const selectDepartments = (state) =>
-  getCategories(state.candidates.all, 'department');
+export const selectDepartments = (state) => getCategories(state.candidates.all, 'department');
 
-export const selectOffices = (state) =>
-  getCategories(state.candidates.all, 'office');
+export const selectOffices = (state) => getCategories(state.candidates.all, 'office');
 
-export const selectParties = (state) =>
-  Array.from(
-    new Set(state.candidates.all.map(({ party }) => party.label).sort())
-  );
+export const selectParties = (state) => Array.from(
+  new Set(state.candidates.all.map(({ party }) => party.label).sort()),
+);
 
-export const selectPartiesWithColor = (state) =>
-  state.candidates.all.reduce((list, candidate) => {
-    const { label, color } = candidate.party;
-    if (list[label]) return list;
-    if (color === EXCLUDE_COLOR) {
-      list['Otro'] = EXCLUDE_COLOR;
-      return list;
-    }
-    list[label] = color;
+export const selectPartiesWithColor = (state) => state.candidates.all.reduce((list, candidate) => {
+  const { label, color } = candidate.party;
+  if (list[label]) return list;
+  if (color === EXCLUDE_COLOR) {
+    list.Otro = EXCLUDE_COLOR;
     return list;
-  }, {});
+  }
+  list[label] = color;
+  return list;
+}, {});
 
-export const selectSupportedPresidentialCandidate = (state) =>
-  getCategories(state.candidates.all, 'supportedPresidentialCandidate');
+export const selectSupportedPresidentialCandidate = (state) => getCategories(state.candidates.all, 'supportedPresidentialCandidate');
 
-export const selectSectors = (state) =>
-  getCategories(state.candidates.all, 'backgroundSector');
+export const selectSectors = (state) => getCategories(state.candidates.all, 'backgroundSector');
 
-export const selectGender = (state) =>
-  getCategories(state.candidates.all, 'gender');
+export const selectGender = (state) => getCategories(state.candidates.all, 'gender');
 
-export const selectSortedCongressCandidates = (state) =>
-  state.candidates.filtered.slice().sort((a, b) => {
+export const selectSortedCongressCandidates = (state) => state.candidates.filtered
+  .slice()
+  .sort((a, b) => {
     if (a.fullname.toLowerCase() > b.fullname.toLowerCase()) return 1;
     if (a.fullname.toLowerCase() < b.fullname.toLowerCase()) return -1;
     return 0;
@@ -177,12 +171,12 @@ export const selectSortedCongressCandidates = (state) =>
 
 export const selectAgeRanges = (state) => state.candidates.ageRanges;
 
-export const selectCandidatesTo = state => getCategories(state.candidates.all, 'pending')
+export const selectCandidatesTo = (state) => getCategories(state.candidates.all, 'pending');
 
 export const selectCandidateById = createSelector(
   (state) => state.candidates.all,
   (_, id) => id,
-  (candidates, id) => candidates.find((c) => c.id === id)
+  (_candidates, id) => _candidates.find((c) => c.id === id),
 );
 
 export default candidatesSlice.reducer;

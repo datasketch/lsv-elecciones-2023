@@ -1,9 +1,9 @@
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import CandidateCardModalHeader from './CandidateCardModalHeader';
 import AppButton from './AppButton';
-import { useDispatch } from 'react-redux';
 import { toggleComparisonModalWindow } from '../features/modal/modal-slice';
 import ComparisonBlocksDesktop from './ComparisonBlocksDesktop';
-import { useState } from 'react';
 
 function ComparisonModalDesktop({ mainCandidate, secondaryCandidate }) {
   const dispatch = useDispatch();

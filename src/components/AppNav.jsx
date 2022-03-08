@@ -1,5 +1,4 @@
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectActiveTab, selectTab } from '../features/nav/nav-slice';
 import AppButton from './AppButton';
 
@@ -18,6 +17,11 @@ function AppNav() {
         inverse={activeTab !== 'consultas'}
         onClick={() => dispatch(selectTab('consultas'))}
       />
+      {/* <AppButton
+        label="Elecciones Presidenciales"
+        inverse={activeTab !== 'elecciones-presidenciales'}
+        onClick={() => dispatch(selectTab('elecciones-presidenciales'))}
+      /> */}
     </nav>
   );
 }

@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useState, useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import classNames from 'classnames';
 import {
   filterGroup,
@@ -9,9 +9,6 @@ import {
 } from '../../features/candidates/candidates-slice';
 import FilterCheckbox from './FilterCheckbox';
 import AppButton from '../AppButton';
-import { useEffect } from 'react';
-import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
 
 function FilterGroup() {
   const [isOpened, setIsOpened] = useState(false);
@@ -37,6 +34,7 @@ function FilterGroup() {
   const handleSubmit = (e) => {
     const formData = new FormData(e.target);
     const choices = {};
+    // eslint-disable-next-line no-restricted-syntax
     for (const [name, value] of formData.entries()) {
       choices[name] = choices[name] || [];
       choices[name].push(value);
@@ -59,13 +57,14 @@ function FilterGroup() {
           backgroundSize: '1.5em 1.5em',
           backgroundPosition: 'right 0.5rem center',
         }}
+        type="button"
       >
         Otros
       </button>
       <form
         className={classNames(
           'absolute z-10 top-full left-0 bg-soft-white text-jet mt-1 text-left px-4 py-2 xl:right-0 xl:left-auto',
-          { hidden: !isOpened }
+          { hidden: !isOpened },
         )}
         onSubmit={handleSubmit}
         style={{

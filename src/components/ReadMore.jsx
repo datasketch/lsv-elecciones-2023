@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
+/* eslint-disable no-nested-ternary */
+import { useEffect, useState } from 'react';
 
 function ReadMore({ text, limit = 500 }) {
   const [canReadMore, setCanReadMore] = useState(false);
@@ -12,7 +12,7 @@ function ReadMore({ text, limit = 500 }) {
     if (!textWithinLimit) {
       const trimmed = text.slice(0, limit);
       setTextTrimmed(
-        trimmed.slice(0, Math.min(trimmed.length, trimmed.lastIndexOf(' ')))
+        trimmed.slice(0, Math.min(trimmed.length, trimmed.lastIndexOf(' '))),
       );
     }
   }, [text, limit, textWithinLimit]);
@@ -24,6 +24,7 @@ function ReadMore({ text, limit = 500 }) {
         <button
           className="text-dodger-blue underline mt-2"
           onClick={() => setCanReadMore(!canReadMore)}
+          type="button"
         >
           {canReadMore ? 'Leer más' : 'Leer menos'}
         </button>

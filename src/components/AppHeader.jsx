@@ -20,7 +20,7 @@ function AppHeader() {
         </div>
       )}
       <div className="max-w-xl mx-auto text-center mt-6 text-sm">
-        {activeTab === 'consultas' ? (
+        {activeTab === 'consultas' && (
           <>
             <p>
               Las consultas presidenciales son el próximo 13 de marzo. El mismo
@@ -32,15 +32,18 @@ function AppHeader() {
               Haga click en los candidatos y empiece a compararlos
             </p>
           </>
-        ) : (
+        )}
+        {activeTab === 'congreso' && (
           <p>
             Iremos completando este tarjetón con más listas a Senado y
-            circunscripciones a la Cámara, para tenerlo completo antes de las
-            votaciones del 13 de marzo.
+            {' '}
+            circunscripciones a la Cámara,
+            {' '}
+            para tenerlo completo antes de las votaciones del 13 de marzo.
           </p>
         )}
       </div>
-      <div className="border-t-2 border-jet mt-6"></div>
+      <div className="border-t-2 border-jet mt-6" />
     </>
   );
 }

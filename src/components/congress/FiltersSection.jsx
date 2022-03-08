@@ -16,9 +16,9 @@ import { selectGridView } from '../../features/view/view-slice';
 function FiltersSection() {
   const dispatch = useDispatch();
   const parties = useSelector(selectParties);
-  const candidatesTo = useSelector(selectCandidatesTo)
+  const candidatesTo = useSelector(selectCandidatesTo);
   const supportedPresidentialCandidates = useSelector(
-    selectSupportedPresidentialCandidate
+    selectSupportedPresidentialCandidate,
   );
 
   const grid = useSelector(selectGridView);
@@ -42,9 +42,7 @@ function FiltersSection() {
           id="candidato-que-apoya"
           label="Su candidato presidencial"
           options={supportedPresidentialCandidates}
-          onChange={(e) =>
-            dispatch(filterBySupportedCandidatePresidential(e.target.value))
-          }
+          onChange={(e) => dispatch(filterBySupportedCandidatePresidential(e.target.value))}
           className="hidden md:block"
         />
       </div>

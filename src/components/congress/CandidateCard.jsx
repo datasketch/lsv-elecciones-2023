@@ -1,5 +1,4 @@
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectGridView } from '../../features/view/view-slice';
 import CandidateCardCollapsed from './CandidateCardCollapsed';
 import CandidateCardExpanded from './CandidateCardExpanded';

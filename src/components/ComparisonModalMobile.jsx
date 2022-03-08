@@ -1,5 +1,4 @@
-import { useRef } from 'react';
-import { useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSortedCongressCandidates } from '../features/candidates/candidates-slice';
 import { toggleComparisonModalWindow } from '../features/modal/modal-slice';
@@ -15,27 +14,27 @@ function ComparisonModalMobile({
   const dispatch = useDispatch();
   const congressCandidates = useSelector(selectSortedCongressCandidates);
   const presidentialCandidates = useSelector(
-    selectSortedPresidentialCandidates
+    selectSortedPresidentialCandidates,
   );
   const activeTab = useSelector(selectActiveTab);
   const [candidates, setCandidates] = useState([]);
-  const container = useRef()
+  const container = useRef();
 
   useEffect(() => {
-    const selected =
-      activeTab === 'congreso' ? congressCandidates : presidentialCandidates;
+    const selected = activeTab === 'congreso' ? congressCandidates : presidentialCandidates;
     setCandidates(selected);
   }, [activeTab, congressCandidates, presidentialCandidates, setCandidates]);
 
   useEffect(() => {
-    container.current.scrollTo(0, 0)
-  })
+    container.current.scrollTo(0, 0);
+  });
 
   return (
     <div className="bg-white w-full h-full max-h-full px-6 py-4 overflow-auto lg:hidden" ref={container}>
       <button
         className="text-dodger-blue"
         onClick={() => dispatch(toggleComparisonModalWindow())}
+        type="button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

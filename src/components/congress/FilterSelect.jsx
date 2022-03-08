@@ -1,4 +1,6 @@
-function FilterSelect({ id, label, options, onChange, className }) {
+function FilterSelect({
+  id, label, options, onChange, className, placeholder = '',
+}) {
   return (
     <label htmlFor={id} className={className}>
       <p className="uppercase text-xxs">{label}</p>
@@ -7,7 +9,7 @@ function FilterSelect({ id, label, options, onChange, className }) {
         onChange={onChange}
         id={id}
       >
-        <option value="">Todos</option>
+        <option value="">{placeholder || 'Todos'}</option>
         {options.map((option) => (
           <option key={option} value={option}>
             {option}

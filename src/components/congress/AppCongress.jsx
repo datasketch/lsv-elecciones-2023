@@ -1,5 +1,5 @@
-import CandidateList from './congress/CandidateList';
-import FiltersSection from './congress/FiltersSection';
+import CandidateList from './CandidateList';
+import FiltersSection from './FiltersSection';
 
 function AppCongress() {
   return (

@@ -5,6 +5,7 @@ import viewReducer from '../features/view/view-slice';
 import navReducer from '../features/nav/nav-slice';
 import presidentialReducer from '../features/presidential/presidential-slice';
 
+// eslint-disable-next-line import/prefer-default-export
 export const store = configureStore({
   reducer: {
     candidates: candidatesReducer,

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 const coalitions = {
@@ -100,18 +101,21 @@ export const {
   setSecondaryCandidate,
   toggleCoalitionModalWindow,
 } = modalSlice.actions;
+
 export const selectMainModalWindow = (state) => state.modal.showMainModalWindow;
+
 export const selectMainCandidate = (state) => state.modal.candidates.main;
-export const selectSecondaryCandidate = (state) =>
-  state.modal.candidates.secondary;
-export const selectComparisonModalWindow = (state) =>
-  state.modal.showComparisonModalWindow;
-export const selectCongressCandidatesBlocks = (state) =>
-  state.modal.blocks.congress;
-export const selectPresidentialCandidatesBlocks = (state) =>
-  state.modal.blocks.presidential;
-export const selectShowCoalitionModalWindow = (state) =>
-  state.modal.showCoalitionModalWindow;
+
+export const selectSecondaryCandidate = (state) => state.modal.candidates.secondary;
+
+export const selectComparisonModalWindow = (state) => state.modal.showComparisonModalWindow;
+
+export const selectCongressCandidatesBlocks = (state) => state.modal.blocks.congress;
+
+export const selectPresidentialCandidatesBlocks = (state) => state.modal.blocks.presidential;
+
+export const selectShowCoalitionModalWindow = (state) => state.modal.showCoalitionModalWindow;
+
 export const selectSelectedCoalition = (state) => state.modal.selectedCoalition;
 
 export default modalSlice.reducer;
