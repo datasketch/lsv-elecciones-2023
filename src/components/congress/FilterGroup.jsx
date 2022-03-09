@@ -90,7 +90,7 @@ function FilterGroup() {
                 />
               </div>
             </div>
-            <AppButton label="Aplicar" />
+            <AppButton label="Aplicar" type="submit" />
           </div>
         </div>
       </form>

@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 
 const AppButton = forwardRef(
   ({
-    inverse, onClick, label, full = false,
+    inverse, onClick, label, full = false, type = 'button',
   }, ref) => (
     <button
       ref={ref}
@@ -13,7 +13,8 @@ const AppButton = forwardRef(
         'bg-transparent text-dodger-blue border border-dodger-blue': inverse,
       })}
       onClick={onClick}
-      type="button"
+      // eslint-disable-next-line react/button-has-type
+      type={type}
     >
       {label}
     </button>
