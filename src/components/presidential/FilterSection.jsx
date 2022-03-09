@@ -21,6 +21,7 @@ function FiltersSection() {
         <FilterSelect
           id="apoyo-el-paro"
           label="Apoyó el paro"
+          className="order-1"
           options={useSelector(selectSupportToStrike)}
           onChange={(e) => dispatch(filterBySupportToStrike(e.target.value))}
           placeholder="Seleccione una opción"
@@ -28,6 +29,7 @@ function FiltersSection() {
         <FilterSelect
           id="subir-impuesto-patrimonio"
           label="Subir el impuesto al patrimonio"
+          className="order-3 lg:order-2"
           options={useSelector(selectRaiseWealthTax)}
           onChange={(e) => dispatch(filterByRaiseToWealthTax(e.target.value))}
           placeholder="Seleccione una opción"
@@ -35,6 +37,7 @@ function FiltersSection() {
         <FilterSelect
           id="apoyo-oposicion-gobierno"
           label="Oposición o apoyo a gobierno Duque"
+          className="order-4 lg:order-3"
           options={useSelector(selectOppositionOrSupportToGovernment)}
           onChange={(e) => dispatch(filterByOppositionOrSupportToGovernment(e.target.value))}
           placeholder="Seleccione una opción"
@@ -42,6 +45,7 @@ function FiltersSection() {
         <FilterSelect
           id="voto-en-plebiscito"
           label="Voto plebiscito"
+          className="order-2 lg:order-4"
           options={useSelector(selectVoteInPlebiscite)}
           onChange={(e) => dispatch(filterByVoteInPlebiscite(e.target.value))}
           placeholder="Seleccione una opción"
@@ -49,6 +53,7 @@ function FiltersSection() {
         <FilterSelect
           id="responsabilidad-estado"
           label="Responsabilidad en el estado"
+          className="order-5"
           options={useSelector(selectResponsibilityForDecisiveDecisionsForTheCountry)}
           onChange={(e) => dispatch(
             filterByResponsibilityForDecisiveDecisionsForTheCountry(e.target.value),
