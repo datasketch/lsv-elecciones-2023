@@ -1,10 +1,8 @@
+/* eslint-disable import/extensions */
 import { writeFile, readFile } from 'fs/promises';
 import path from 'path';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import slugify from 'slugify';
-// eslint-disable-next-line import/extensions
 import mapper from './mapper.js';
-// eslint-disable-next-line import/extensions
 import { partyColorMap, haveBeenConvictedOrInvestigated, inheritVotesOfConvictedOrInvestigated } from './utils.js';
 
 function compareFunction(key) {
