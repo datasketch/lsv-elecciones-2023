@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "gen:data": "node transform.js",
-    "gen:images": "node images.js && node images-db.js",
+    "gen:data": "node transform.js && node images-db.js",
+    "gen:images": "node images.js",
     "gen": "npm run gen:data && npm run gen:images",
     "dev": "nodemon -e js,hbs dev.js"
   },
