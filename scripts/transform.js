@@ -28,6 +28,8 @@ function mapValues(data) {
   try {
     const rawCongress = await readFile(path.join(process.cwd(), '..', 'src', 'data', 'raw-congress.json'), 'utf8');
     const rawPresidential = await readFile(path.join(process.cwd(), '..', 'src', 'data', 'raw-presidential.json'), 'utf8');
+    const rawOptimizedImages = await readFile(path.join(process.cwd(), 'data', 'images.json'), 'utf8');
+    const optimizedImages = JSON.parse(rawOptimizedImages);
     const congress = mapValues(JSON.parse(rawCongress))
       .map((record) => {
         const { name, firstLastName, secondLastName } = record;
@@ -38,12 +40,17 @@ function mapValues(data) {
           return `${match.substring(0, 2)} - ${match.substring(2)}`;
         };
         if (!record.photo) {
+          // eslint-disable-next-line no-console
           console.log(fullname);
         }
+        const id = slugify(fullname, { lower: true });
+        const optimizedImageEntry = optimizedImages.find((entry) => entry.id === id);
+
         return {
           ...record,
           fullname,
-          id: slugify(fullname, { lower: true }),
+          id,
+          base64Image: optimizedImageEntry.base64Image,
           position: record.position ? record.position.toLowerCase() : undefined,
           supportedPresidentialCandidate:
             record.supportedPresidentialCandidate || 'Sin datos',
@@ -89,6 +96,7 @@ function mapValues(data) {
     await writeFile(candidatesFile, JSON.stringify(congress));
     await writeFile(presidentialFile, JSON.stringify(presidential));
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error);
     process.exit(1);
   }

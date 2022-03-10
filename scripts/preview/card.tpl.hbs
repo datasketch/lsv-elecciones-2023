@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Silla Vacía</title>
+    <link rel="stylesheet" href="https://dsktch-la-silla-vacia.s3.amazonaws.com/elecciones-2022/card.css">
+</head>
+
+<body>
+    <div class="candidate-card-wrapper">
+        <div class="candidate-card-header" style="background-color: {{bgColor}};">
+            <div class="candidate-card-header-image">
+                {{#if coalition}}
+                    <p>{{coalition}}</p>
+                {{else}}
+                    <p>{{electoral_card electoralNumber}}</p>
+                {{/if}}
+                {{#if photo}}
+                    <img src="{{photo}}" alt="" onerror="this.onerror=null;this.src='https://www.lasillavacia.com/media/candidato-nn-h.jpg'">
+                {{else}}
+                    <img src="https://www.lasillavacia.com/media/candidato-nn-h.jpg" alt="">
+                {{/if}}
+            </div>
+            <div class="candidate-card-header-info">
+                <div class="ghost">_</div>
+                {{#unless coalition}}
+                    <p class="lead-text">{{pending}}</p>
+                {{/unless}}
+                <p class="candidate-card-fullname">{{fullname}}</p>
+                {{#if coalition}}
+                    <p class="lead-text">Aval: {{guarantee}}</p>
+                {{else}}
+                    <p class="lead-text">{{party.label}}</p>
+                {{/if}}
+            </div>
+        </div>
+        <div class="candidate-card-profile">
+            {{imageProfile}}
+        </div>
+        <div class="candidate-card-data">
+            {{#if coalition}}
+                <div>
+                    <p style="color: #6b6b6b;">Máximo de personas que ha tenido a cargo</p>
+                    <p>{{maximumNumberOfDependents}}</p>
+                </div>
+                <div>
+                    <p style="color: #6b6b6b;">Apoyo u oposición a Gobierno Duque </p>
+                    <p>{{oppositionOrSupportToGovernment}}</p>
+                </div>
+                <div>
+                    <p style="color: #6b6b6b;">Máximo cargo en el Ejecutivo</p>
+                    <p>{{highestPositionInTheExecutive}}</p>
+                </div>
+                <div>
+                    <p style="color: #6b6b6b;">Despenalización total del aborto </p>
+                    <p>{{decriminalizingAbortion}}</p>
+                </div>
+            {{else}}
+                {{#if flags}}
+                    <div>
+                        <p style="color: #6b6b6b;">Banderas</p>
+                        <ul class="candidate-card-flags">
+                            {{#each flags}}
+                                <li>{{this}}</li>
+                                {{#unless @last}}
+                                    <li>•</li>
+                                {{/unless}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                {{/if}}
+                <div>
+                    <p style="color: #6b6b6b;">A Presidencia apoya a</p>
+                    <p>{{supportedPresidentialCandidate}}</p>
+                </div>
+                <div>
+                    <p style="color: #6b6b6b;">Edad</p>
+                    <p>{{age}}</p>
+                </div>
+                <div>
+                    <p style="color: #6b6b6b;">Nivel de estudios</p>
+                    <p>{{educationalLevel}}</p>
+                </div>
+                <div>
+                    <p style="color: #6b6b6b;">Líos o cuestionamientos</p>
+                    <p>{{hasQuestioning}}</p>
+                </div>
+                <div>
+                    <p style="color: #6b6b6b;">Experiencia más alta en el Estado</p>
+                    <p>{{hasExperienceInNation}}</p>
+                </div>
+            {{/if}}
+            <div class="candidate-card-logo">
+                <img src="https://dsktch-la-silla-vacia.s3.amazonaws.com/elecciones-2022/lsv-logo.svg" alt="La Silla Vacía">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

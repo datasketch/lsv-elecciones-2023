@@ -3,13 +3,13 @@
   "type": "module",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "exports": "./transforms.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "gen:data": "node transform.js && node images-db.js",
-    "gen:images": "node images.js",
-    "gen": "npm run gen:data && npm run gen:images",
-    "dev": "nodemon -e js,hbs dev.js"
+    "refresh:data": "npm run images:optimize && node transform.js && npm run images:db",
+    "images:upload": "node images/upload.js",
+    "images:db": "node images/db.js",
+    "images:optimize": "node images/optimize.js",
+    "preview": "nodemon -e js,hbs preview/dev.js"
   },
   "keywords": [],
   "author": "",
@@ -18,11 +18,16 @@
     "@aws-sdk/client-s3": "^3.51.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
+    "got": "^12.0.1",
     "handlebars": "^4.7.7",
     "papaparse": "^5.3.1",
-    "puppeteer": "^13.3.1"
+    "puppeteer": "^13.3.1",
+    "slugify": "^1.6.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
   }
 }
