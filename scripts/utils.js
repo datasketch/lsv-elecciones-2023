@@ -100,7 +100,7 @@ export const generateImages = async () => {
 
   // Compile template
   setupHbs();
-  const html = await fs.readFile('card.tpl.hbs', 'utf-8');
+  const html = await fs.readFile(path.join(process.cwd(), 'preview', 'card.tpl.hbs'), 'utf-8');
   const template = Handlebars.compile(html);
 
   const images = [];
