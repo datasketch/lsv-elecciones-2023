@@ -5,7 +5,7 @@
   "description": "",
   "exports": "./transforms.js",
   "scripts": {
-    "refresh:data": "npm run images:optimize && node transform.js && npm run images:db",
+    "refresh:data": "node transform.js && npm run images:db",
     "images:upload": "node images/upload.js",
     "images:db": "node images/db.js",
     "images:optimize": "node images/optimize.js",

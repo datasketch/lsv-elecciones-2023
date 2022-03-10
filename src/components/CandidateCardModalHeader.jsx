@@ -58,7 +58,7 @@ function CandidateCardModalHeader({
             <p>{candidate.electoralNumber}</p>
           )}
           <img
-            src={candidate.base64Image || candidate.photo}
+            src={candidate.photo}
             alt={candidate.fullname}
             className="max-w-full mx-auto w-28"
             onError={handleImageError}

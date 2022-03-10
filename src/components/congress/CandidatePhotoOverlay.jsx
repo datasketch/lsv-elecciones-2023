@@ -12,7 +12,7 @@ function CandidatePhotoOverlay({ candidate }) {
   return (
     <>
       <img
-        src={candidate.base64Image || candidate.photo}
+        src={candidate.photo}
         className="max-w-full w-full h-full"
         alt=""
         onError={handleImageError}
