@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectComparisonModalWindow,
+  selectMainCandidate,
   selectMainModalWindow,
   setSecondaryCandidate,
   toggleMainModalWindow,
@@ -21,9 +22,17 @@ function Modal() {
   const activeTab = useSelector(selectActiveTab);
   const [candidates, setCandidates] = useState([]);
   const dispatch = useDispatch();
+  const mainCandidate = useSelector(selectMainCandidate);
 
   useEffect(() => {
-    const selected = activeTab === 'congreso' ? congressCandidates : presidentialCandidates;
+    let selected;
+    if (activeTab === 'congreso') {
+      selected = congressCandidates
+        .filter((candidate) => candidate.pending === mainCandidate.pending
+          && candidate.id !== mainCandidate.id);
+    } else {
+      selected = presidentialCandidates;
+    }
     setCandidates(selected);
   }, [activeTab, congressCandidates, presidentialCandidates, setCandidates]);
 
@@ -57,7 +66,10 @@ function Modal() {
       onClick={handleClick}
     >
       {showComparisonModalWindow ? <ComparisonModal /> : <CandidateCardModal />}
-      <aside className="hidden bg-white absolute top-0 right-0 max-h-full w-80 overflow-auto lg:block">
+      <aside className="hidden bg-cultured absolute top-0 right-0 h-full max-h-full w-80 overflow-auto lg:block">
+        {activeTab === 'congreso' && (
+          <p className="p-2 text-center font-manrope text-lg">{mainCandidate.pending}</p>
+        )}
         {candidates.map((candidate) => (
           <CandidateCardExpanded
             key={candidate.id}
