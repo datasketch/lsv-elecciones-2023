@@ -35,11 +35,9 @@ function AppHeader() {
         )}
         {activeTab === 'congreso' && (
           <p>
-            Iremos completando este tarjetón con más listas a Senado y
+            Acá puede conocer y comparar entre casi mil
             {' '}
-            circunscripciones a la Cámara,
-            {' '}
-            para tenerlo completo antes de las votaciones del 13 de marzo.
+            candidatos a Cámara y Senado, de todas las circunscripciones y los partidos
           </p>
         )}
       </div>
