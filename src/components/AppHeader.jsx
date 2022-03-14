@@ -23,21 +23,19 @@ function AppHeader() {
         {activeTab === 'consultas' && (
           <>
             <p>
-              Las consultas presidenciales son el próximo 13 de marzo. El mismo
-              día de las elecciones al Congreso, los votantes podrán pedir el
-              tarjetón de una de las tres consultas para votar por el candidato
-              que quieren que llegue a primera vuelta.
+              Estos son los candidatos que van a primera vuelta.
+              <span className="italic">Haga click y empiece a compararlos</span>
             </p>
-            <p className="italic mt-4">
+            {/* <p className="italic mt-4">
               Haga click en los candidatos y empiece a compararlos
-            </p>
+            </p> */}
           </>
         )}
         {activeTab === 'congreso' && (
           <p>
-            Acá puede conocer y comparar entre casi mil
+            Acá puede conocer y comparar los
             {' '}
-            candidatos a Cámara y Senado, de todas las circunscripciones y los partidos
+            candidatos electos a Cámara y Senado, de todas las circunscripciones y los partidos
           </p>
         )}
       </div>

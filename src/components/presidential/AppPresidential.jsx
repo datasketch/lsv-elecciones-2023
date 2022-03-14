@@ -1,20 +1,21 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { toggleMainModalWindow } from '../../features/modal/modal-slice';
-import {
-  selectPresidentialCandidatesWithCoalition,
-  selectPresidentialCandidatesWithoutCoalition,
-} from '../../features/presidential/presidential-slice';
-import PoweredBy from '../PoweredBy';
-import CandidateList from './CandidateList';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { toggleMainModalWindow } from '../../features/modal/modal-slice';
+// import {
+//   selectPresidentialCandidatesWithCoalition,
+//   selectPresidentialCandidatesWithoutCoalition,
+// } from '../../features/presidential/presidential-slice';
+// import PoweredBy from '../PoweredBy';
+import AppPresidentialElection from './AppPresidentialElections';
+// import CandidateList from './CandidateList';
 
 function AppPresidential() {
-  const dispatch = useDispatch();
-  const candidates = useSelector(selectPresidentialCandidatesWithCoalition);
-  const other = useSelector(selectPresidentialCandidatesWithoutCoalition);
+  // const dispatch = useDispatch();
+  // const candidates = useSelector(selectPresidentialCandidatesWithCoalition);
+  // const other = useSelector(selectPresidentialCandidatesWithoutCoalition);
 
   return (
     <>
-      <CandidateList candidates={candidates} />
+      {/* <CandidateList candidates={candidates} />
       <div className="py-8 flex flex-col lg:flex-row lg:items-start lg:space-x-6">
         <div className="lg:w-1/2">
           <h2 className="font-martin uppercase text-5xl lg:text-6xl">
@@ -51,7 +52,8 @@ function AppPresidential() {
           </div>
         </div>
       </div>
-      <PoweredBy />
+      <PoweredBy /> */}
+      <AppPresidentialElection />
     </>
   );
 }
