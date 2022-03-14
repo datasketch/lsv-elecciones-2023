@@ -72,7 +72,8 @@ const initialState = {
         'Obligar a funcionarios públicos a vacunarse',
         'forcingPublicOfficialsToGetVaccinated',
       ],
-      ['¿Cómo es?'],
+      // TODO: enable when data available
+      // ['¿Cómo es?'],
     ],
   },
   candidates: {

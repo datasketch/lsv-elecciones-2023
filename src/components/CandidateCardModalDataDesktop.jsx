@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {
   selectCongressCandidatesBlocks,
-  selectPresidentialCandidatesBlocks,
+  // selectPresidentialCandidatesBlocks,
   selectPresidentialElectionsCandidatesBlocks,
 } from '../features/modal/modal-slice';
 import { selectActiveTab } from '../features/nav/nav-slice';
@@ -11,22 +11,24 @@ import { selectActiveTab } from '../features/nav/nav-slice';
 function CandidateCardModalDataDesktop({ candidate }) {
   const activeTab = useSelector(selectActiveTab);
   const congressBlocks = useSelector(selectCongressCandidatesBlocks);
-  const presidentialBlocks = useSelector(selectPresidentialCandidatesBlocks);
+  // const presidentialBlocks = useSelector(selectPresidentialCandidatesBlocks);
   const presidentialElectionsBlocks = useSelector(selectPresidentialElectionsCandidatesBlocks);
   const [blocks, setBlocks] = useState([]);
 
   const blocksChoices = {
     congreso: congressBlocks,
-    consultas: presidentialBlocks,
+    // consultas: presidentialBlocks,
+    consultas: presidentialElectionsBlocks,
     'elecciones-presidenciales': presidentialElectionsBlocks,
   };
 
   useEffect(() => {
     setBlocks(blocksChoices[activeTab]);
-  }, [activeTab, congressBlocks, presidentialBlocks]);
+  }, [activeTab, congressBlocks, presidentialElectionsBlocks]);
 
   return (
     <>
+      {/* // TODO: enable when data available */}
       {activeTab === 'elecciones-presidenciales' && (
         <>
           <p className="font-martin text-2xl uppercase text-jet border-l-2 border-jet pl-2 leading-none">Fórmula presidencial</p>
