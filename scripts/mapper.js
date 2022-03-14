@@ -67,6 +67,8 @@ const mapper = {
   Pendiente: 'pending',
   'Posición frente al Gobierno Duque': 'positionTowardsGovernment',
   'Perfil corto para BOT': 'imageProfile',
+  Electo: 'elected',
+  Votación: 'totalVotes',
   // Presidential specific
   'Mentiras y verdades chequeadas': 'liesAndVerifiedTruths',
   Consulta: 'coalition',

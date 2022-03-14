@@ -29,6 +29,13 @@ function mapValues(data) {
     const rawCongress = await readFile(path.join(process.cwd(), '..', 'src', 'data', 'raw-congress.json'), 'utf8');
     const rawPresidential = await readFile(path.join(process.cwd(), '..', 'src', 'data', 'raw-presidential.json'), 'utf8');
     const congress = mapValues(JSON.parse(rawCongress))
+      .filter((record) => {
+        const { elected } = record;
+        if (typeof elected === 'string') {
+          return elected.toLowerCase() === 'sí' || elected.toLowerCase() === 'si' || elected === '1';
+        }
+        return elected === 1;
+      })
       .map((record) => {
         const { name, firstLastName, secondLastName } = record;
         const fullname = [name, firstLastName, secondLastName].join(' ').trim();

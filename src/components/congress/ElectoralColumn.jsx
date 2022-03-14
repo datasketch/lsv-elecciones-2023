@@ -15,7 +15,7 @@ function ElectoralColumn({ label, candidates }) {
           single: !grid,
         })}
       >
-        {candidates.map((candidate) => (
+        {(candidates || []).map((candidate) => (
           <CandidateCard candidate={candidate} key={candidate.id} />
         ))}
       </div>
