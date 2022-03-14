@@ -75,7 +75,16 @@ function CandidateCardModalHeader({
               {candidate.guarantee}
             </p>
           ) : (
-            <p className="text-sm">{candidate.party.label}</p>
+            <>
+              <p className="text-sm">{candidate.party.label}</p>
+              {candidate.totalVotes && (
+              <p>
+                Votos:
+                {' '}
+                {candidate.totalVotes}
+              </p>
+              )}
+            </>
           )}
           <div className="mt-1 flex items-center">
             {activeTab === 'elecciones-presidenciales' && (
