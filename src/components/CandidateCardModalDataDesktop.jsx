@@ -29,20 +29,23 @@ function CandidateCardModalDataDesktop({ candidate }) {
   return (
     <>
       {/* // TODO: enable when data available */}
-      {activeTab === 'elecciones-presidenciales' && (
+      {activeTab === 'consultas' && candidate.vicepresident && (
         <>
           <p className="font-martin text-2xl uppercase text-jet border-l-2 border-jet pl-2 leading-none">Fórmula presidencial</p>
-          <div className="flex items-center mb-8 space-x-2">
+          <div className="flex items-center mt-4 mb-8 space-x-2">
             <img
-              className="w-20 h-20 max-w-full object-contain object-center"
-              src="https://joeschmoe.io/api/v1/random"
+              className="w-20 h-20 max-w-full object-cover object-center"
+              src={candidate.vicepresidentPhoto}
               alt=""
             />
             <div>
-              <p className="text-base">Sergio Fajardo Valderrama</p>
+              <p className="text-base">{candidate.vicepresident}</p>
+              {candidate.vicepresidentProfileLink
+              && (
               <a href="https://example.com" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 border border-black uppercase text-xxs py-0 px-4 mr-2">
                 Ver perfil
               </a>
+              )}
             </div>
           </div>
         </>

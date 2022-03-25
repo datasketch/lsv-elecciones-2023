@@ -90,6 +90,10 @@ const mapper = {
     'forcingPublicOfficialsToGetVaccinated',
   'Favorabilidad con la que terminó el más alto y reciente cargo ejecutivo':
     'mostRecentFavorability',
+  'Nombre fórmula': 'vicepresident',
+  'Link perfil fórmula': 'vicepresidentProfileLink',
+  'Foto fórmula': 'vicepresidentPhoto',
+
 };
 
 export default mapper;
