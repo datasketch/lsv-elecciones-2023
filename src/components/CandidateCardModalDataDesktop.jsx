@@ -42,7 +42,7 @@ function CandidateCardModalDataDesktop({ candidate }) {
               <p className="text-base">{candidate.vicepresident}</p>
               {candidate.vicepresidentProfileLink
               && (
-              <a href="https://example.com" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 border border-black uppercase text-xxs py-0 px-4 mr-2">
+              <a href={candidate.vicepresidentProfileLink} target="_blank" rel="noopener noreferrer" className="inline-block mt-2 border border-black uppercase text-xxs py-0 px-4 mr-2">
                 Ver perfil
               </a>
               )}
