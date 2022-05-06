@@ -15,7 +15,7 @@ function AppHeader() {
         />
       </div>
       {!hideNav && (
-        <div className="mx-auto max-w-xs mt-6 md:max-w-lg">
+        <div className="mx-auto max-w-xs mt-6 md:max-w-2xl">
           <AppNav />
         </div>
       )}

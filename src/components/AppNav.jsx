@@ -17,6 +17,11 @@ function AppNav() {
         inverse={activeTab !== 'consultas'}
         onClick={() => dispatch(selectTab('consultas'))}
       />
+      <AppButton
+        label="Ponderador de encuestas"
+        inverse={activeTab !== 'ponderador'}
+        onClick={() => dispatch(selectTab('ponderador'))}
+      />
       {/* <AppButton
         label="Elecciones Presidenciales"
         inverse={activeTab !== 'elecciones-presidenciales'}

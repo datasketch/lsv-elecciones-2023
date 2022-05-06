@@ -14,6 +14,7 @@ import {
 import { hideNav, selectActiveTab, selectTab } from './features/nav/nav-slice';
 import useResize from './hooks/use-resize';
 import AppPresidentialElection from './components/presidential/AppPresidentialElections';
+import Survey from './components/Survey';
 
 function App() {
   const dispatch = useDispatch();
@@ -59,6 +60,7 @@ function App() {
         {activeTab === 'congreso' && <AppCongress />}
         {activeTab === 'consultas' && <AppPresidential />}
         {activeTab === 'elecciones-presidenciales' && <AppPresidentialElection />}
+        {activeTab === 'ponderador' && <Survey />}
       </div>
     </>
   );
