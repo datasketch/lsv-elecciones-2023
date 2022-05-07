@@ -8,11 +8,6 @@ function AppNav() {
   return (
     <nav className="flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0 md:justify-center">
       <AppButton
-        label="Así quedó el Congreso"
-        inverse={activeTab !== 'congreso'}
-        onClick={() => dispatch(selectTab('congreso'))}
-      />
-      <AppButton
         label="Elecciones Presidenciales"
         inverse={activeTab !== 'consultas'}
         onClick={() => dispatch(selectTab('consultas'))}
@@ -21,6 +16,11 @@ function AppNav() {
         label="Ponderador de encuestas"
         inverse={activeTab !== 'ponderador'}
         onClick={() => dispatch(selectTab('ponderador'))}
+      />
+      <AppButton
+        label="Así quedó el Congreso"
+        inverse={activeTab !== 'congreso'}
+        onClick={() => dispatch(selectTab('congreso'))}
       />
       {/* <AppButton
         label="Elecciones Presidenciales"
