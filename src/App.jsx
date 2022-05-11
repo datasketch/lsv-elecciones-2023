@@ -39,7 +39,7 @@ function App() {
     }
     if (tabMatch) {
       const [, tab] = tabMatch;
-      if (['congreso', 'consultas', 'elecciones-presidenciales'].includes(tab.toLowerCase())) {
+      if (['congreso', 'consultas', 'elecciones-presidenciales', 'ponderador'].includes(tab.toLowerCase())) {
         dispatch(selectTab(tab));
       }
     }
