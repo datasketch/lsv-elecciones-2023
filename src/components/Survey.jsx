@@ -18,7 +18,7 @@ function Survey() {
         <p>
           El Ponderador de encuestas de La Silla Vacía utiliza como base el puntaje del
           {' '}
-          <a href="https://www.lasillavacia.com/historias/silla-nacional/el-semaforo-de-las-encuestadoras-actualizado-de-cara-a-primera-vuelta/" target="_blank" rel="noreferrer">Semáforo de encuestadoras</a>
+          <a className="underline text-dodger-blue" href="https://www.lasillavacia.com/historias/silla-nacional/el-semaforo-de-las-encuestadoras-actualizado-de-cara-a-primera-vuelta/" target="_blank" rel="noreferrer">Semáforo de encuestadoras</a>
           ,
           {' '}
           que califica de 0 a 10 las casas encuestadoras según su metodología y
