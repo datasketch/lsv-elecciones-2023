@@ -24,7 +24,7 @@ function Survey() {
           que califica de 0 a 10 las casas encuestadoras según su metodología y
           {' '}
           capacidad de acercarse a los resultados electorales(
-          <a href="https://docs.google.com/spreadsheets/d/17Ss1gOGErFasLRXoD7hzrMozq3NothrLjX-Z5NhUotE/edit" target="_blank" rel="noreferrer">acá</a>
+          <a className="underline text-dodger-blue" href="https://docs.google.com/spreadsheets/d/17Ss1gOGErFasLRXoD7hzrMozq3NothrLjX-Z5NhUotE/edit" target="_blank" rel="noreferrer">acá</a>
           {' '}
           puede revisar
           {' '}
