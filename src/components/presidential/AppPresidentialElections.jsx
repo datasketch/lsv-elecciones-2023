@@ -16,10 +16,10 @@ function AppPresidentialElection() {
   return (
     <>
       <FiltersSection />
-      <div className="py-8 max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 justify-center">
+      <div className="py-8 max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 gap-6 lg:gap-12 justify-center">
         {candidates.map((candidate) => (
           <button
-            className={classNames('inline-flex flex-col w-28 mx-auto', {
+            className={classNames('inline-flex flex-col w-40 mx-auto', {
               'opacity-25': !candidate.highlight,
             })}
             key={candidate.id}
@@ -28,7 +28,7 @@ function AppPresidentialElection() {
           >
             <img
               src={candidate.photo}
-              className="max-w-full h-28"
+              className="max-w-full h-40"
               alt={candidate.fullname}
               onError={handleImageError}
             />
