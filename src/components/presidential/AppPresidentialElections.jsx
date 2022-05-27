@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import PoweredBy from '../PoweredBy';
 import { toggleMainModalWindow } from '../../features/modal/modal-slice';
 import { selectAllPresidentialCandidates } from '../../features/presidential/presidential-slice';
+import Carousel from './Carousel';
 // import FiltersSection from './FilterSection';
 
 function AppPresidentialElection() {
@@ -36,6 +37,7 @@ function AppPresidentialElection() {
           </button>
         ))}
       </div>
+      <Carousel />
       <PoweredBy />
     </>
   );
