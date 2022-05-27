@@ -1,43 +1,60 @@
-import { useRef, useState } from 'react';
-import CarouselImage from './CarouselImage';
-import CarouselPagination from './CarouselPagination';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 function Carousel() {
-  const [active, setActive] = useState(1);
-  const sliderRef = useRef(null);
-  const goToSlide = (e) => {
-    const label = e.target.ariaLabel;
-    setActive(+label);
-    const slide = document.getElementById(`slide-${label}`);
-    sliderRef.current.scrollTo(slide.offsetLeft, 0);
-  };
   return (
-    <div className="max-w-sm mx-auto py-12 overflow-hidden">
-      <div className="flex space-x-4 overflow-x-auto snap-x snap-mandatory scroll-smooth relative" ref={sliderRef}>
-        <CarouselImage id={1} />
-        <CarouselImage id={2} />
-        <CarouselImage id={3} />
-        <CarouselImage id={4} />
-        <CarouselImage id={5} />
-        <CarouselImage id={6} />
-        <CarouselImage id={7} />
-        <CarouselImage id={8} />
-        <CarouselImage id={9} />
-        <CarouselImage id={10} />
-        <CarouselImage id={11} />
-        <CarouselImage id={12} />
-        <CarouselImage id={13} />
-        <CarouselImage id={14} />
-        <CarouselImage id={15} />
-        <CarouselImage id={16} />
-      </div>
-      <div className="flex justify-center space-x-1 mt-4">
-        <CarouselPagination
-          active={active}
-          onClick={goToSlide}
-          bullets={16}
-        />
-      </div>
+    <div className="max-w-lg mx-auto py-12 overflow-hidden">
+      <Slider dots>
+        <div className="aspect-w-1 aspect-h-1">
+          <img src="/carousel/1.jpg" alt="" />
+        </div>
+        <div className="aspect-w-1 aspect-h-1">
+          <img src="/carousel/2.jpg" alt="" />
+        </div>
+        <div className="aspect-w-1 aspect-h-1">
+          <img src="/carousel/3.jpg" alt="" />
+        </div>
+        <div className="aspect-w-1 aspect-h-1">
+          <img src="/carousel/4.jpg" alt="" />
+        </div>
+        <div className="aspect-w-1 aspect-h-1">
+          <img src="/carousel/5.jpg" alt="" />
+        </div>
+        <div className="aspect-w-1 aspect-h-1">
+          <img src="/carousel/6.jpg" alt="" />
+        </div>
+        <div className="aspect-w-1 aspect-h-1">
+          <img src="/carousel/7.jpg" alt="" />
+        </div>
+        <div className="aspect-w-1 aspect-h-1">
+          <img src="/carousel/8.jpg" alt="" />
+        </div>
+        <div className="aspect-w-1 aspect-h-1">
+          <img src="/carousel/9.jpg" alt="" />
+        </div>
+        <div className="aspect-w-1 aspect-h-1">
+          <img src="/carousel/10.jpg" alt="" />
+        </div>
+        <div className="aspect-w-1 aspect-h-1">
+          <img src="/carousel/11.jpg" alt="" />
+        </div>
+        <div className="aspect-w-1 aspect-h-1">
+          <img src="/carousel/12.jpg" alt="" />
+        </div>
+        <div className="aspect-w-1 aspect-h-1">
+          <img src="/carousel/13.jpg" alt="" />
+        </div>
+        <div className="aspect-w-1 aspect-h-1">
+          <img src="/carousel/14.jpg" alt="" />
+        </div>
+        <div className="aspect-w-1 aspect-h-1">
+          <img src="/carousel/15.jpg" alt="" />
+        </div>
+        <div className="aspect-w-1 aspect-h-1">
+          <img src="/carousel/16.jpg" alt="" />
+        </div>
+      </Slider>
     </div>
   );
 }
