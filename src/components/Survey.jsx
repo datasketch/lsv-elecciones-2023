@@ -1,7 +1,7 @@
 function Survey() {
   return (
     <>
-      <iframe src="https://flo.uri.sh/story/1505796/embed" title="Interactive or visual content" className="flourish-embed-iframe" frameBorder="0" scrolling="no" style={{ width: '100%', height: '600px' }} sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation" />
+      <iframe src="https://flo.uri.sh/story/1505796/embed" title="Interactive or visual content" className="flourish-embed-iframe" frameBorder="0" scrolling="no" style={{ width: '100%', height: '800px' }} sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation" />
       <div style={{ width: '100%!', marginTop: '4px!important', textAlign: 'right!important' }}>
         <a className="flourish-credit" href="https://public.flourish.studio/story/1505796/?utm_source=embed&utm_campaign=story/1505796" target="_top" style={{ textDecoration: 'none!important' }}>
           <img
