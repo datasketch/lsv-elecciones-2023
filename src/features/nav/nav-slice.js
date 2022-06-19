@@ -5,7 +5,7 @@ const navSlice = createSlice({
   name: 'nav',
   initialState: {
     hidden: false,
-    active: 'congreso',
+    active: 'resultados',
   },
   reducers: {
     selectTab(state, action) {
