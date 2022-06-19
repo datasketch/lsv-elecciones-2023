@@ -47,7 +47,7 @@ function App() {
     }
     if (tabMatch) {
       const [, tab] = tabMatch;
-      if (['congreso', 'consultas', 'elecciones-presidenciales', 'ponderador'].includes(tab.toLowerCase())) {
+      if (['congreso', 'consultas', 'elecciones-presidenciales', 'ponderador', 'resultados'].includes(tab.toLowerCase())) {
         dispatch(selectTab(tab));
         if (tab.toLowerCase() === 'consultas') {
           dispatch(toggleMainModalWindow(gp));
@@ -73,6 +73,7 @@ function App() {
         {activeTab === 'consultas' && <AppPresidential />}
         {activeTab === 'elecciones-presidenciales' && <AppPresidentialElection />}
         {activeTab === 'ponderador' && <Survey />}
+        {activeTab === 'resultados' && <iframe src="https://elecciones.lasillavacia.com/" title="Resultados" style={{ width: '100%', minHeight: '1300px' }} />}
       </div>
     </>
   );

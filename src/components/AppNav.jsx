@@ -22,6 +22,11 @@ function AppNav() {
   return (
     <nav className="flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0 md:justify-center">
       <AppButton
+        label="Resultados"
+        inverse={activeTab !== 'resultados'}
+        onClick={() => dispatch(selectTab('resultados'))}
+      />
+      <AppButton
         label="Candidatos presidenciales"
         inverse={activeTab !== 'consultas'}
         onClick={handleClick}
