@@ -1,34 +1,9 @@
-import classNames from 'classnames';
-import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import {
-  selectCongressCandidatesBlocks,
-  selectPresidentialCandidatesBlocks,
-  selectPresidentialElectionsCandidatesBlocks,
-} from '../features/modal/modal-slice';
-import { selectActiveTab } from '../features/nav/nav-slice';
-import CandidatePhotoOverlay from './candidates/CandidatePhotoOverlay';
-
 function ComparisonBlocksMobile({ mainCandidate, secondaryCandidate }) {
-  const activeTab = useSelector(selectActiveTab);
-  const congressBlocks = useSelector(selectCongressCandidatesBlocks);
-  const presidentialBlocks = useSelector(selectPresidentialCandidatesBlocks);
-  const presidentialElectionsBlocks = useSelector(selectPresidentialElectionsCandidatesBlocks);
-  const [blocks, setBlocks] = useState([]);
-
-  const blocksChoices = {
-    congreso: congressBlocks,
-    consultas: presidentialElectionsBlocks,
-    'elecciones-presidenciales': presidentialElectionsBlocks,
-  };
-
-  useEffect(() => {
-    setBlocks(blocksChoices[activeTab]);
-  }, [activeTab, congressBlocks, presidentialBlocks]);
-
   return (
     <>
-      {blocks.map(([label, field, conf = {}], index) => {
+      <p>Ficha de comparación</p>
+      {/*
+      blocks.map(([label, field, conf = {}], index) => {
         let mainCandidateFieldText = field && mainCandidate[field]
           ? <p>{mainCandidate[field]}</p>
           : null;
@@ -101,7 +76,8 @@ function ComparisonBlocksMobile({ mainCandidate, secondaryCandidate }) {
             )}
           </div>
         );
-      })}
+      })
+      */}
     </>
   );
 }

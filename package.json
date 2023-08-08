@@ -27,7 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prettify": "prettier --write \"src/**/*.{js,jsx}\"",
-    "transform": "node scripts/transform.js"
+    "data": "node scripts/transform.js"
   },
   "eslintConfig": {
     "extends": "react-app"

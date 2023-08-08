@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createSelector } from 'reselect';
+import { createSlice } from '@reduxjs/toolkit';
 import candidates from '../../data/data.json';
 
 const candidatesData = candidates.map((c) => ({ ...c, highlight: true }));
@@ -58,11 +58,6 @@ const candidatesSlice = createSlice({
   initialState,
   reducers: {
     filterByOffice(state, action) {
-      // const { payload } = action;
-      // state.filtered = candidatesData;
-      // state.filtered = state.filtered.filter((c) => c.office.includes(payload));
-      // // TODO: optimize
-      // state.filtered = highlightCandidates(state);
       state.filters.office = action.payload;
       state.filtered = highlightCandidates(state);
     },

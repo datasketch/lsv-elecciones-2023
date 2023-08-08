@@ -1,4 +1,4 @@
-import CandidateList from './candidates/CandidateList';
+import CandidateList from './CandidateList';
 // import FiltersSection from './FiltersSection';
 
 function CandidatesView() {

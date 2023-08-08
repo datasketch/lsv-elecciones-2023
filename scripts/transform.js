@@ -6,15 +6,15 @@ import slugify from 'slugify';
 import mapper from './mapper.js';
 import { partyColorMap } from './utils.js';
 
-function compareFunction(key) {
+/* function compareFunction(key) {
   return (a, b) => {
     if (a[key] > b[key]) return 1;
     if (a[key] < b[key]) return -1;
     return 0;
   };
-}
+} */
 
-const sortByElectoralNumber = compareFunction('electoralNumber');
+// const sortByElectoralNumber = compareFunction('electoralNumber');
 
 function mapValues(data) {
   return data.map((record) => Object.keys(record).reduce((result, key) => {
@@ -27,9 +27,9 @@ function mapValues(data) {
 
 (async () => {
   try {
-    const rawCandidates = await readFile(path.join(process.cwd(), '..', 'src', 'data', 'raw.json'), 'utf8');
+    const raw = await readFile(path.join(process.cwd(), 'src', 'data', 'raw.json'), 'utf8');
 
-    const candidates = mapValues(JSON.parse(rawCandidates))
+    const candidates = mapValues(JSON.parse(raw))
       .map((record) => {
         const { name, firstLastName, secondLastName } = record;
         const fullname = [name, firstLastName, secondLastName].join(' ').trim();
@@ -60,11 +60,11 @@ function mapValues(data) {
             : getGroupAge(record.age.toString())) : 'Sin datos',
         };
       })
-      .filter((record) => record.id)
-      .sort(sortByElectoralNumber);
+      .filter((record) => record.id);
+      // .sort(sortByElectoralNumber);
 
-    const candidatesFile = path.resolve(process.cwd(), '..', 'src', 'data', 'data.json');
-    await writeFile(candidatesFile, JSON.stringify(candidates));
+    const output = path.resolve(process.cwd(), 'src', 'data', 'data.json');
+    await writeFile(output, JSON.stringify(candidates));
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(error);
