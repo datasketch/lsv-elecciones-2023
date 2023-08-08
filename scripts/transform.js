@@ -27,7 +27,7 @@ function mapValues(data) {
 
 (async () => {
   try {
-    const rawCandidates = await readFile(path.join(process.cwd(), '..', 'src', 'data', 'raw-candidates.json'), 'utf8');
+    const rawCandidates = await readFile(path.join(process.cwd(), '..', 'src', 'data', 'raw.json'), 'utf8');
 
     const candidates = mapValues(JSON.parse(rawCandidates))
       .map((record) => {
@@ -63,7 +63,7 @@ function mapValues(data) {
       .filter((record) => record.id)
       .sort(sortByElectoralNumber);
 
-    const candidatesFile = path.resolve(process.cwd(), '..', 'src', 'data', 'candidates.json');
+    const candidatesFile = path.resolve(process.cwd(), '..', 'src', 'data', 'data.json');
     await writeFile(candidatesFile, JSON.stringify(candidates));
   } catch (error) {
     // eslint-disable-next-line no-console

@@ -1,7 +1,7 @@
-import CandidateList from './CandidateList';
+import CandidateList from './candidates/CandidateList';
 // import FiltersSection from './FiltersSection';
 
-function AppCandidates() {
+function CandidatesView() {
   return (
     <>
       {/* <FiltersSection /> */}
@@ -10,4 +10,4 @@ function AppCandidates() {
   );
 }
 
-export default AppCandidates;
+export default CandidatesView;

@@ -2,7 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createSelector } from 'reselect';
-import candidates from '../../data/candidates.json';
+import candidates from '../../data/data.json';
 
 const candidatesData = candidates.map((c) => ({ ...c, highlight: true }));
 const EXCLUDE_COLOR = '#3d3d3d';

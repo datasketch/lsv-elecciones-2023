@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import AppCandidates from './components/candidates/AppCandidates';
+import CandidatesView from './components/CandidatesView ';
 import AppHeader from './components/AppHeader';
 import Modal from './components/candidates/Modal';
 import ModalCoalitionWindow from './components/ModalCoalitionWindow';
@@ -39,7 +39,7 @@ function App() {
       {showMainModalWindow && <Modal />}
       <div className="px-8 mx-auto text-jet font-manrope">
         <AppHeader />
-        <AppCandidates />
+        <CandidatesView />
       </div>
     </>
   );
