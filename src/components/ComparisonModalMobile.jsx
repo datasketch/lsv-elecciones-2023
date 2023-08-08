@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectSortedCongressCandidates } from '../features/candidates/candidates-slice';
 import { toggleComparisonModalWindow } from '../features/modal/modal-slice';
 import { selectActiveTab } from '../features/nav/nav-slice';
-import { selectSortedPresidentialCandidates } from '../features/presidential/presidential-slice';
 import ComparisonBlocksMobile from './ComparisonBlocksMobile';
 
 function ComparisonModalMobile({
@@ -13,17 +12,15 @@ function ComparisonModalMobile({
 }) {
   const dispatch = useDispatch();
   const congressCandidates = useSelector(selectSortedCongressCandidates);
-  const presidentialCandidates = useSelector(
-    selectSortedPresidentialCandidates,
-  );
+
   const activeTab = useSelector(selectActiveTab);
   const [candidates, setCandidates] = useState([]);
   const container = useRef();
 
   useEffect(() => {
-    const selected = activeTab === 'congreso' ? congressCandidates : presidentialCandidates;
+    const selected = activeTab === 'congreso' && congressCandidates;
     setCandidates(selected);
-  }, [activeTab, congressCandidates, presidentialCandidates, setCandidates]);
+  }, [activeTab, congressCandidates, setCandidates]);
 
   useEffect(() => {
     container.current.scrollTo(0, 0);

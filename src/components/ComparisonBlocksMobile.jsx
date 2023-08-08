@@ -7,7 +7,7 @@ import {
   selectPresidentialElectionsCandidatesBlocks,
 } from '../features/modal/modal-slice';
 import { selectActiveTab } from '../features/nav/nav-slice';
-import CandidatePhotoOverlay from './congress/CandidatePhotoOverlay';
+import CandidatePhotoOverlay from './candidates/CandidatePhotoOverlay';
 
 function ComparisonBlocksMobile({ mainCandidate, secondaryCandidate }) {
   const activeTab = useSelector(selectActiveTab);

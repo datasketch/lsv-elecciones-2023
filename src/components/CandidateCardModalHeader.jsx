@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable no-nested-ternary */
 import { useSelector } from 'react-redux';
 import hexRgb from 'hex-rgb';
