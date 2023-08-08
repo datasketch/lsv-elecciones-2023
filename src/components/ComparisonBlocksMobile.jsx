@@ -1,4 +1,4 @@
-function ComparisonBlocksMobile({ mainCandidate, secondaryCandidate }) {
+function ComparisonBlocksMobile(/* { mainCandidate, secondaryCandidate } */) {
   return (
     <>
       <p>Ficha de comparación</p>

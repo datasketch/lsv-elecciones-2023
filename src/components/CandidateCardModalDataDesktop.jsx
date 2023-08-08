@@ -1,8 +1,9 @@
-function CandidateCardModalDataDesktop({ candidate }) {
+function CandidateCardModalDataDesktop(/* { candidate } */) {
   return (
     <>
       <p>Ficha de candidato</p>
-      {/* blocks.map(([label, field, conf = {}], index) => {
+      {/*
+      blocks.map(([label, field, conf = {}], index) => {
         let fieldText = field && candidate[field] ? <p>{candidate[field]}</p> : null;
         let showTitle = true;
         if (conf.title) {
@@ -16,13 +17,22 @@ function CandidateCardModalDataDesktop({ candidate }) {
           ));
         }
         if (fieldText && !conf.separator && conf.readMore && conf.inline) {
-          fieldText = <p><a href={candidate[conf.readMore]} className="text-dodger-blue" target="_blank" rel="noopener noreferrer">{candidate[field]}</a></p>;
+          fieldText = <p>
+            <a
+              href={candidate[conf.readMore]}
+              className="text-dodger-blue" target="_blank" rel="noopener noreferrer"
+            >
+              {candidate[field]}
+            </a>
+          </p>;
         }
         return (
           // eslint-disable-next-line react/no-array-index-key
           <React.Fragment key={index}>
             {conf.title && showTitle && (
-            <h3 className="font-martin text-2xl uppercase text-jet border-l-2 border-jet pl-2 leading-none mt-4">
+            <h3
+              className="font-martin text-2xl uppercase text-jet border-l-2 border-jet pl-2 leading-none mt-4"
+            >
               {label}
             </h3>
             )}
@@ -47,7 +57,8 @@ function CandidateCardModalDataDesktop({ candidate }) {
             {conf.readMore && candidate[conf.readMore] && !conf.inline && <p className="mt-2"><a href={candidate[conf.readMore]} className="text-dodger-blue" target="_blank" rel="noopener noreferrer">Saber más</a></p>}
           </React.Fragment>
         );
-      }) */}
+      })
+      */}
     </>
   );
 }
