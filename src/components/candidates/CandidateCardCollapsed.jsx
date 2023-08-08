@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { followCursor } from 'tippy.js';
 import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
 import Tippy from '@tippyjs/react/headless';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { followCursor } from 'tippy.js';
 import CandidateCardExpanded from './CandidateCardExpanded';
 import CandidatePhotoOverlay from './CandidatePhotoOverlay';
 import { toggleMainModalWindow } from '../../features/modal/modal-slice';

@@ -1,3 +1,5 @@
+/* eslint-disable import/order */
+/* eslint-disable import/no-unresolved */
 import fs from 'fs/promises';
 import Handlebars from 'handlebars';
 // eslint-disable-next-line import/no-extraneous-dependencies

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
-import { selectGridView } from '../../features/view/view-slice';
+import { selectGridView } from '../features/view/view-slice';
 import CandidateCard from './CandidateCard';
 
 function ElectoralColumn({ label, candidates }) {

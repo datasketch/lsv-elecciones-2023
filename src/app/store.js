@@ -3,7 +3,6 @@ import candidatesReducer from '../features/candidates/candidates-slice';
 import modalReducer from '../features/modal/modal-slice';
 import viewReducer from '../features/view/view-slice';
 import navReducer from '../features/nav/nav-slice';
-import presidentialReducer from '../features/presidential/presidential-slice';
 
 // eslint-disable-next-line import/prefer-default-export
 export const store = configureStore({
@@ -12,6 +11,5 @@ export const store = configureStore({
     modal: modalReducer,
     view: viewReducer,
     nav: navReducer,
-    presidential: presidentialReducer,
   },
 });

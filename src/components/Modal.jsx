@@ -8,33 +8,24 @@ import {
   selectMainModalWindow,
   setSecondaryCandidate,
   toggleMainModalWindow,
-} from '../../features/modal/modal-slice';
-import CandidateCardExpanded from './CandidateCardExpanded';
-import CandidateCardModal from '../CandidateCardModal';
-import ComparisonModal from '../ComparisonModal';
-import { selectActiveTab } from '../../features/nav/nav-slice';
+} from '../features/modal/modal-slice';
+import CandidateCardExpanded from './candidates/CandidateCardExpanded';
+import CandidateCardModal from './CandidateCardModal';
+import ComparisonModal from './ComparisonModal';
 
 function Modal() {
-  const congressCandidates = useSelector((state) => state.candidates.filtered);
-  const presidentialCandidates = useSelector((state) => state.presidential.all);
+  const filteredCandidates = useSelector((state) => state.candidates.filtered);
+  const mainCandidate = useSelector(selectMainCandidate);
   const showMainModalWindow = useSelector(selectMainModalWindow);
   const showComparisonModalWindow = useSelector(selectComparisonModalWindow);
-  const activeTab = useSelector(selectActiveTab);
   const [candidates, setCandidates] = useState([]);
   const dispatch = useDispatch();
-  const mainCandidate = useSelector(selectMainCandidate);
 
   useEffect(() => {
-    let selected;
-    if (activeTab === 'congreso') {
-      selected = congressCandidates
-        .filter((candidate) => candidate.pending === mainCandidate.pending
-          && candidate.id !== mainCandidate.id);
-    } else {
-      selected = presidentialCandidates;
-    }
+    const selected = filteredCandidates
+      .filter((candidate) => candidate.id !== mainCandidate.id);
     setCandidates(selected);
-  }, [activeTab, congressCandidates, presidentialCandidates, setCandidates]);
+  }, [filteredCandidates, setCandidates]);
 
   useEffect(() => {
     const evtHandler = (e) => {
@@ -67,9 +58,7 @@ function Modal() {
     >
       {showComparisonModalWindow ? <ComparisonModal /> : <CandidateCardModal />}
       <aside className="hidden bg-cultured absolute top-0 right-0 h-full max-h-full w-80 overflow-auto lg:block">
-        {activeTab === 'congreso' && (
-          <p className="p-2 text-center font-manrope text-lg">{mainCandidate.pending}</p>
-        )}
+        <p className="p-2 text-center font-manrope text-lg">{mainCandidate.pending}</p>
         {candidates.map((candidate) => (
           <CandidateCardExpanded
             key={candidate.id}

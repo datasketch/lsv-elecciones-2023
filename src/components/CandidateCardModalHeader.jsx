@@ -1,7 +1,7 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable no-nested-ternary */
 import { useSelector } from 'react-redux';
 import hexRgb from 'hex-rgb';
-import { selectActiveTab } from '../features/nav/nav-slice';
 import {
   selectComparisonModalWindow,
   selectSecondaryCandidate,
@@ -13,7 +13,6 @@ function CandidateCardModalHeader({
   setShowProfile = () => {},
   showProfile,
 }) {
-  const activeTab = useSelector(selectActiveTab);
   const secondaryCandidate = useSelector(selectSecondaryCandidate);
   const showComparisonModalWindow = useSelector(selectComparisonModalWindow);
   const {
@@ -44,19 +43,13 @@ function CandidateCardModalHeader({
       )}
       <div className="flex px-6 py-5 space-x-4 items-start">
         <div className="font-martin uppercase text-center text-2xl text-black flex-shrink-0">
-          {activeTab === 'consultas' ? (
-            <p>{candidate.coalition}</p>
-          ) : !candidate.electoralNumber ? (
-            <p>Sin datos</p>
-          ) : parseInt(candidate.electoralNumber, 10) ? (
+          {candidate.electoralNumber ? (
             <p>
               #Tarjetón:
               {' '}
               {candidate.electoralNumber}
             </p>
-          ) : (
-            <p>{candidate.electoralNumber}</p>
-          )}
+          ) : <p>&nbsp;</p>}
           <img
             src={candidate.photo}
             alt={candidate.fullname}
@@ -68,30 +61,15 @@ function CandidateCardModalHeader({
           <div className="opacity-0 text-2xl">_</div>
           <p className="text-sm">{candidate.pending}</p>
           <p className="text-xl leading-tight">{candidate.fullname}</p>
-          {activeTab === 'consultas' ? (
-            <p className="text-sm">
-              Aval:
-              {' '}
-              {candidate.guarantee}
-            </p>
-          ) : (
-            <>
-              <p className="text-sm">{candidate.party.label}</p>
-              {candidate.totalVotes && (
-              <p>
-                Votos:
-                {' '}
-                {candidate.totalVotes}
-              </p>
-              )}
-            </>
+          <p className="text-sm">{candidate.party.label}</p>
+          {candidate.totalVotes && (
+          <p>
+            Votos:
+            {' '}
+            {candidate.totalVotes}
+          </p>
           )}
           <div className="mt-1 flex items-center">
-            {activeTab === 'elecciones-presidenciales' && (
-              <a href="https://example.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-black uppercase text-xxs py-0 px-4 mr-2">
-                Ver perfil
-              </a>
-            )}
             {candidate.twitterHandle && (
               <a
                 href={`https://twitter.com/${candidate.twitterHandle}`}
@@ -104,7 +82,7 @@ function CandidateCardModalHeader({
             )}
             {secondaryCandidate
               && showComparisonModalWindow
-              && candidate.profile && activeTab !== 'elecciones-presidenciales' && (
+              && candidate.profile && (
                 <button
                   className="underline text-sm"
                   onClick={() => setShowProfile(!showProfile)}
