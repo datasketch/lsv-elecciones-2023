@@ -1,10 +1,10 @@
 import CandidateList from './CandidateList';
-// import FiltersSection from './FiltersSection';
+import FiltersSection from './FiltersSection';
 
 function CandidatesView() {
   return (
     <>
-      {/* <FiltersSection /> */}
+      <FiltersSection />
       <CandidateList />
     </>
   );

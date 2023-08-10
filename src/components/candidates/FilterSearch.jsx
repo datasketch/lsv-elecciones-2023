@@ -16,7 +16,7 @@ function FilterSearch() {
     <input
       type="text"
       placeholder="Buscar candidato por nombre"
-      className="border border-dodger-blue text-dodger-blue text-sm placeholder:text-dodger-blue bg-no-repeat pl-6 w-full md:w-auto placeholder:text-xs"
+      className="border border-dodger-blue text-dodger-blue text-sm placeholder:text-dodger-blue bg-no-repeat pl-6 w-full placeholder:text-xs"
       onChange={(e) => setText(e.target.value)}
       onKeyUp={handleKeyUp}
       value={text}

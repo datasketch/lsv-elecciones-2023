@@ -6,6 +6,9 @@ import {
   selectGender,
   selectAgeRanges,
   selectSectors,
+  selectTroublesOrQuestions,
+  selectPositionAgainstThePetroGovernment,
+  selectHasHeldPublicOffice,
 } from '../../features/candidates/candidates-slice';
 import FilterCheckbox from './FilterCheckbox';
 import AppButton from '../AppButton';
@@ -15,6 +18,10 @@ function FilterGroup() {
   const sectors = useSelector(selectSectors);
   const genders = useSelector(selectGender);
   const ages = useSelector(selectAgeRanges);
+  const troublesOrQuestions = useSelector(selectTroublesOrQuestions);
+  const positionAgainstThePetroGovernment = useSelector(selectPositionAgainstThePetroGovernment);
+  const hasHeldPublicOffice = useSelector(selectHasHeldPublicOffice);
+
   const dispatch = useDispatch();
   const containerRef = useRef(null);
 
@@ -78,6 +85,20 @@ function FilterGroup() {
               options={sectors}
               name="backgroundSector"
             />
+            <div className="mt-3">
+              <FilterCheckbox
+                label="Líos y cuestionamientos"
+                options={troublesOrQuestions}
+                name="troublesOrQuestions"
+              />
+            </div>
+            <div className="mt-3">
+              <FilterCheckbox
+                label="Posición frente al Gobierno"
+                options={positionAgainstThePetroGovernment}
+                name="positionAgainstThePetroGovernment"
+              />
+            </div>
           </div>
           <div className="flex flex-col justify-between">
             <div>
@@ -89,9 +110,18 @@ function FilterGroup() {
                   name="ageRange"
                 />
               </div>
+              <div className="mt-3">
+                <FilterCheckbox
+                  label="Ha tenido un cargo público"
+                  options={hasHeldPublicOffice}
+                  name="hasHeldPublicOffice"
+                />
+              </div>
             </div>
-            <AppButton label="Aplicar" type="submit" />
           </div>
+        </div>
+        <div className="mt-8 text-center">
+          <AppButton label="Aplicar" type="submit" />
         </div>
       </form>
     </div>
