@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-param-reassign */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createSelector } from 'reselect';
@@ -129,9 +130,15 @@ export const selectAllCandidates = (state) => {
 export const selectHighlightedCandidates = (state) => state.candidates.filtered
   .filter(({ highlight }) => highlight);
 
-export const selectDepartments = (state) => getCategories(state.candidates.all, 'department');
+export const selectDepartments = (state) => {
+  if (!state.candidates.filters.city) return [...new Set(state.candidates.all.map((c) => c.department))];
+  return [...new Set(state.candidates.all.filter((c) => c.city === state.candidates.filters.city).map((c) => c.department))];
+};
 
-export const selectCities = (state) => getCategories(state.candidates.all, 'city');
+export const selectCities = (state) => {
+  if (!state.candidates.filters.department) return [...new Set(state.candidates.all.map((c) => c.city))];
+  return [...new Set(state.candidates.all.filter((c) => c.department === state.candidates.filters.department).map((c) => c.city))];
+};
 
 export const selectCandidacies = (state) => getCategories(state.candidates.all, 'candidacy');
 
