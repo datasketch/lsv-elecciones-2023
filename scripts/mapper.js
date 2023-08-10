@@ -2,7 +2,7 @@ const mapper = {
   'Apellido 1': 'firstLastName',
   'Apellido 2': 'secondLastName',
   Nombres: 'name',
-  'Cargo que busca': 'positionLookingFor',
+  'Cargo que busca': 'candidacy',
   Departamento: 'department',
   Ciudad: 'city',
   Territorio: 'territory',

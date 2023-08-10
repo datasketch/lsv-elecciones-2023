@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-param-reassign */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createSelector } from 'reselect';
@@ -19,15 +20,16 @@ const initialState = {
     ),
   ).sort(),
   filters: {
-    office: '',
+    fullname: '',
     department: '',
-    party: '',
-    supportedPresidentialCandidate: '',
+    city: '',
+    candidacy: '',
     gender: '',
     backgroundSector: '',
-    fullname: '',
     ageRange: '',
-    pending: '',
+    troublesOrQuestions: '',
+    positionAgainstThePetroGovernment: '',
+    hasHeldPublicOffice: '',
   },
 };
 
@@ -57,20 +59,20 @@ const candidatesSlice = createSlice({
   name: 'candidates',
   initialState,
   reducers: {
-    filterByOffice(state, action) {
-      state.filters.office = action.payload;
-      state.filtered = highlightCandidates(state);
-    },
     filterByDepartment(state, action) {
       state.filters.department = action.payload;
       state.filtered = highlightCandidates(state);
     },
-    filterByParty(state, action) {
-      state.filters.party = action.payload;
+    filterByCity(state, action) {
+      state.filters.city = action.payload;
       state.filtered = highlightCandidates(state);
     },
-    filterBySupportedCandidatePresidential(state, action) {
-      state.filters.supportedPresidentialCandidate = action.payload;
+    filterByCandidacy(state, action) {
+      state.filters.candidacy = action.payload;
+      state.filtered = highlightCandidates(state);
+    },
+    filterBySearch(state, action) {
+      state.filters.fullname = action.payload.trim();
       state.filtered = highlightCandidates(state);
     },
     filterGroup(state, action) {
@@ -78,17 +80,12 @@ const candidatesSlice = createSlice({
       state.filters.gender = '';
       state.filters.backgroundSector = '';
       state.filters.ageRange = '';
+      state.filters.troublesOrQuestions = '';
+      state.filters.positionAgainstThePetroGovernment = '';
+      state.filters.hasHeldPublicOffice = '';
       Object.entries(action.payload).forEach(([key, value]) => {
         state.filters[key] = value;
       });
-      state.filtered = highlightCandidates(state);
-    },
-    filterBySearch(state, action) {
-      state.filters.fullname = action.payload.trim();
-      state.filtered = highlightCandidates(state);
-    },
-    filterByPending(state, action) {
-      state.filters.pending = action.payload;
       state.filtered = highlightCandidates(state);
     },
   },
@@ -111,6 +108,8 @@ export const {
   filterGroup,
   filterBySearch,
   filterByPending,
+  filterByCity,
+  filterByCandidacy,
 } = candidatesSlice.actions;
 
 export const selectAllCandidates = (state) => {
@@ -131,7 +130,29 @@ export const selectAllCandidates = (state) => {
 export const selectHighlightedCandidates = (state) => state.candidates.filtered
   .filter(({ highlight }) => highlight);
 
-export const selectDepartments = (state) => getCategories(state.candidates.all, 'department');
+export const selectDepartments = (state) => {
+  if (!state.candidates.filters.city) return [...new Set(state.candidates.all.map((c) => c.department))];
+  return [...new Set(state.candidates.all.filter((c) => c.city === state.candidates.filters.city).map((c) => c.department))];
+};
+
+export const selectCities = (state) => {
+  if (!state.candidates.filters.department) return [...new Set(state.candidates.all.map((c) => c.city))];
+  return [...new Set(state.candidates.all.filter((c) => c.department === state.candidates.filters.department).map((c) => c.city))];
+};
+
+export const selectCandidacies = (state) => getCategories(state.candidates.all, 'candidacy');
+
+export const selectSectors = (state) => getCategories(state.candidates.all, 'backgroundSector');
+
+export const selectGender = (state) => getCategories(state.candidates.all, 'gender');
+
+export const selectAgeRanges = (state) => state.candidates.ageRanges;
+
+export const selectTroublesOrQuestions = (state) => getCategories(state.candidates.all, 'troublesOrQuestions');
+
+export const selectPositionAgainstThePetroGovernment = (state) => getCategories(state.candidates.all, 'positionAgainstThePetroGovernment');
+
+export const selectHasHeldPublicOffice = (state) => getCategories(state.candidates.all, 'hasHeldPublicOffice');
 
 export const selectOffices = (state) => getCategories(state.candidates.all, 'office');
 
@@ -152,10 +173,6 @@ export const selectPartiesWithColor = (state) => state.candidates.all.reduce((li
 
 export const selectSupportedPresidentialCandidate = (state) => getCategories(state.candidates.all, 'supportedPresidentialCandidate');
 
-export const selectSectors = (state) => getCategories(state.candidates.all, 'backgroundSector');
-
-export const selectGender = (state) => getCategories(state.candidates.all, 'gender');
-
 export const selectSortedCongressCandidates = (state) => state.candidates.filtered
   .slice()
   .sort((a, b) => {
@@ -163,8 +180,6 @@ export const selectSortedCongressCandidates = (state) => state.candidates.filter
     if (a.fullname.toLowerCase() < b.fullname.toLowerCase()) return -1;
     return 0;
   });
-
-export const selectAgeRanges = (state) => state.candidates.ageRanges;
 
 export const selectCandidatesTo = (state) => getCategories(state.candidates.all, 'pending');
 
