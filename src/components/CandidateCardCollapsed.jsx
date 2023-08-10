@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
 import Tippy from '@tippyjs/react/headless';
 import CandidateCardExpanded from './CandidateCardExpanded';
-import CandidatePhotoOverlay from './CandidatePhotoOverlay';
-import { toggleMainModalWindow } from '../../features/modal/modal-slice';
+import CandidatePhotoOverlay from './candidates/CandidatePhotoOverlay';
+import { toggleMainModalWindow } from '../features/modal/modal-slice';
 
 function CandidateCardCollapsed({ candidate }) {
   const dispatch = useDispatch();

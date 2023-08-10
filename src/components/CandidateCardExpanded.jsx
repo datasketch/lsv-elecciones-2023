@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import CandidatePhotoOverlay from './CandidatePhotoOverlay';
+import CandidatePhotoOverlay from './candidates/CandidatePhotoOverlay';
 
 function CandidateCardExpanded({
   candidate,
@@ -10,7 +10,7 @@ function CandidateCardExpanded({
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
       className={classNames(
-        'flex p-2 space-x-3 items-center bg-cultured shadow-sm',
+        'flex p-2 gap-x-3 items-center bg-cultured shadow-sm',
         {
           'opacity-25': highlight && !candidate.highlight,
         },
@@ -24,13 +24,13 @@ function CandidateCardExpanded({
       </div>
       <div className="flex-grow min-w-0">
         <div
-          className="flex justify-between text-xs space-x-2"
+          className="flex justify-between text-xs gap-x-2"
           title={candidate.party.label}
         >
-          <span className="truncate">{candidate.party.label}</span>
+          <span className="sm:truncate">{candidate.party.label}</span>
           <span className="text-dodger-blue">{candidate.department}</span>
         </div>
-        <p className="truncate" title={candidate.fullname}>
+        <p className="text-sm sm:truncate sm:text-base leading-tight" title={candidate.fullname}>
           {candidate.fullname}
         </p>
       </div>

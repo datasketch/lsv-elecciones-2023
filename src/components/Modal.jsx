@@ -9,7 +9,7 @@ import {
   setSecondaryCandidate,
   toggleMainModalWindow,
 } from '../features/modal/modal-slice';
-import CandidateCardExpanded from './candidates/CandidateCardExpanded';
+import CandidateCardExpanded from './CandidateCardExpanded';
 import CandidateCardModal from './CandidateCardModal';
 import ComparisonModal from './ComparisonModal';
 

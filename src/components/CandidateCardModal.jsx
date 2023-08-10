@@ -18,12 +18,6 @@ function CandidateCardModal() {
         </div>
       )}
       <div className="py-4 px-6 text-sm">
-        {candidate.flags && (
-        <>
-          <p className="text-dim-gray">Banderas</p>
-          <p>{candidate.flags}</p>
-        </>
-        )}
         <CandidateCardModalDataDesktop candidate={candidate} />
       </div>
       <div className="px-6">

@@ -1,65 +1,77 @@
-function CandidateCardModalDataDesktop(/* { candidate } */) {
+function CandidateCardModalDataDesktop({ candidate }) {
   return (
-    <>
-      <p>Ficha de candidato</p>
-      {/*
-      blocks.map(([label, field, conf = {}], index) => {
-        let fieldText = field && candidate[field] ? <p>{candidate[field]}</p> : null;
-        let showTitle = true;
-        if (conf.title) {
-          showTitle = (conf.conditions || []).reduce((result, $field) => (
-            result && !!candidate[$field]
-          ), true);
-        }
-        if (conf.separator && fieldText) {
-          fieldText = candidate[field].split(conf.separator).map((text) => (
-            <p key={text}>{text}</p>
-          ));
-        }
-        if (fieldText && !conf.separator && conf.readMore && conf.inline) {
-          fieldText = <p>
-            <a
-              href={candidate[conf.readMore]}
-              className="text-dodger-blue" target="_blank" rel="noopener noreferrer"
-            >
-              {candidate[field]}
-            </a>
-          </p>;
-        }
-        return (
-          // eslint-disable-next-line react/no-array-index-key
-          <React.Fragment key={index}>
-            {conf.title && showTitle && (
-            <h3
-              className="font-martin text-2xl uppercase text-jet border-l-2 border-jet pl-2 leading-none mt-4"
-            >
-              {label}
-            </h3>
-            )}
-            {!conf.title && fieldText && (
-            <p className={classNames('text-dim-gray', {
-              'mt-4': index > 0,
-            })}
-            >
-              {label}
-            </p>
-            )}
-            {fieldText}
-            {conf.embed && candidate[conf.embed] && (
-            <div
-              className="mt-4 flex items-center justify-center"
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: candidate[conf.embed],
-              }}
-            />
-            )}
-            {conf.readMore && candidate[conf.readMore] && !conf.inline && <p className="mt-2"><a href={candidate[conf.readMore]} className="text-dodger-blue" target="_blank" rel="noopener noreferrer">Saber más</a></p>}
-          </React.Fragment>
-        );
-      })
-      */}
-    </>
+    <ul className="space-y-4">
+      {candidate.flags && (
+        <li>
+          <p className="text-dim-gray">Banderas</p>
+          <p>{candidate.flags}</p>
+        </li>
+      )}
+      {
+        candidate.positionAgainstThePetroGovernment && (
+          <li>
+            <p className="text-dim-gray">Posición frente al Gobierno Petro</p>
+            <p>{candidate.positionAgainstThePetroGovernment}</p>
+          </li>
+        )
+      }
+      {
+        candidate.legalAbortionUpToSixMonthsOfPregnancy && (
+          <li>
+            <p className="text-dim-gray">Aborto legal hasta los 6 meses del embarazo</p>
+            <p>{candidate.legalAbortionUpToSixMonthsOfPregnancy}</p>
+          </li>
+        )
+      }
+      {
+        candidate.thatTheJACExecuteLargePublicWorks && (
+          <li>
+            <p className="text-dim-gray">Que las Juntas de Acción Comunal ejecuten grandes obras</p>
+            <p>{candidate.thatTheJACExecuteLargePublicWorks}</p>
+          </li>
+        )
+      }
+      {
+        candidate.EPSMustManagePublicResources && (
+          <li>
+            <p className="text-dim-gray">EPS manejen recursos públicos</p>
+            <p>{candidate.EPSMustManagePublicResources}</p>
+          </li>
+        )
+      }
+      {
+        candidate.oilExplorationMustBeStopped && (
+          <li>
+            <p className="text-dim-gray">Frenar nueva exploración de petróleo</p>
+            <p>{candidate.oilExplorationMustBeStopped}</p>
+          </li>
+        )
+      }
+      {
+        candidate.increasePropertyTax && (
+          <li>
+            <p className="text-dim-gray">Subir el impuesto predial</p>
+            <p>{candidate.increasePropertyTax}</p>
+          </li>
+        )
+      }
+      {
+        candidate.theMediaShouldBeRegulated && (
+          <li>
+            <p className="text-dim-gray">Se deberían regular los medios de comunicación</p>
+            <p>{candidate.theMediaShouldBeRegulated}</p>
+          </li>
+        )
+      }
+      {
+        candidate.hasProblemsOrQuestions && (
+          <li>
+            <p className="text-dim-gray">Líos o cuestionamientos</p>
+            <p>{candidate.hasProblemsOrQuestions}</p>
+          </li>
+        )
+      }
+    </ul>
   );
 }
 
