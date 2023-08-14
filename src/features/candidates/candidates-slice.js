@@ -27,7 +27,7 @@ const initialState = {
     gender: '',
     backgroundSector: '',
     ageRange: '',
-    troublesOrQuestions: '',
+    hasProblemsOrQuestions: '',
     positionAgainstThePetroGovernment: '',
     hasHeldPublicOffice: '',
   },
@@ -80,7 +80,7 @@ const candidatesSlice = createSlice({
       state.filters.gender = '';
       state.filters.backgroundSector = '';
       state.filters.ageRange = '';
-      state.filters.troublesOrQuestions = '';
+      state.filters.hasProblemsOrQuestions = '';
       state.filters.positionAgainstThePetroGovernment = '';
       state.filters.hasHeldPublicOffice = '';
       Object.entries(action.payload).forEach(([key, value]) => {
@@ -148,7 +148,7 @@ export const selectGender = (state) => getCategories(state.candidates.all, 'gend
 
 export const selectAgeRanges = (state) => state.candidates.ageRanges;
 
-export const selectTroublesOrQuestions = (state) => getCategories(state.candidates.all, 'troublesOrQuestions');
+export const selectHasProblemOrQuestions = (state) => getCategories(state.candidates.all, 'hasProblemsOrQuestions');
 
 export const selectPositionAgainstThePetroGovernment = (state) => getCategories(state.candidates.all, 'positionAgainstThePetroGovernment');
 

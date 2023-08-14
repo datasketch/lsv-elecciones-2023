@@ -6,14 +6,14 @@ function CandidatePhotoOverlay({ candidate }) {
   return (
     <>
       <img
-        src={candidate.photo}
+        src={candidate?.photo}
         className="max-w-full w-full h-full"
         alt=""
         onError={handleImageError}
       />
       <span
         className="absolute top-0 left-0 w-full h-full opacity-30"
-        style={{ backgroundColor: candidate.party.color }}
+        style={{ backgroundColor: candidate?.party?.color }}
       />
     </>
   );

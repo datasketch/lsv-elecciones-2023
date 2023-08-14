@@ -4,8 +4,8 @@ import slugify from 'slugify';
 function FilterCheckbox({ label, options, name }) {
   return (
     <>
-      <span className="text-dodger-blue text-xxs font-bold">{label}</span>
-      <div className="flex flex-col items-start text-xs space-y-1 mt-1">
+      <p className="text-dodger-blue text-xxs font-bold leading-tight">{label}</p>
+      <div className="flex flex-col items-start text-xs space-y-1 mt-2">
         {options.map((option) => (
           <label
             htmlFor={`${slugify(label)}-${slugify(option)}`}
