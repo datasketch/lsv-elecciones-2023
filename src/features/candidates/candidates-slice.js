@@ -154,11 +154,17 @@ export const selectPositionAgainstThePetroGovernment = (state) => getCategories(
 
 export const selectHasHeldPublicOffice = (state) => getCategories(state.candidates.all, 'hasHeldPublicOffice');
 
-export const selectOffices = (state) => getCategories(state.candidates.all, 'office');
-
 export const selectParties = (state) => Array.from(
   new Set(state.candidates.all.map(({ party }) => party.label).sort()),
 );
+
+export const selectSortedCongressCandidates = (state) => state.candidates.filtered
+  .slice()
+  .sort((a, b) => {
+    if (a.fullname.toLowerCase() > b.fullname.toLowerCase()) return 1;
+    if (a.fullname.toLowerCase() < b.fullname.toLowerCase()) return -1;
+    return 0;
+  });
 
 export const selectPartiesWithColor = (state) => state.candidates.all.reduce((list, candidate) => {
   const { label, color } = candidate.party;
@@ -170,18 +176,6 @@ export const selectPartiesWithColor = (state) => state.candidates.all.reduce((li
   list[label] = color;
   return list;
 }, {});
-
-export const selectSupportedPresidentialCandidate = (state) => getCategories(state.candidates.all, 'supportedPresidentialCandidate');
-
-export const selectSortedCongressCandidates = (state) => state.candidates.filtered
-  .slice()
-  .sort((a, b) => {
-    if (a.fullname.toLowerCase() > b.fullname.toLowerCase()) return 1;
-    if (a.fullname.toLowerCase() < b.fullname.toLowerCase()) return -1;
-    return 0;
-  });
-
-export const selectCandidatesTo = (state) => getCategories(state.candidates.all, 'pending');
 
 export const selectCandidateById = createSelector(
   (state) => state.candidates.all,
