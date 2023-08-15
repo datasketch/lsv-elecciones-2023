@@ -13,7 +13,7 @@ function ComparisonBlocksMobile({ mainCandidate, secondaryCandidate }) {
             </div>
             <div className="text-xxs leading-tight sm:text-xs">
               <p>
-                {mainCandidate?.fullname}
+                {mainCandidate?.secondRoundVote2022}
               </p>
             </div>
           </div>
@@ -23,7 +23,7 @@ function ComparisonBlocksMobile({ mainCandidate, secondaryCandidate }) {
             </div>
             <div className="text-xxs leading-tight sm:text-xs">
               <p>
-                {secondaryCandidate?.fullname}
+                {secondaryCandidate?.secondRoundVote2022}
               </p>
             </div>
           </div>
