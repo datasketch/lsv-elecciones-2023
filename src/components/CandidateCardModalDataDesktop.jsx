@@ -8,6 +8,14 @@ function CandidateCardModalDataDesktop({ candidate }) {
         </li>
       )}
       {
+        candidate.secondRoundVote2022 && (
+          <li>
+            <p className="text-dim-gray">Voto en segunda vuelta 2022</p>
+            <p>{candidate.secondRoundVote2022}</p>
+          </li>
+        )
+      }
+      {
         candidate.positionAgainstThePetroGovernment && (
           <li>
             <p className="text-dim-gray">Posición frente al Gobierno Petro</p>

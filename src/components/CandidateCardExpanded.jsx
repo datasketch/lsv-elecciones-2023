@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import CandidatePhotoOverlay from './candidates/CandidatePhotoOverlay';
+import CandidatePhotoOverlay from './CandidatePhotoOverlay';
 
 function CandidateCardExpanded({
   candidate,

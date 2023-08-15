@@ -42,12 +42,23 @@ function FiltersSection() {
           options={candidacies}
           onChange={(e) => dispatch(filterByCandidacy(e.target.value))}
         />
+        <div className="lg:hidden">
+          <p className="uppercase text-xxs">&nbsp;</p>
+          <FilterSearch />
+        </div>
       </div>
-      <div className="flex md:items-end md:gap-x-4">
-        <FilterGroup />
-        <FilterSearch />
-        <div className="flex gap-x-2 ml-2 md:hidden">
-          <FilterView grid={grid} />
+      <div className="flex items-center justify-center md:justify-start md:items-end md:gap-x-4">
+        <div className="hidden md:block ">
+          <FilterGroup />
+        </div>
+        <div className="hidden lg:block">
+          <FilterSearch />
+        </div>
+        <div className="flex items-center justify-between w-full md:hidden">
+          <FilterGroup />
+          <div>
+            <FilterView grid={grid} />
+          </div>
         </div>
       </div>
     </div>

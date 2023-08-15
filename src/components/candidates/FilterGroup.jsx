@@ -6,7 +6,7 @@ import {
   selectGender,
   selectAgeRanges,
   selectSectors,
-  selectTroublesOrQuestions,
+  selectHasProblemOrQuestions,
   selectPositionAgainstThePetroGovernment,
   selectHasHeldPublicOffice,
 } from '../../features/candidates/candidates-slice';
@@ -18,7 +18,7 @@ function FilterGroup() {
   const sectors = useSelector(selectSectors);
   const genders = useSelector(selectGender);
   const ages = useSelector(selectAgeRanges);
-  const troublesOrQuestions = useSelector(selectTroublesOrQuestions);
+  const hasProblemOrQuestions = useSelector(selectHasProblemOrQuestions);
   const positionAgainstThePetroGovernment = useSelector(selectPositionAgainstThePetroGovernment);
   const hasHeldPublicOffice = useSelector(selectHasHeldPublicOffice);
 
@@ -52,7 +52,7 @@ function FilterGroup() {
   };
 
   return (
-    <div className="hidden md:block md:relative" ref={containerRef}>
+    <div className="md:relative" ref={containerRef}>
       <button
         className="border border-dodger-blue text-dodger-blue text-sm py-2 pl-3 pr-10 bg-no-repeat"
         aria-haspopup="true"
@@ -70,7 +70,7 @@ function FilterGroup() {
       </button>
       <form
         className={classNames(
-          'absolute z-10 top-full left-0 bg-soft-white text-jet mt-1 text-left px-4 py-2 xl:right-0 xl:left-auto',
+          'absolute w-11/12 z-10 left-1/2 -translate-x-1/2 bg-soft-white text-jet mt-1 text-left px-4 pr-10 py-2 md:w-fit md:left-48 lg:-left-20 lg:translate-x-0',
           { hidden: !isOpened },
         )}
         onSubmit={handleSubmit}
@@ -78,20 +78,13 @@ function FilterGroup() {
           boxShadow: '0 6px 11px #00000042',
         }}
       >
-        <div className="flex space-x-4">
-          <div className="border-r border-bone pr-4">
+        <div className="flex flex-col sm:flex-row gap-x-4">
+          <div className="sm:w-1/2 sm:border-r sm:border-bone pr-4">
             <FilterCheckbox
               label="Sector"
               options={sectors}
               name="backgroundSector"
             />
-            <div className="mt-3">
-              <FilterCheckbox
-                label="Líos y cuestionamientos"
-                options={troublesOrQuestions}
-                name="troublesOrQuestions"
-              />
-            </div>
             <div className="mt-3">
               <FilterCheckbox
                 label="Posición frente al Gobierno"
@@ -100,7 +93,7 @@ function FilterGroup() {
               />
             </div>
           </div>
-          <div className="flex flex-col justify-between">
+          <div className="sm:w-1/2 flex flex-col justify-between">
             <div>
               <FilterCheckbox label="Género" options={genders} name="gender" />
               <div className="mt-3">
@@ -115,6 +108,13 @@ function FilterGroup() {
                   label="Ha tenido un cargo público"
                   options={hasHeldPublicOffice}
                   name="hasHeldPublicOffice"
+                />
+              </div>
+              <div className="mt-3">
+                <FilterCheckbox
+                  label="Líos y cuestionamientos"
+                  options={hasProblemOrQuestions}
+                  name="hasProblemsOrQuestions"
                 />
               </div>
             </div>
