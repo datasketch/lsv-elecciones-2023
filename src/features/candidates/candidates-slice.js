@@ -131,13 +131,13 @@ export const selectHighlightedCandidates = (state) => state.candidates.filtered
   .filter(({ highlight }) => highlight);
 
 export const selectDepartments = (state) => {
-  if (!state.candidates.filters.city) return [...new Set(state.candidates.all.map((c) => c.department))];
-  return [...new Set(state.candidates.all.filter((c) => c.city === state.candidates.filters.city).map((c) => c.department))];
+  if (!state.candidates.filters.city) return [...new Set(state.candidates.all.map((c) => c.department))].sort();
+  return [...new Set(state.candidates.all.filter((c) => c.city === state.candidates.filters.city).map((c) => c.department))].sort();
 };
 
 export const selectCities = (state) => {
-  if (!state.candidates.filters.department) return [...new Set(state.candidates.all.map((c) => c.city))];
-  return [...new Set(state.candidates.all.filter((c) => c.department === state.candidates.filters.department).map((c) => c.city))];
+  if (!state.candidates.filters.department) return [...new Set(state.candidates.all.map((c) => c.city))].sort();
+  return [...new Set(state.candidates.all.filter((c) => c.department === state.candidates.filters.department).map((c) => c.city))].sort();
 };
 
 export const selectCandidacies = (state) => getCategories(state.candidates.all, 'candidacy');
