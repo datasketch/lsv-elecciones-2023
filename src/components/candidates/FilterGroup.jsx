@@ -70,7 +70,7 @@ function FilterGroup() {
       </button>
       <form
         className={classNames(
-          'absolute w-11/12 z-10 left-1/2 -translate-x-1/2 bg-soft-white text-jet mt-1 text-left px-4 pr-10 py-2 md:w-fit md:left-48 lg:-left-20 lg:translate-x-0',
+          'absolute w-11/12 z-10 left-1/2 -translate-x-1/2 bg-soft-white text-jet mt-1 text-left px-4 pr-10 py-2 md:w-fit md:left-48 lg:-left-20 lg:translate-x-0 overflow-y-scroll h-96',
           { hidden: !isOpened },
         )}
         onSubmit={handleSubmit}

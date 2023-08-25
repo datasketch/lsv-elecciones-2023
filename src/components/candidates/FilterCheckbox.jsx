@@ -19,7 +19,7 @@ function FilterCheckbox({ label, options, name }) {
               id={`${slugify(label)}-${slugify(option)}`}
               className="bg-bone border-none text-dodger-blue focus:ring-offset-0 focus:ring-dodger-blue"
             />
-            <span className="whitespace-nowrap">{option}</span>
+            <span>{option}</span>
           </label>
         ))}
       </div>
