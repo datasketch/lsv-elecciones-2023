@@ -19,7 +19,7 @@ import { generateImages } from '../utils.js';
       const image = images[i];
       const command = new PutObjectCommand({
         Bucket: 'dsktch-la-silla-vacia',
-        Key: `elecciones-2022/tarjetas/${image.id}.png`,
+        Key: `elecciones-2023/tarjetas/${image.id}.png`,
         Body: image.body,
       });
       // eslint-disable-next-line no-await-in-loop

@@ -6,11 +6,10 @@ import express from 'express';
 // eslint-disable-next-line import/extensions
 import { renderTemplate, setupHbs } from '../utils.js';
 
-const congressCandidates = readFileSync(path.join(process.cwd(), '..', 'src', 'data', 'candidates.json'), 'utf8');
-const presidentialCandidates = readFileSync(path.join(process.cwd(), '..', 'src', 'data', 'presidential.json'), 'utf8');
-const candidates = [...JSON.parse(congressCandidates), ...JSON.parse(presidentialCandidates)];
+const data = readFileSync(path.join(process.cwd(), '..', 'src', 'data', 'data.json'), 'utf8');
 const html = readFileSync(path.join(process.cwd(), 'preview', './card.tpl.hbs'), 'utf-8');
 const template = Handlebars.compile(html);
+const candidates = JSON.parse(data);
 
 setupHbs();
 
