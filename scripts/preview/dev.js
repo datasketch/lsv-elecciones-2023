@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import http from 'http';
 import path from 'path';
 import { readFileSync } from 'fs';
@@ -22,7 +23,7 @@ app.get('/:id', (req, res, next) => {
   // eslint-disable-next-line no-shadow
   const candidate = candidates.find((candidate) => candidate.id === id);
   if (!candidate) return next();
-  candidate.imageProfile = candidate.imageProfile ? candidate.imageProfile.slice(0, 650) : '';
+  candidate.imageProfile = candidate.imageProfile ? candidate.imageProfile.slice(0, 650) : candidate.profile;
   // eslint-disable-next-line no-shadow
   const html = renderTemplate(template, candidate);
   return res.send(html);
