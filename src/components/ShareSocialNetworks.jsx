@@ -47,7 +47,7 @@ function ShareSocialNetworks() {
         <img className="mx-auto max-w-full" src="/icono-whatsapp.svg" alt="" />
       </a>
       <a
-        href={`https://dsktch-la-silla-vacia.s3.amazonaws.com/elecciones-2022/tarjetas/${candidate.id}.png`}
+        href={`https://dsktch-la-silla-vacia.s3.amazonaws.com/elecciones-2023/tarjetas/${candidate.id}.png`}
         className="w-7 h-7 bg-dodger-blue p-1"
         download={`${candidate.id}.png`}
       >

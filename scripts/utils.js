@@ -128,7 +128,5 @@ export const generateImages = async () => {
   }
 
   await browser.close();
-
-  // console.log(images[0]);
   return images;
 };
