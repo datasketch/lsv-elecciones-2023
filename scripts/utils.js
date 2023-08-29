@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable import/order */
 /* eslint-disable import/no-unresolved */
 import fs from 'fs/promises';
@@ -92,9 +93,7 @@ export const generateImages = async () => {
   const imageHeight = 1080;
 
   // Parse candidates
-  const congress = await getCandidates('candidates');
-  const presidential = await getCandidates('presidential');
-  const candidates = [...presidential, ...congress];
+  const candidates = await getCandidates('data');
 
   // Open new page
   const browser = await puppeteer.launch();
@@ -111,7 +110,7 @@ export const generateImages = async () => {
     const candidate = candidates[i];
     console.group('Image');
     console.log(`candidate.id: ${candidate.id}`);
-    candidate.imageProfile = candidate.imageProfile ? candidate.imageProfile.slice(0, 650) : '';
+    candidate.imageProfile = candidate.imageProfile ? candidate.imageProfile.slice(0, 650) : candidate.profile.slice(0, 650);
     // eslint-disable-next-line no-await-in-loop
     await page.setContent(renderTemplate(template, candidate), { timeout: 0 });
     // eslint-disable-next-line no-await-in-loop
@@ -130,5 +129,6 @@ export const generateImages = async () => {
 
   await browser.close();
 
+  // console.log(images[0]);
   return images;
 };

@@ -13,6 +13,7 @@ import { generateImages } from '../utils.js';
     region: 'us-east-1',
   });
   try {
+    console.log(client);
     const images = await generateImages();
     console.group('Uploading images to AWS S3. This may take a while');
     for (let i = 0; i < images.length; i += 1) {
