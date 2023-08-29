@@ -23,7 +23,7 @@ app.get('/:id', (req, res, next) => {
   // eslint-disable-next-line no-shadow
   const candidate = candidates.find((candidate) => candidate.id === id);
   if (!candidate) return next();
-  candidate.imageProfile = candidate.imageProfile ? candidate.imageProfile.slice(0, 650) : candidate.profile;
+  candidate.imageProfile = candidate.imageProfile ? candidate.imageProfile.slice(0, 650) : candidate.profile.slice(0, 650);
   // eslint-disable-next-line no-shadow
   const html = renderTemplate(template, candidate);
   return res.send(html);

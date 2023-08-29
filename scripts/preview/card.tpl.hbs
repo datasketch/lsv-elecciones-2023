@@ -36,6 +36,7 @@
         body {
             box-sizing: border-box;
             color: #3b3d3b;
+            height: 1080px;
             font-family: Manrope, serif;
             width: 608px;
         }
@@ -46,6 +47,7 @@
 
         .candidate-card-wrapper {
             background-color: #fafafa;
+            height: 100%;
             position: relative;
         }
 
@@ -85,18 +87,18 @@
         }
 
         .candidate-card-fullname {
-            font-size: 28px;
+            font-size: 24px;
         }
 
         .candidate-card-profile {
             background-color: #eeeeee;
-            font-size: 20px;
+            font-size: 16px;
             padding: 1rem 1.5rem;
         }
 
         .candidate-card-data {
-            padding: 1rem 1.5rem;
-            font-size: 20px;
+            padding: 1rem 1.5rem 40px;
+            font-size: 16px;
         }
 
         .candidate-card-data>*~* {
@@ -120,8 +122,11 @@
         }
 
         .candidate-card-logo {
+            bottom: 0;
+            height: 40px;
+            position: absolute;
             text-align: center;
-            padding: 10px 0;
+            width: 100%;
         }
     </style>
 </head>
