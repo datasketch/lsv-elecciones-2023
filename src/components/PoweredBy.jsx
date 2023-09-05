@@ -18,9 +18,9 @@ function PoweredBy() {
         </a>
       </div>
       <p className="text-xxs text-center pr-4 md:pr-6 col-span-2">
-        Bancolombia apoyó esta herramienta educativa con fines pedagógicos para
-        que los ciudadanos voten informados. Ésta no representa una posición
-        institucional.
+        Escogimos a todas las cabezas de lista, los repitentes y a los que,
+        de acuerdo con entrevistas a políticos y periodistas locales,
+        tienen una revelancia especial por su trayectoria o su origen político.
       </p>
     </div>
   );
