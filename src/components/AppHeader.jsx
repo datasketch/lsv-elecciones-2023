@@ -7,7 +7,7 @@ function AppHeader() {
           src="/logo-elecciones-2023.svg"
           alt=""
         />
-        <p className="mt-1.5">
+        <p className="mt-4">
           Escoja su región y encuentre su candidato a Alcaldía Gobernación o Concejo.
         </p>
       </div>
