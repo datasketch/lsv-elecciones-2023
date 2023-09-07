@@ -69,6 +69,11 @@ function CandidateCardModalHeader({
             {candidate.totalVotes}
           </p>
           )}
+          <p className="text-sm">
+            Cargo que busca:
+            {' '}
+            {candidate.candidacy}
+          </p>
           <div className="mt-1 flex items-center">
             {candidate.twitterHandle && (
               <a
