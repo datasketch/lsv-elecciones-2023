@@ -4,7 +4,7 @@ function PoweredBy() {
       <div className="border-r border-r-jet pr-4 md:pr-6">
         <img
           className="max-w-full align-middle"
-          src="/bancolombia.png"
+          src="/LSV-SA-04.svg"
           alt=""
         />
       </div>
@@ -18,9 +18,11 @@ function PoweredBy() {
         </a>
       </div>
       <p className="text-xxs text-center pr-4 md:pr-6 col-span-2">
-        Escogimos a todas las cabezas de lista, los repitentes y a los que,
-        de acuerdo con entrevistas a políticos y periodistas locales,
-        tienen una revelancia especial por su trayectoria o su origen político.
+        Para gobernaciones y alcaldías incluimos a todos los candidatos de las regiones
+        que cubrimos. Para concejos, incluimos a las cabezas de lista, los que buscan
+        la reelección, quienes heredan votos, candidatos cuestionados, candidatos
+        mediáticos o influyentes en redes sociales, y a otros que, según nuestra
+        reportería, tienen chance de llegar así sean nuevos.
       </p>
     </div>
   );

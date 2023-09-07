@@ -14,8 +14,6 @@ function App() {
     (state) => selectCandidateById(state, window.LSV_FEATURED_CANDIDATE_ID),
   );
 
-  console.log(featuredCandidate);
-
   useEffect(() => {
     if (featuredCandidate) {
       dispatch(toggleMainModalWindow(featuredCandidate));
