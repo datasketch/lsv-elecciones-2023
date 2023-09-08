@@ -30,6 +30,9 @@ const initialState = {
     hasProblemsOrQuestions: '',
     positionAgainstThePetroGovernment: '',
     hasHeldPublicOffice: '',
+    lgbtiq: '',
+    belongsCommunity: '',
+    currentMayorPosition: '',
   },
 };
 
@@ -83,6 +86,9 @@ const candidatesSlice = createSlice({
       state.filters.hasProblemsOrQuestions = '';
       state.filters.positionAgainstThePetroGovernment = '';
       state.filters.hasHeldPublicOffice = '';
+      state.filters.lgbtiq = '';
+      state.filters.belongsCommunity = '';
+      state.filters.currentMayorPosition = '';
       Object.entries(action.payload).forEach(([key, value]) => {
         state.filters[key] = value;
       });
@@ -153,6 +159,15 @@ export const selectHasProblemOrQuestions = (state) => getCategories(state.candid
 export const selectPositionAgainstThePetroGovernment = (state) => getCategories(state.candidates.all, 'positionAgainstThePetroGovernment');
 
 export const selectHasHeldPublicOffice = (state) => getCategories(state.candidates.all, 'hasHeldPublicOffice');
+
+export const selectLgbtiq = (state) => getCategories(state.candidates.all, 'lgbtiq');
+
+export const selectBelongsCommunity = (state) => getCategories(state.candidates.all, 'belongsCommunity');
+
+export const selectCurrentMayorPosition = (state) => {
+  const councilCandidates = state.candidates.all.filter((candidate) => candidate.candidacy === 'Concejo');
+  return getCategories(councilCandidates, 'currentMayorPosition');
+};
 
 export const selectParties = (state) => Array.from(
   new Set(state.candidates.all.map(({ party }) => party.label).sort()),

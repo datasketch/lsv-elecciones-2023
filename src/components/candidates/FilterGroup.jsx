@@ -9,6 +9,9 @@ import {
   selectHasProblemOrQuestions,
   selectPositionAgainstThePetroGovernment,
   selectHasHeldPublicOffice,
+  selectLgbtiq,
+  selectBelongsCommunity,
+  selectCurrentMayorPosition,
 } from '../../features/candidates/candidates-slice';
 import FilterCheckbox from './FilterCheckbox';
 import AppButton from '../AppButton';
@@ -21,6 +24,9 @@ function FilterGroup() {
   const hasProblemOrQuestions = useSelector(selectHasProblemOrQuestions);
   const positionAgainstThePetroGovernment = useSelector(selectPositionAgainstThePetroGovernment);
   const hasHeldPublicOffice = useSelector(selectHasHeldPublicOffice);
+  const lgbtiq = useSelector(selectLgbtiq);
+  const belongsCommunity = useSelector(selectBelongsCommunity);
+  const currentMayorPosition = useSelector(selectCurrentMayorPosition);
 
   const dispatch = useDispatch();
   const containerRef = useRef(null);
@@ -115,6 +121,27 @@ function FilterGroup() {
                   label="Líos y cuestionamientos"
                   options={hasProblemOrQuestions}
                   name="hasProblemsOrQuestions"
+                />
+              </div>
+              <div className="mt-3">
+                <FilterCheckbox
+                  label="LGBTIQ+"
+                  options={lgbtiq}
+                  name="lgbtiq"
+                />
+              </div>
+              <div className="mt-3">
+                <FilterCheckbox
+                  label="¿Pertenece a una comunidad étnica, raizal o indígena?"
+                  options={belongsCommunity}
+                  name="belongsCommunity"
+                />
+              </div>
+              <div className="mt-3">
+                <FilterCheckbox
+                  label="Posición frente a la alcalde actua"
+                  options={currentMayorPosition}
+                  name="currentMayorPosition"
                 />
               </div>
             </div>
