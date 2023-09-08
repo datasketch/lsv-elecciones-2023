@@ -18,7 +18,7 @@ const mapper = {
   'Nivel de estudios': 'educationLevel',
   'Sector del que viene': 'backgroundSector',
   'Voto segunda vuelta 2022': 'secondRoundVote2022',
-  'Líos o cuestionamientos': 'troublesOrQuestions',
+  'Es polémico': 'isPolemic',
   'Ha ocupado un cargo público': 'hasHeldPublicOffice',
   'Fórmula a la Gobernación': 'candidateForTheGovernorship',
   'Fórmula a la Alcaldía': 'mayoralCandidate',
@@ -32,6 +32,9 @@ const mapper = {
   'Tiene líos o cuestionamientos': 'hasProblemsOrQuestions',
   Perfil: 'profile',
   Foto: 'photo',
+  'LGBTIQ+': 'lgbtiq',
+  '¿Pertenece a una comunidad étnica, raizal o indígena?': 'belongsCommunity',
+  'Posición frente a la alcalde actual': 'currentMayorPosition',
 };
 
 export default mapper;
