@@ -139,7 +139,7 @@ function FilterGroup() {
               </div>
               <div className="mt-3">
                 <FilterCheckbox
-                  label="Posición frente a la alcalde actua"
+                  label="Posición frente al actual alcalde"
                   options={currentMayorPosition}
                   name="currentMayorPosition"
                 />
