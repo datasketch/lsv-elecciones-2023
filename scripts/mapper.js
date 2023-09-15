@@ -34,7 +34,7 @@ const mapper = {
   Foto: 'photo',
   'LGBTIQ+': 'lgbtiq',
   '¿Pertenece a una comunidad étnica, raizal o indígena?': 'belongsCommunity',
-  'Posición frente a la alcalde actual': 'currentMayorPosition',
+  'Posición frente a al alcalde actual': 'currentMayorPosition',
 };
 
 export default mapper;
