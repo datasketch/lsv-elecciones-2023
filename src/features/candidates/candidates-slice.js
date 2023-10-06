@@ -33,6 +33,7 @@ const initialState = {
     lgbtiq: '',
     belongsCommunity: '',
     currentMayorPosition: '',
+    bukeleFavorability: '',
   },
 };
 
@@ -89,6 +90,7 @@ const candidatesSlice = createSlice({
       state.filters.lgbtiq = '';
       state.filters.belongsCommunity = '';
       state.filters.currentMayorPosition = '';
+      state.filters.bukeleFavorability = '';
       Object.entries(action.payload).forEach(([key, value]) => {
         state.filters[key] = value;
       });
@@ -168,6 +170,8 @@ export const selectCurrentMayorPosition = (state) => {
   const councilCandidates = state.candidates.all.filter((candidate) => candidate.candidacy === 'Concejo');
   return getCategories(councilCandidates, 'currentMayorPosition');
 };
+
+export const selectBukeleFavorability = (state) => getCategories(state.candidates.all, 'bukeleFavorability');
 
 export const selectParties = (state) => Array.from(
   new Set(state.candidates.all.map(({ party }) => party.label).sort()),

@@ -12,6 +12,7 @@ import {
   selectLgbtiq,
   selectBelongsCommunity,
   selectCurrentMayorPosition,
+  selectBukeleFavorability,
 } from '../../features/candidates/candidates-slice';
 import FilterCheckbox from './FilterCheckbox';
 import AppButton from '../AppButton';
@@ -27,6 +28,7 @@ function FilterGroup() {
   const lgbtiq = useSelector(selectLgbtiq);
   const belongsCommunity = useSelector(selectBelongsCommunity);
   const currentMayorPosition = useSelector(selectCurrentMayorPosition);
+  const bukeleFavorability = useSelector(selectBukeleFavorability);
 
   const dispatch = useDispatch();
   const containerRef = useRef(null);
@@ -142,6 +144,13 @@ function FilterGroup() {
                   label="Posición frente al actual alcalde"
                   options={currentMayorPosition}
                   name="currentMayorPosition"
+                />
+              </div>
+              <div className="mt-3">
+                <FilterCheckbox
+                  label="Qué tanto le gusta Bukele"
+                  options={bukeleFavorability}
+                  name="bukeleFavorability"
                 />
               </div>
             </div>

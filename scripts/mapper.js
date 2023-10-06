@@ -35,6 +35,7 @@ const mapper = {
   'LGBTIQ+': 'lgbtiq',
   '¿Pertenece a una comunidad étnica, raizal o indígena?': 'belongsCommunity',
   'Posición frente a al alcalde actual': 'currentMayorPosition',
+  'Favorabilidad Bukele': 'bukeleFavorability',
 };
 
 export default mapper;
