@@ -72,7 +72,7 @@ function CandidateCardModalHeader({
           <p className="text-sm">
             Cargo que busca:
             {' '}
-            {candidate.candidacy}
+            {candidate.chargeCard}
           </p>
           <div className="mt-1 flex items-center">
             {candidate.twitterHandle && (
