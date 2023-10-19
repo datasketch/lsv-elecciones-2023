@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-keys */
 const mapper = {
   'Apellido 1': 'firstLastName',
   'Apellido 2': 'secondLastName',
@@ -36,6 +37,7 @@ const mapper = {
   '¿Pertenece a una comunidad étnica, raizal o indígena?': 'belongsCommunity',
   'Posición frente a al alcalde actual': 'currentMayorPosition',
   'Favorabilidad Bukele': 'bukeleFavorability',
+  'Número de lista': 'electoralNumber',
 };
 
 export default mapper;

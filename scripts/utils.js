@@ -100,6 +100,10 @@ export const setupHbs = () => {
   });
 };
 
+export const isEqual = () => {
+  Handlebars.registerHelper('ifEquals', (arg1, arg2, options) => ((arg1 === arg2) ? options.fn(this) : options.inverse(this)));
+};
+
 export const getCandidates = async (filename) => {
   const candidatesRaw = await fs.readFile(path.join(process.cwd(), '..', 'src', 'data', `${filename}.json`), 'utf8');
   const candidates = JSON.parse(candidatesRaw);
@@ -119,6 +123,7 @@ export const generateImages = async () => {
 
   // Compile template
   setupHbs();
+  isEqual();
   const html = await fs.readFile(path.join(process.cwd(), 'preview', 'card.tpl.hbs'), 'utf-8');
   const template = Handlebars.compile(html);
 

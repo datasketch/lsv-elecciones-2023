@@ -5,7 +5,7 @@ import { readFileSync } from 'fs';
 import Handlebars from 'handlebars';
 import express from 'express';
 // eslint-disable-next-line import/extensions
-import { renderTemplate, setupHbs } from '../utils.js';
+import { renderTemplate, setupHbs, isEqual } from '../utils.js';
 
 const data = readFileSync(path.join(process.cwd(), '..', 'src', 'data', 'data.json'), 'utf8');
 const html = readFileSync(path.join(process.cwd(), 'preview', './card.tpl.hbs'), 'utf-8');
@@ -13,6 +13,7 @@ const template = Handlebars.compile(html);
 const candidates = JSON.parse(data);
 
 setupHbs();
+isEqual();
 
 const app = express();
 

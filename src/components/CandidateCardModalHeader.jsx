@@ -10,7 +10,7 @@ import {
 function CandidateCardModalHeader({
   candidate,
   showClose = true,
-  setShowProfile = () => {},
+  setShowProfile = () => { },
   showProfile,
 }) {
   const secondaryCandidate = useSelector(selectSecondaryCandidate);
@@ -24,6 +24,8 @@ function CandidateCardModalHeader({
   function handleImageError(e) {
     e.target.src = 'https://www.lasillavacia.com/media/candidato-nn-h.jpg';
   }
+
+  const isCouncilCandidate = candidate.electoralNumber && candidate.candidacy === 'Concejo';
 
   return (
     <div
@@ -43,13 +45,15 @@ function CandidateCardModalHeader({
       )}
       <div className="flex px-6 py-5 space-x-4 items-start">
         <div className="font-martin uppercase text-center text-2xl text-black flex-shrink-0">
-          {candidate.electoralNumber ? (
-            <p>
-              #Tarjetón:
-              {' '}
-              {candidate.electoralNumber}
-            </p>
-          ) : <p>&nbsp;</p>}
+          {
+            isCouncilCandidate && (
+              <p>
+                #Tarjetón:
+                {' '}
+                {candidate.electoralNumber}
+              </p>
+            )
+          }
           <img
             src={candidate.photo}
             alt={candidate.fullname}
@@ -58,16 +62,16 @@ function CandidateCardModalHeader({
           />
         </div>
         <div>
-          <div className="opacity-0 text-2xl">_</div>
+          {isCouncilCandidate && (<div className="opacity-0 text-2xl">_</div>)}
           <p className="text-sm">{candidate.pending}</p>
           <p className="text-xl leading-tight">{candidate.fullname}</p>
           <p className="text-sm">{candidate.party.label}</p>
           {candidate.totalVotes && (
-          <p>
-            Votos:
-            {' '}
-            {candidate.totalVotes}
-          </p>
+            <p>
+              Votos:
+              {' '}
+              {candidate.totalVotes}
+            </p>
           )}
           <p className="text-sm">
             Cargo que busca:
