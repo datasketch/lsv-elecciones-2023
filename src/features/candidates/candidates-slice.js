@@ -5,7 +5,7 @@ import { createSelector } from 'reselect';
 import { createSlice } from '@reduxjs/toolkit';
 import candidates from '../../data/data.json';
 
-const candidatesData = candidates.map((c) => ({ ...c, highlight: true }));
+const candidatesData = candidates.map((c) => ({ ...c, highlight: true })).filter(({ theseAre }) => theseAre === 'Sí');
 const EXCLUDE_COLOR = '#3d3d3d';
 
 const initialState = {
@@ -25,7 +25,6 @@ const initialState = {
     city: '',
     candidacy: '',
     gender: '',
-    backgroundSector: '',
     ageRange: '',
     hasProblemsOrQuestions: '',
     positionAgainstThePetroGovernment: '',
@@ -82,7 +81,6 @@ const candidatesSlice = createSlice({
     filterGroup(state, action) {
       // Should we reset these filters here?
       state.filters.gender = '';
-      state.filters.backgroundSector = '';
       state.filters.ageRange = '';
       state.filters.hasProblemsOrQuestions = '';
       state.filters.positionAgainstThePetroGovernment = '';
@@ -149,8 +147,6 @@ export const selectCities = (state) => {
 };
 
 export const selectCandidacies = (state) => getCategories(state.candidates.all, 'candidacy');
-
-export const selectSectors = (state) => getCategories(state.candidates.all, 'backgroundSector');
 
 export const selectGender = (state) => getCategories(state.candidates.all, 'gender');
 

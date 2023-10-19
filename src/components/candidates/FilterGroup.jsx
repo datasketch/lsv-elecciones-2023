@@ -5,7 +5,6 @@ import {
   filterGroup,
   selectGender,
   selectAgeRanges,
-  selectSectors,
   selectHasProblemOrQuestions,
   selectPositionAgainstThePetroGovernment,
   selectHasHeldPublicOffice,
@@ -19,7 +18,6 @@ import AppButton from '../AppButton';
 
 function FilterGroup() {
   const [isOpened, setIsOpened] = useState(false);
-  const sectors = useSelector(selectSectors);
   const genders = useSelector(selectGender);
   const ages = useSelector(selectAgeRanges);
   const hasProblemOrQuestions = useSelector(selectHasProblemOrQuestions);
@@ -74,7 +72,7 @@ function FilterGroup() {
         }}
         type="button"
       >
-        Otros
+        Posiciones, líos y género
       </button>
       <form
         className={classNames(
@@ -88,14 +86,19 @@ function FilterGroup() {
       >
         <div className="flex flex-col sm:flex-row gap-x-4">
           <div className="sm:w-1/2 sm:border-r sm:border-bone pr-4">
-            <FilterCheckbox
-              label="Sector"
-              options={sectors}
-              name="backgroundSector"
-            />
+            <div>
+              <FilterCheckbox label="Género" options={genders} name="gender" />
+            </div>
             <div className="mt-3">
               <FilterCheckbox
-                label="Posición frente al Gobierno"
+                label="Rango de edad"
+                options={ages}
+                name="ageRange"
+              />
+            </div>
+            <div className="mt-3">
+              <FilterCheckbox
+                label="Posición frente a Petro"
                 options={positionAgainstThePetroGovernment}
                 name="positionAgainstThePetroGovernment"
               />
@@ -103,14 +106,6 @@ function FilterGroup() {
           </div>
           <div className="sm:w-1/2 flex flex-col justify-between">
             <div>
-              <FilterCheckbox label="Género" options={genders} name="gender" />
-              <div className="mt-3">
-                <FilterCheckbox
-                  label="Rango de edad"
-                  options={ages}
-                  name="ageRange"
-                />
-              </div>
               <div className="mt-3">
                 <FilterCheckbox
                   label="Ha tenido un cargo público"

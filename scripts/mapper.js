@@ -38,6 +38,7 @@ const mapper = {
   'Posición frente a al alcalde actual': 'currentMayorPosition',
   'Favorabilidad Bukele': 'bukeleFavorability',
   'Número de lista': 'electoralNumber',
+  'Estos son:': 'theseAre',
 };
 
 export default mapper;
