@@ -98,56 +98,54 @@ function FilterGroup() {
             </div>
             <div className="mt-3">
               <FilterCheckbox
+                label="LGBTIQ+"
+                options={lgbtiq}
+                name="lgbtiq"
+              />
+            </div>
+            <div className="mt-3">
+              <FilterCheckbox
                 label="Posición frente a Petro"
                 options={positionAgainstThePetroGovernment}
                 name="positionAgainstThePetroGovernment"
               />
             </div>
+            <div className="mt-3">
+              <FilterCheckbox
+                label="¿Pertenece a una comunidad étnica, raizal o indígena?"
+                options={belongsCommunity}
+                name="belongsCommunity"
+              />
+            </div>
           </div>
           <div className="sm:w-1/2 flex flex-col justify-between">
             <div>
-              <div className="mt-3">
-                <FilterCheckbox
-                  label="Ha tenido un cargo público"
-                  options={hasHeldPublicOffice}
-                  name="hasHeldPublicOffice"
-                />
-              </div>
-              <div className="mt-3">
-                <FilterCheckbox
-                  label="Líos y cuestionamientos"
-                  options={hasProblemOrQuestions}
-                  name="hasProblemsOrQuestions"
-                />
-              </div>
-              <div className="mt-3">
-                <FilterCheckbox
-                  label="LGBTIQ+"
-                  options={lgbtiq}
-                  name="lgbtiq"
-                />
-              </div>
-              <div className="mt-3">
-                <FilterCheckbox
-                  label="¿Pertenece a una comunidad étnica, raizal o indígena?"
-                  options={belongsCommunity}
-                  name="belongsCommunity"
-                />
-              </div>
-              <div className="mt-3">
-                <FilterCheckbox
-                  label="Posición frente al actual alcalde"
-                  options={currentMayorPosition}
-                  name="currentMayorPosition"
-                />
-              </div>
-              <div className="mt-3">
-                <FilterCheckbox
-                  label="Qué tanto le gusta Bukele"
-                  options={bukeleFavorability}
-                  name="bukeleFavorability"
-                />
-              </div>
+              <FilterCheckbox
+                label="Ha tenido un cargo público"
+                options={hasHeldPublicOffice}
+                name="hasHeldPublicOffice"
+              />
+            </div>
+            <div className="mt-3">
+              <FilterCheckbox
+                label="Líos y cuestionamientos"
+                options={hasProblemOrQuestions}
+                name="hasProblemsOrQuestions"
+              />
+            </div>
+            <div className="mt-3">
+              <FilterCheckbox
+                label="Posición frente al actual alcalde"
+                options={currentMayorPosition}
+                name="currentMayorPosition"
+              />
+            </div>
+            <div className="mt-3">
+              <FilterCheckbox
+                label="Qué tanto le gusta Bukele"
+                options={bukeleFavorability}
+                name="bukeleFavorability"
+              />
             </div>
           </div>
         </div>
