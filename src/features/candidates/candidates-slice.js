@@ -100,7 +100,7 @@ const candidatesSlice = createSlice({
 const getCategories = (data, key) => Array.from(
   new Set(
     data
-      .map((record) => record[key])
+      .map((record) => (record[key] ? record[key].trim() : null))
       .filter((r) => r)
       .sort(),
   ),
@@ -137,12 +137,12 @@ export const selectHighlightedCandidates = (state) => state.candidates.filtered
   .filter(({ highlight }) => highlight);
 
 export const selectDepartments = (state) => {
-  if (!state.candidates.filters.city) return [...new Set(state.candidates.all.map((c) => c.department))].sort();
+  if (!state.candidates.filters.city) return [...new Set(state.candidates.all.map((c) => c.department?.trim()))].sort();
   return [...new Set(state.candidates.all.filter((c) => c.city === state.candidates.filters.city).map((c) => c.department))].sort();
 };
 
 export const selectCities = (state) => {
-  if (!state.candidates.filters.department) return [...new Set(state.candidates.all.map((c) => c.city))].sort();
+  if (!state.candidates.filters.department) return [...new Set(state.candidates.all.map((c) => c.city?.trim()))].sort();
   return [...new Set(state.candidates.all.filter((c) => c.department === state.candidates.filters.department).map((c) => c.city))].sort();
 };
 
