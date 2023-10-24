@@ -20,9 +20,7 @@ jobs:
           cd scripts
           npm i
       - name: Fetch and transform data
-        run: |
-          node transform.js
-          cd ..
+        run: node scripts/transform.js
       - name: Commit changes
         run: |
           git config user.name github-actions

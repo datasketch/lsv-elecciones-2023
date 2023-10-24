@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable import/extensions */
-import { writeFile, readFile } from 'fs/promises';
+import { writeFile } from 'fs/promises';
 import path from 'path';
 import slugify from 'slugify';
 import got from 'got';
@@ -22,7 +22,7 @@ function mapValues(data) {
       'https://script.google.com/macros/s/AKfycbwhtVKLjQTNa3J43o2yaPStGe8KHNmW_oCVKT-NcLv06TNd-3TfAOpGfdny7_3c3TUtTA/exec',
     ).json();
 
-    const candidates = mapValues(JSON.parse(raw))
+    const candidates = mapValues(raw.data)
       .map((record) => {
         const { name, firstLastName, secondLastName } = record;
         const fullname = [name, firstLastName, secondLastName].join(' ').trim();
