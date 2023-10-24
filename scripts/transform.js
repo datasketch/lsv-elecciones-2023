@@ -3,18 +3,9 @@
 import { writeFile, readFile } from 'fs/promises';
 import path from 'path';
 import slugify from 'slugify';
+import got from 'got';
 import mapper from './mapper.js';
 import { partyColorMap } from './utils.js';
-
-/* function compareFunction(key) {
-  return (a, b) => {
-    if (a[key] > b[key]) return 1;
-    if (a[key] < b[key]) return -1;
-    return 0;
-  };
-} */
-
-// const sortByElectoralNumber = compareFunction('electoralNumber');
 
 function mapValues(data) {
   return data.map((record) => Object.keys(record).reduce((result, key) => {
@@ -27,7 +18,9 @@ function mapValues(data) {
 
 (async () => {
   try {
-    const raw = await readFile(path.join(process.cwd(), 'src', 'data', 'raw.json'), 'utf8');
+    const raw = await got(
+      'https://script.google.com/macros/s/AKfycbwfLci6UvxSQnkioexRezpeZllwXUC6n1QWXexYPHCb6CkMEsKeujS1WfZx9x7q11w28Q/exec',
+    ).json();
 
     const candidates = mapValues(JSON.parse(raw))
       .map((record) => {
