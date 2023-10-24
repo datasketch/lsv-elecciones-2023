@@ -19,7 +19,7 @@ function mapValues(data) {
 (async () => {
   try {
     const raw = await got(
-      'https://script.google.com/macros/s/AKfycbwfLci6UvxSQnkioexRezpeZllwXUC6n1QWXexYPHCb6CkMEsKeujS1WfZx9x7q11w28Q/exec',
+      'https://script.google.com/macros/s/AKfycbwhtVKLjQTNa3J43o2yaPStGe8KHNmW_oCVKT-NcLv06TNd-3TfAOpGfdny7_3c3TUtTA/exec',
     ).json();
 
     const candidates = mapValues(JSON.parse(raw))

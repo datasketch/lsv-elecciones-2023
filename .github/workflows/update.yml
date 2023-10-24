@@ -13,10 +13,15 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm i
-      - run: cd scripts
-      - run: |
+      - name: Install frontend deps
+        run: npm i
+      - name: Install scripts deps
+        run: |
+          cd scripts
           npm i
+      - name: Fetch and transform data
+        run: |
+          node transform.js
           cd ..
       - name: Commit changes
         run: |
@@ -25,4 +30,3 @@ jobs:
           git add .
           git commit --allow-empty -m "Update data [gh-action]"
           git push
-      # - run: npm run update
