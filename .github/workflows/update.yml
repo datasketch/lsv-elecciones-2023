@@ -1,0 +1,25 @@
+name: update
+
+on:
+  repository_dispatch:
+    types: [on-demand]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    name: Update data files
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: echo "Hello, world!"
+      # - run: npm install
+      # - run: npm run update
+      # - name: Commit changes
+      #   run: |
+      #     git config user.name github-actions
+      #     git config user.email github-actions@github.com
+      #     git add .
+      #     git commit --allow-empty -m "Update site [gh-action]"
+      #     git push
