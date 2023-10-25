@@ -2,13 +2,11 @@ import { useSelector } from 'react-redux';
 import ElectoralColumn from './ElectoralColumn';
 import {
   selectAllCandidates,
-  selectPartiesWithColor,
 } from '../features/candidates/candidates-slice';
 import PoweredBy from './PoweredBy';
 
 function CandidateList() {
   const candidates = useSelector(selectAllCandidates);
-  const parties = useSelector(selectPartiesWithColor);
 
   // flex flex-col md:flex-row md:items-start md:justify-between
   return (
@@ -28,25 +26,6 @@ function CandidateList() {
         {Object.entries(candidates).map(([label, c]) => (
           <ElectoralColumn key={label} label={label} candidates={c} />
         ))}
-      </div>
-      <div className="grid grid-cols-3 gap-4 max-w-5xl mx-auto py-4 lg:grid-cols-5">
-        {Object.keys(parties)
-          .sort()
-          .map((key, index) => (
-            <div
-              // eslint-disable-next-line react/no-array-index-key
-              key={`party-${index}`}
-              className="flex items-center space-x-1 text-xs flex-shrink-0"
-            >
-              <span
-                className="w-3 h-3 flex-shrink-0"
-                style={{ backgroundColor: parties[key] }}
-              />
-              <span className="truncate" title={key}>
-                {key}
-              </span>
-            </div>
-          ))}
       </div>
       <div className="py-4">
         <PoweredBy />
