@@ -13,7 +13,8 @@ function AppHeader() {
           />
         </picture>
         <p className="mt-4 ">
-          Escoja su región y encuentre su candidato a Alcaldía, Gobernación o Concejo.
+          {/* Escoja su región y encuentre su candidato a Alcaldía, Gobernación o Concejo. */}
+          Estos son los perfiles de los elegidos en los principales concejos, gobernaciones y alcaldías.
         </p>
       </div>
       <div className="border-t-2 border-jet mt-6" />
