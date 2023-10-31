@@ -21,8 +21,8 @@
     }
     .candidates-column {
         @apply grid gap-1 justify-center;
-        grid-template-columns: repeat(auto-fit, 28px);
-        grid-template-rows: 28px;
+        grid-template-columns: repeat(auto-fit, 40px);
+        grid-template-rows: 40px;
     }
     .candidates-column.single {
         grid-template-columns: 1fr;

@@ -12,7 +12,7 @@ function CandidateCardCollapsed({ candidate }) {
   const dispatch = useDispatch();
   return (
     // See https://atomiks.github.io/tippyjs/v6/accessibility/#interactivity
-    <div className="w-7 h-7 relative">
+    <div className="w-10 h-10 relative">
       <Tippy
         render={(attrs) => (
           <CandidateCardExpanded candidate={candidate} {...attrs} />
